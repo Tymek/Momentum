@@ -7,8 +7,7 @@ const fonts = css`
   @font-face {
     font-family: 'Proxima';
     src: url('/fonts/ProximaNova-Regular.eot');
-    src: url('/fonts/ProximaNova-Regular.eot?#iefix')
-        format('embedded-opentype'),
+    src: url('/fonts/ProximaNova-Regular.eot?#iefix') format('embedded-opentype'),
       url('/fonts/ProximaNova-Regular.woff2') format('woff2'),
       url('/fonts/ProximaNova-Regular.woff') format('woff'),
       url('/fonts/ProximaNova-Regular.ttf') format('truetype'),
@@ -39,6 +38,10 @@ const fonts = css`
       url('/fonts/ProximaNova-Black.svg#ProximaNova-Black') format('svg');
     font-weight: bold;
     font-style: normal;
+  }
+
+  body {
+    font-family: Proxima, 'Proxima Nova', sans-serif;
   }
 `
 
