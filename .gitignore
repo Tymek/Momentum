@@ -13,5 +13,13 @@ web-build/
 .DS_Store
 
 # custom
+
 db_data
 .tmp
+*.log
+
+assets/fonts/*
+!assets/fonts/.gitkeep
+
+web/fonts/*
+!web/fonts/.gitkeep
