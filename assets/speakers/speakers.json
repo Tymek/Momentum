@@ -1,0 +1,22 @@
+[
+  {
+    "name": "biskup Marek Kamiński",
+    "description": "Biskup Kościoła Zielonoświątkowego w Polsce, doktor nauk teologicznych, członek i przewodniczący wielu organizacji zrzeszających kościoły na całym świecie. Przyjaciel młodzieży.",
+    "image": "marek-kaminski.jpg"
+  },
+  {
+    "name": "Zbyszek Zarożny",
+    "description": "Dyrektor Duszpasterstwa Młodzieży. Pastor kościoła \"OdNowa\" w Wieluniu. Zapalony, konkretny i wierny temu, co włożył w jego serce Bóg.",
+    "image": "zbyszek-zarozny.jpg"
+  },
+  {
+    "name": "Jacek Gromadzki",
+    "description": "Pastor kościoła „Droga Życia” w Kołobrzegu. Współgospodarz wydarzenia. Z wykształcenia teolog, z pasji kochający ludzi duszpasterz.",
+    "image": "jacek-gromadzki.jpg"
+  },
+  {
+    "name": "Dominik Tomaszewski",
+    "description": "Dominik Tomaszewski wraz z żoną Gosią prowadzi grupę młodzieżową \"Fresh\" w kościele „Betania” w Katowicach. Nieszablonowy mówca z duszą artysty. Od wielu lat jest związany z Duszpasterstwem Młodzieży, w którym służy z pasją i oddaniem.",
+    "image": "dominik-tomaszewski.jpg"
+  }
+]

@@ -7,9 +7,9 @@ import theme from 'utils/theme'
 
 const Theme: FC = ({ children }) => {
   const [fontsLoaded] = useFonts({
-    Proxima: require('./assets/fonts/ProximaNova-Regular.ttf'),
-    'Proxima-Light': require('./assets/fonts/ProximaNova-Light.ttf'),
-    'Proxima-Black': require('./assets/fonts/ProximaNova-Black.ttf'),
+    Proxima: require('../../../assets/fonts/ProximaNova-Regular.ttf'),
+    'Proxima-Light': require('../../../assets/fonts/ProximaNova-Light.ttf'),
+    'Proxima-Black': require('../../../assets/fonts/ProximaNova-Black.ttf'),
   })
 
   return (

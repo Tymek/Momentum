@@ -3,21 +3,23 @@ import { StatusBar } from 'expo-status-bar'
 
 import ThemeProvider from 'providers/Theme'
 import Home from 'containers/Home'
-
-// const Container = styled.View`
-//   flex: 1;
-//   background-color: #fff;
-//   align-items: center;
-//   justify-content: center;
-// `
+import Speaker from 'containers/Speaker'
 
 export default function App() {
   return (
     <ThemeProvider>
-      {/* <Container> */}
       <Home />
-        <StatusBar style="auto" />
-      {/* </Container> */}
+      {/* <Speaker
+        name="Jacek Gromadzki"
+        description="Pastor kościoła „Droga Życia” w Kołobrzegu. Współgospodarz wydarzenia. Z wykształcenia teolog, z pasji kochający ludzi duszpasterz."
+        image={require('./assets/speakers/jacek-gromadzki.jpg')}
+      /> */}
+      {/* <Speaker
+        name="biskup Marek Kamiński"
+        description="Biskup Kościoła Zielonoświątkowego w Polsce, doktor nauk teologicznych, członek i przewodniczący wielu organizacji zrzeszających kościoły na całym świecie. Przyjaciel młodzieży."
+        image={require('./assets/speakers/marek-kaminski.jpg')}
+      /> */}
+      <StatusBar style="auto" />
     </ThemeProvider>
   )
 }
