@@ -1,7 +1,6 @@
 import React, { FC } from 'react'
 import { css, Global, ThemeProvider } from '@emotion/react'
-
-import theme from 'utils/theme'
+import useColorSchemeTheme from './hooks/useColorSchemeTheme'
 
 const fonts = css`
   @font-face {
@@ -45,11 +44,15 @@ const fonts = css`
   }
 `
 
-const Theme: FC = ({ children }) => (
-  <ThemeProvider theme={theme}>
-    <Global styles={fonts} />
-    {children}
-  </ThemeProvider>
-)
+const Theme: FC = ({ children }) => {
+  const theme = useColorSchemeTheme()
+
+  return (
+    <ThemeProvider theme={theme}>
+      <Global styles={fonts} />
+      {children}
+    </ThemeProvider>
+  )
+}
 
 export default Theme

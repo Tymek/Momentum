@@ -1,42 +1,46 @@
-import styled from '@emotion/native'
 import React, { FC } from 'react'
-import Text from 'components/Text'
-import Constants from 'expo-constants'
-import { View } from 'react-native'
+import { useLinkTo } from '@react-navigation/native'
+import styled from '@emotion/native'
 
-const Header = styled.View`
-  top: ${Constants.statusBarHeight}px;
-  /* top: 24px; */
-  background: ${({ theme }) => theme.colors.text};
-  padding: ${({ theme }) => theme.spacing.lg};
-`
+import Button from 'components/Button'
+import Text from 'components/Text'
+import routes from 'utils/routes'
+
+const messages = {
+  rules: 'Regulamin',
+}
 
 const Title = styled(Text)`
   text-transform: uppercase;
-  color: ${({ theme }) => theme.colors.background};
+  color: ${({ theme }) => theme.color.primary};
+  font-family: ${({ theme }) => theme.font.headers};
   font-size: 42px;
 `
 
-const Logo = styled.Image`
-  width: 91px;
-  height: 62px;
-`
-
 const Main = styled.View`
-  padding: ${({ theme }) => theme.spacing.lg};
+  flex: 1;
+  padding: ${({ theme }) => theme.spacing.md};
 `
 
-const HomeScreen: FC = () => (
-  <View style={{ paddingTop: Constants.statusBarHeight }}>
-    <Header>
-      <Logo source={require('../../../assets/images/logo.png')} resizeMode="contain" />
-      <Title fontWeight="bold">Freedom</Title>
-    </Header>
-    <Main>
-      <Text>12-17 Lipca 2021</Text>
-      <Text>Kołobrzeg</Text>
-    </Main>
-  </View>
-)
+const Footer = styled.View`
+  padding: ${({ theme }) => theme.spacing.md};
+`
+
+const HomeScreen: FC = () => {
+  const linkTo = useLinkTo()
+
+  return (
+    <>
+      <Main>
+        <Title>Freedom</Title>
+        <Text>12-17 Lipca 2021</Text>
+        <Text>Kołobrzeg</Text>
+      </Main>
+      <Footer>
+        <Button title={messages.rules} onPress={() => linkTo(routes.Rules)} />
+      </Footer>
+    </>
+  )
+}
 
 export default HomeScreen

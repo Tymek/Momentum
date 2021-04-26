@@ -1,25 +1,36 @@
-import React from 'react'
-import { StatusBar } from 'expo-status-bar'
+import React, { FC } from 'react'
+import { useColorScheme } from 'react-native'
+import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native'
+import { createStackNavigator } from '@react-navigation/stack'
 
+import screens from 'utils/routes'
 import ThemeProvider from 'providers/Theme'
-import Home from 'containers/Home'
-import Speaker from 'containers/Speaker'
+import HomeScreen from 'containers/Home'
+import RulesScreen from 'containers/Rules'
 
-export default function App() {
+const Stack = createStackNavigator()
+
+const App: FC = () => {
+  const scheme = useColorScheme()
+
   return (
     <ThemeProvider>
-      <Home />
-      {/* <Speaker
-        name="Jacek Gromadzki"
-        description="Pastor kościoła „Droga Życia” w Kołobrzegu. Współgospodarz wydarzenia. Z wykształcenia teolog, z pasji kochający ludzi duszpasterz."
-        image={require('./assets/speakers/jacek-gromadzki.jpg')}
-      /> */}
-      {/* <Speaker
-        name="biskup Marek Kamiński"
-        description="Biskup Kościoła Zielonoświątkowego w Polsce, doktor nauk teologicznych, członek i przewodniczący wielu organizacji zrzeszających kościoły na całym świecie. Przyjaciel młodzieży."
-        image={require('./assets/speakers/marek-kaminski.jpg')}
-      /> */}
-      <StatusBar style="auto" />
+      <NavigationContainer
+        theme={scheme === 'dark' ? DarkTheme : DefaultTheme}
+        linking={{
+          prefixes: ['https://momentum.vercel.app', 'momentum2021konf://'],
+          config: {
+            screens,
+          },
+        }}
+      >
+        <Stack.Navigator initialRouteName="Home">
+          <Stack.Screen name="Home" component={HomeScreen} options={{ title: 'Momentum' }} />
+          <Stack.Screen name="Rules" component={RulesScreen} options={{ title: 'Regulamin' }} />
+        </Stack.Navigator>
+      </NavigationContainer>
     </ThemeProvider>
   )
 }
+
+export default App
