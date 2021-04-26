@@ -29,10 +29,7 @@ const Main = styled.View`
 const HomeScreen: FC = () => (
   <View style={{ paddingTop: Constants.statusBarHeight }}>
     <Header>
-      <Logo
-        source={require('../../../assets/images/logo.png')}
-        resizeMode="contain"
-      />
+      <Logo source={require('../../../assets/images/logo.png')} resizeMode="contain" />
       <Title fontWeight="bold">Freedom</Title>
     </Header>
     <Main>

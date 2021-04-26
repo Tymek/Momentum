@@ -12,11 +12,7 @@ const Theme: FC = ({ children }) => {
     'Proxima-Black': require('../../../assets/fonts/ProximaNova-Black.ttf'),
   })
 
-  return (
-    <ThemeProvider theme={theme}>
-      {fontsLoaded ? children : <AppLoading />}
-    </ThemeProvider>
-  )
+  return <ThemeProvider theme={theme}>{fontsLoaded ? children : <AppLoading />}</ThemeProvider>
 }
 
 export default Theme
