@@ -27,3 +27,5 @@ web/fonts/*
 web-server
 
 .env
+
+graphql.schema.json

@@ -1,1 +1,42 @@
-[]
+- table:
+    schema: public
+    name: page
+  insert_permissions:
+  - role: manager
+    permission:
+      check: {}
+      columns:
+      - content
+      - meta
+      - title
+      backend_only: false
+  select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+      - content
+      - meta
+      - title
+      filter: {}
+  - role: manager
+    permission:
+      columns:
+      - meta
+      - content
+      - title
+      - created_at
+      - updated_at
+      filter: {}
+  update_permissions:
+  - role: manager
+    permission:
+      columns:
+      - content
+      - meta
+      - title
+      filter: {}
+      check: null
+  delete_permissions:
+  - role: manager
+    permission:
+      filter: {}

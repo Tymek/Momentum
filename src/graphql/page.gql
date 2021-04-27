@@ -1,0 +1,5 @@
+fragment page on page {
+  title
+  content
+  meta
+}

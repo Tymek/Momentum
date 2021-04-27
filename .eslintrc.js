@@ -19,7 +19,7 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'plugin:prettier/recommended',
   ],
-  ignorePatterns: ['./node_modules', './expo', './web-build', './.tmp'],
+  ignorePatterns: ['./node_modules', './expo', './web-build', './.tmp', './src/generated/*'],
   rules: {
     'react/prop-types': 'off',
     'unicorn/filename-case': 'off',
