@@ -14,7 +14,7 @@ web-build/
 
 # custom
 
-db_data
+.data
 .tmp
 *.log
 
@@ -23,3 +23,7 @@ assets/fonts/*
 
 web/fonts/*
 !web/fonts/.gitkeep
+
+web-server
+
+.env

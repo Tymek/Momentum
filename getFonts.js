@@ -6,7 +6,7 @@ const path = require('path')
 const download = (url, dest) =>
   new Promise((resolve, reject) => {
     const file = fs.createWriteStream(dest)
-    const request = http
+    http
       .get(url, (response) => {
         response.pipe(file)
         file.on('finish', () => {

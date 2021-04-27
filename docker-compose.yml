@@ -1,0 +1,44 @@
+version: '3.8'
+services:
+  server:
+    image: node:15
+    working_dir: /srv
+    volumes:
+      - ./:/srv
+    command: yarn serve
+    user: 1000:1000
+    networks:
+      - wan
+
+  postgres:
+    image: postgres:12
+    restart: always
+    volumes:
+      - ./.data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: '${POSTGRES_PASSWORD:-postgres}'
+    networks:
+      - lan
+
+  hasura:
+    image: '${HASURA_IMAGE:-hasura/graphql-engine:v2.0.0-alpha.9.cli-migrations-v3}'
+    depends_on:
+      - 'postgres'
+    restart: always
+    environment:
+      HASURA_GRAPHQL_ENABLE_CONSOLE: 'false'
+      HASURA_GRAPHQL_ENABLE_TELEMETRY: 'false'
+      HASURA_GRAPHQL_DEV_MODE: 'false'
+      HASURA_GRAPHQL_DATABASE_URL: '${HASURA_GRAPHQL_DATABASE_URL:-postgres://postgres:postgres@postgres:5432/postgres}'
+      HASURA_GRAPHQL_ENABLED_LOG_TYPES: startup, http-log, webhook-log, websocket-log, query-log
+      HASURA_GRAPHQL_ADMIN_SECRET: '${HASURA_GRAPHQL_ADMIN_SECRET:-admin}'
+      HASURA_ACTION_SECRET: '${HASURA_ACTION_SECRET:-secret}'
+    networks:
+      - lan
+      - wan
+
+networks:
+  lan:
+    external: false
+  wan:
+    external: true

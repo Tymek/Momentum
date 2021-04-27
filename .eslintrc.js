@@ -23,7 +23,16 @@ module.exports = {
   rules: {
     'react/prop-types': 'off',
     'unicorn/filename-case': 'off',
+    'unicorn/import-style': 'off',
     'unicorn/prefer-module': 'off',
     'unicorn/prevent-abbreviations': 'off',
   },
+  overrides: [
+    {
+      files: ['*.js', '*.jsx'],
+      rules: {
+        '@typescript-eslint/no-var-requires': 'off',
+      },
+    },
+  ],
 }
