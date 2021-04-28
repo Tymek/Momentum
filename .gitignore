@@ -14,7 +14,8 @@ web-build/
 
 # custom
 
-.data
+data
+!data/.gitkeep
 .tmp
 *.log
 

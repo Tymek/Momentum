@@ -7,6 +7,7 @@ import Text from 'components/Text'
 import routes from 'utils/routes'
 
 const messages = {
+  schedule: 'Plan',
   rules: 'Regulamin',
 }
 
@@ -37,6 +38,7 @@ const HomeScreen: FC = () => {
         <Text>Kołobrzeg</Text>
       </Main>
       <Footer>
+        <Button title={messages.schedule} onPress={() => linkTo(routes.Schedule)} />
         <Button title={messages.rules} onPress={() => linkTo(routes.Rules)} />
       </Footer>
     </>

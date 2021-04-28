@@ -7,6 +7,7 @@ import screens from 'utils/routes'
 import ThemeProvider from 'providers/Theme'
 import HomeScreen from 'containers/Home'
 import RulesScreen from 'containers/Rules'
+import ScheduleScreen from 'containers/Schedule'
 
 const Stack = createStackNavigator()
 
@@ -26,6 +27,7 @@ const App: FC = () => {
       >
         <Stack.Navigator initialRouteName="Home">
           <Stack.Screen name="Home" component={HomeScreen} options={{ title: 'Momentum' }} />
+          <Stack.Screen name="Schedule" component={ScheduleScreen} options={{ title: 'Plan' }} />
           <Stack.Screen name="Rules" component={RulesScreen} options={{ title: 'Regulamin' }} />
         </Stack.Navigator>
       </NavigationContainer>

@@ -1,14 +1,7 @@
 import styled from '@emotion/native'
-import React, { ComponentProps, ComponentPropsWithoutRef, FC } from 'react'
+import React, { FC } from 'react'
 import Text from 'components/Text'
-import {
-  Dimensions,
-  Image,
-  ImageSourcePropType,
-  SafeAreaView,
-  ScrollView,
-  View,
-} from 'react-native'
+import { Dimensions, ImageSourcePropType, SafeAreaView, ScrollView, View } from 'react-native'
 
 type SpeakerProps = {
   name?: string
@@ -23,14 +16,14 @@ const Layout = styled.View`
 const Header = styled.View`
   height: 20%;
   /* top: 24px; */
-  background: ${({ theme }) => theme.colors.text};
+  background: ${({ theme }) => theme.color.text};
   padding: ${({ theme }) => theme.spacing.lg};
   justify-content: center;
 `
 
 const Title = styled(Text)`
   text-transform: uppercase;
-  color: ${({ theme }) => theme.colors.background};
+  color: ${({ theme }) => theme.color.background};
   font-size: 42px;
 `
 
@@ -42,7 +35,7 @@ const Photo = styled.Image`
 
 const Main = styled.View`
   padding: ${({ theme }) => theme.spacing.lg};
-  background: ${({ theme }) => theme.colors.background};
+  background: ${({ theme }) => theme.color.background};
 `
 
 const { height } = Dimensions.get('window')
@@ -54,17 +47,12 @@ const SpeakerScreen: FC<SpeakerProps> = ({ name, description, image }) => (
       <ScrollView style={{ flex: 1 }}>
         <View style={{ height: height - 42, flexDirection: 'column-reverse' }}>
           <Header>
-            <Title fontWeight="bold">{name}</Title>
+            <Title>{name}</Title>
           </Header>
         </View>
         <Main>
           <Text style={{ fontSize: 20 }}>{description}</Text>
-          <Text
-            fontWeight="bold"
-            style={{ fontSize: 48, textTransform: 'uppercase', marginTop: 24 }}
-          >
-            Sesje
-          </Text>
+          <Text style={{ fontSize: 48, textTransform: 'uppercase', marginTop: 24 }}>Sesje</Text>
           <Text style={{ fontSize: 20 }}>&mdash; Test</Text>
           <Text style={{ fontSize: 20 }}>&mdash; Test</Text>
           <Text style={{ fontSize: 20 }}>&mdash; Test</Text>

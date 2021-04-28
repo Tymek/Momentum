@@ -1,5 +1,7 @@
+const blacklist = require('metro-config/src/defaults/blacklist')
+
 module.exports = {
   resolver: {
-    blockList: /\.data\/.*/,
+    blacklistRE: blacklist([/data\/.*/]),
   },
 }
