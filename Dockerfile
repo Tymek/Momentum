@@ -1,8 +1,8 @@
 FROM node:16
 
 COPY ./package.json /srv/
-COPY ./web-build /srv/web-server/
-COPY ./web-server /srv/web-build/
+COPY ./web-build /srv/web-build/
+COPY ./web-server /srv/web-server/
 
 WORKDIR /srv
 
