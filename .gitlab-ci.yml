@@ -29,8 +29,8 @@ build:
     - yarn build
   artifacts:
     paths:
-      - web-build
-      - web-server
+      - ./web-build
+      - ./web-server
 
 include:
   - project: 'Tymek/CI'

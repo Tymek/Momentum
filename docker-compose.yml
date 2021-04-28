@@ -1,12 +1,19 @@
 version: '3.8'
 services:
   server:
-    image: node:16
-    working_dir: /srv
-    volumes:
-      - ./:/srv
-    command: yarn serve
-    user: 1000:1000
+    image: registry.gitlab.com/tymek/momentum:latest
+    labels:
+      - traefik.enable=true
+      - traefik.http.services.momentum.loadbalancer.server.port=3000
+      - traefik.http.routers.momentum-web.service=momentum
+      - traefik.http.routers.momentum-web.rule=Host(`${DOMAIN:-momentum.scrlk.pl}`)
+      - traefik.http.routers.momentum-web.entrypoints=web
+      - traefik.http.routers.momentum-web.middlewares=momentum-https
+      - traefik.http.middlewares.momentum-https.redirectscheme.scheme=https
+      - traefik.http.routers.momentum-websecure.service=momentum
+      - traefik.http.routers.momentum-websecure.rule=Host(`${DOMAIN:-momentum.scrlk.pl}`)
+      - traefik.http.routers.momentum-websecure.entrypoints=websecure
+      - com.ouroboros.enable=true
     networks:
       - wan
 
@@ -33,6 +40,18 @@ services:
       HASURA_GRAPHQL_ENABLED_LOG_TYPES: startup, http-log, webhook-log, websocket-log, query-log
       HASURA_GRAPHQL_ADMIN_SECRET: '${HASURA_GRAPHQL_ADMIN_SECRET:-admin}'
       HASURA_ACTION_SECRET: '${HASURA_ACTION_SECRET:-secret}'
+    labels:
+      - traefik.enable=true
+      - traefik.http.services.momentum-hasura.loadbalancer.server.port=8080
+      - traefik.http.routers.momentum-hasura-web.service=momentum-hasura
+      - traefik.http.routers.momentum-hasura-web.rule=Host(`${API_DOMAIN:-api.momentum.scrlk.pl}`)
+      - traefik.http.routers.momentum-hasura-web.entrypoints=web
+      - traefik.http.routers.momentum-hasura-web.middlewares=momentum-hasura-https
+      - traefik.http.middlewares.momentum-hasura-https.redirectscheme.scheme=https
+      - traefik.http.routers.momentum-hasura-websecure.service=momentum-hasura
+      - traefik.http.routers.momentum-hasura-websecure.rule=Host(`${API_DOMAIN:-api.momentum.scrlk.pl}`)
+      - traefik.http.routers.momentum-hasura-websecure.entrypoints=websecure
+      - com.ouroboros.enable=true
     networks:
       - lan
       - wan

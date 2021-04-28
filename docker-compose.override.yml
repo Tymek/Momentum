@@ -1,6 +1,12 @@
 version: '3.8'
 services:
   server:
+    image: node:16
+    working_dir: /srv
+    volumes:
+      - ./:/srv
+    command: yarn serve
+    user: 1000:1000
     command: yarn dev
     ports:
       - '3000:3000'

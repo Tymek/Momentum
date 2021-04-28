@@ -16,7 +16,7 @@
     "build:fonts": "node ./scripts/getFonts.js",
     "build:client": "expo build:web",
     "build:server": "tsc -p tsconfig.server.json",
-    "build": "run-p build:*",
+    "build": "yarn build:fonts && yarn build:client && yarn build:server",
     "eject": "expo eject",
     "test:lint": "eslint --ext .js,.ts,.tsx,.json ./src",
     "test": "run-p test:*"
