@@ -26,6 +26,9 @@ const Main = styled.View`
 const Footer = styled.View`
   padding: ${({ theme }) => theme.spacing.md};
 `
+const ButtonContainer = styled.View`
+  padding-top: ${({ theme }) => theme.spacing.md};
+`
 
 const HomeScreen: FC = () => {
   const linkTo = useLinkTo()
@@ -38,8 +41,12 @@ const HomeScreen: FC = () => {
         <Text>Kołobrzeg</Text>
       </Main>
       <Footer>
-        <Button title={messages.schedule} onPress={() => linkTo(routes.Schedule)} />
-        <Button title={messages.rules} onPress={() => linkTo(routes.Rules)} />
+        <ButtonContainer>
+          <Button title={messages.schedule} onPress={() => linkTo(routes.Schedule)} />
+        </ButtonContainer>
+        <ButtonContainer>
+          <Button title={messages.rules} onPress={() => linkTo(routes.Rules)} />
+        </ButtonContainer>
       </Footer>
     </>
   )

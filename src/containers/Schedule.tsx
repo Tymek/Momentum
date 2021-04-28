@@ -1,10 +1,7 @@
 import React, { FC } from 'react'
-import styled from '@emotion/native'
+import TextPage from 'components/TextPage'
 
-import Text from 'components/Text'
-
-const schedule = `# PROGRAM Konferencji Momentum 2021
-
+const schedule = `
 ## Poniedziałek
 
 12.00 - REJESTRACJA
@@ -93,14 +90,6 @@ const schedule = `# PROGRAM Konferencji Momentum 2021
 10.00 - SESJA PORANNA
 `
 
-const Main = styled.View`
-  padding: ${({ theme }) => theme.spacing.md};
-`
-
-const Schedule: FC = () => (
-  <Main>
-    <Text>{schedule}</Text>
-  </Main>
-)
+const Schedule: FC = () => <TextPage>{schedule}</TextPage>
 
 export default Schedule
