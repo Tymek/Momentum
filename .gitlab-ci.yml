@@ -1,5 +1,4 @@
 stages:
-  - test
   - build
   - deploy
 
@@ -8,30 +7,25 @@ stages:
   before_script:
     - yarn install --cache-folder .yarn
   cache:
-    key: 'JS-$CI_COMMIT_REF_SLUG'
+    key: "JS-$CI_COMMIT_REF_SLUG"
     paths:
       - node_modules/
       - .yarn
     policy: pull-push
 
-test:
+build:
+  stage: build
   extends: .nodejs
-  stage: test
   needs: []
   script:
     - yarn test
-
-build:
-  extends: .nodejs
-  stage: build
-  needs: []
-  script:
     - yarn build
   artifacts:
     paths:
-      - ./web-build
-      - ./web-server
+      - ./packages/app/web-build
+      - ./packages/admin/out
+      - ./packages/backend/dist
 
 include:
-  - project: 'Tymek/CI'
-    file: '/.dockerize.yml'
+  - project: "Tymek/CI"
+    file: "/.dockerize.yml"

@@ -1,8 +1,9 @@
 {
-	"recommendations": [
-		"anthonycjw.vscode-styled-components-cre-edition",
-		"apollographql.vscode-apollo",
-		"codezombiech.gitignore",
-		"dbaeumer.vscode-eslint"
-	]
+  "recommendations": [
+    "anthonycjw.vscode-styled-components-cre-edition",
+    "apollographql.vscode-apollo",
+    "codezombiech.gitignore",
+    "dbaeumer.vscode-eslint",
+    "forbeslindesay.vscode-sql-template-literal"
+  ]
 }

@@ -1,0 +1,25 @@
+type Mutation {
+  login (
+    username: String!
+    password: String!
+  ): UserInfo
+}
+
+
+type Mutation {
+  logout : UserInfo
+}
+
+
+type Query {
+  me : UserInfo
+}
+
+
+
+
+type UserInfo {
+  id : uuid
+  username : String
+}
+

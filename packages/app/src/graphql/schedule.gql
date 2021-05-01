@@ -1,0 +1,22 @@
+fragment schedule on session {
+  session(order_by: { begins_at: asc, ends_at: asc }) {
+    id
+    name
+    begins_at
+    ends_at
+    speaker {
+      name
+      picture
+    }
+    topics(order_by: { subject: asc }) {
+      id
+      subject
+      description
+      speaker {
+        name
+        picture
+      }
+      location
+    }
+  }
+}

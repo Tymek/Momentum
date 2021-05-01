@@ -1,0 +1,225 @@
+- table:
+    schema: public
+    name: notification
+  insert_permissions:
+  - role: manager
+    permission:
+      check: {}
+      columns:
+      - content
+      - id
+      - scheduled_at
+      - title
+      backend_only: false
+  select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+      - content
+      - id
+      - scheduled_at
+      - title
+      filter: {}
+  - role: manager
+    permission:
+      columns:
+      - content
+      - created_at
+      - id
+      - scheduled_at
+      - title
+      - updated_at
+      filter: {}
+      allow_aggregations: true
+  update_permissions:
+  - role: manager
+    permission:
+      columns:
+      - content
+      - id
+      - scheduled_at
+      - title
+      filter: {}
+      check: null
+  delete_permissions:
+  - role: manager
+    permission:
+      filter: {}
+- table:
+    schema: public
+    name: page
+  insert_permissions:
+  - role: manager
+    permission:
+      check: {}
+      columns:
+      - content
+      - meta
+      - title
+      backend_only: false
+  select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+      - content
+      - meta
+      - title
+      filter: {}
+  - role: manager
+    permission:
+      columns:
+      - meta
+      - content
+      - title
+      - created_at
+      - updated_at
+      filter: {}
+      allow_aggregations: true
+  update_permissions:
+  - role: manager
+    permission:
+      columns:
+      - content
+      - meta
+      - title
+      filter: {}
+      check: null
+  delete_permissions:
+  - role: manager
+    permission:
+      filter: {}
+- table:
+    schema: public
+    name: session
+  array_relationships:
+  - name: topics
+    using:
+      foreign_key_constraint_on:
+        column: session_id
+        table:
+          schema: public
+          name: topic
+  insert_permissions:
+  - role: manager
+    permission:
+      check: {}
+      columns:
+      - begins_at
+      - ends_at
+      - id
+      - name
+      backend_only: false
+  select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+      - begins_at
+      - ends_at
+      - id
+      - name
+      filter: {}
+  - role: manager
+    permission:
+      columns:
+      - name
+      - begins_at
+      - created_at
+      - ends_at
+      - updated_at
+      - id
+      filter: {}
+      allow_aggregations: true
+  update_permissions:
+  - role: manager
+    permission:
+      columns:
+      - begins_at
+      - ends_at
+      - id
+      - name
+      filter: {}
+      check: null
+  delete_permissions:
+  - role: manager
+    permission:
+      filter: {}
+- table:
+    schema: public
+    name: topic
+  object_relationships:
+  - name: session
+    using:
+      foreign_key_constraint_on: session_id
+  insert_permissions:
+  - role: manager
+    permission:
+      check: {}
+      columns:
+      - description
+      - id
+      - location
+      - session_id
+      - subject
+      backend_only: false
+  select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+      - description
+      - id
+      - location
+      - session_id
+      - subject
+      filter: {}
+  - role: manager
+    permission:
+      columns:
+      - created_at
+      - description
+      - id
+      - location
+      - session_id
+      - subject
+      - updated_at
+      filter: {}
+      allow_aggregations: true
+  update_permissions:
+  - role: manager
+    permission:
+      columns:
+      - description
+      - id
+      - location
+      - session_id
+      - subject
+      filter: {}
+      check: null
+  delete_permissions:
+  - role: manager
+    permission:
+      filter: {}
+- table:
+    schema: public
+    name: user
+  select_permissions:
+  - role: manager
+    permission:
+      columns:
+      - password
+      - username
+      - created_at
+      - updated_at
+      - id
+      filter: {}
+      allow_aggregations: true
+  - role: user
+    permission:
+      columns:
+      - created_at
+      - id
+      - password
+      - updated_at
+      - username
+      filter:
+        id:
+          _eq: X-Hasura-User-Id

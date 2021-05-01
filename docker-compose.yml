@@ -1,6 +1,6 @@
 version: '3.8'
 services:
-  server:
+  backend:
     image: registry.gitlab.com/tymek/momentum:latest
     labels:
       - traefik.enable=true
@@ -16,6 +16,10 @@ services:
       - com.ouroboros.enable=true
     networks:
       - wan
+      - lan
+    environment:
+      HASURA_GRAPHQL_DATABASE_URL: '${HASURA_GRAPHQL_DATABASE_URL:-postgres://postgres:postgres@postgres:5432/postgres}'
+      HASURA_ACTION_SECRET: '${HASURA_ACTION_SECRET:-secret}'
 
   postgres:
     image: postgres:12
@@ -28,7 +32,7 @@ services:
       - lan
 
   hasura:
-    image: '${HASURA_IMAGE:-hasura/graphql-engine:v2.0.0-alpha.9.cli-migrations-v3}'
+    image: '${HASURA_IMAGE:-hasura/graphql-engine:v2.0.0-alpha.10.cli-migrations-v3}'
     depends_on:
       - 'postgres'
     restart: always
@@ -39,6 +43,8 @@ services:
       HASURA_GRAPHQL_DATABASE_URL: '${HASURA_GRAPHQL_DATABASE_URL:-postgres://postgres:postgres@postgres:5432/postgres}'
       HASURA_GRAPHQL_ENABLED_LOG_TYPES: startup, http-log, webhook-log, websocket-log, query-log
       HASURA_GRAPHQL_ADMIN_SECRET: '${HASURA_GRAPHQL_ADMIN_SECRET:-admin}'
+      HASURA_GRAPHQL_AUTH_HOOK: '${HASURA_GRAPHQL_AUTH_HOOK:-http://backend:3000/api/auth-webhook}'
+      HASURA_ACTION_ENDPOINT: '${HASURA_ACTION_ENDPOINT:-http://backend:3000/api/actions}'
       HASURA_ACTION_SECRET: '${HASURA_ACTION_SECRET:-secret}'
     labels:
       - traefik.enable=true

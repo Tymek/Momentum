@@ -1,37 +1,36 @@
 module.exports = {
-  parser: '@typescript-eslint/parser',
-  parserOptions: {
-    ecmaVersion: 2020,
-    sourceType: 'module',
-    ecmaFeatures: {
-      jsx: true,
-    },
+  extends: ['plugin:jest/all', 'scrlk'],
+  env: {
+    'jest/globals': true,
   },
-  settings: {
-    react: {
-      version: 'detect',
-    },
-  },
-  extends: [
-    'plugin:react/recommended',
-    'plugin:json/recommended',
-    'plugin:unicorn/recommended',
-    'plugin:@typescript-eslint/recommended',
-    'plugin:prettier/recommended',
-  ],
-  ignorePatterns: ['./node_modules', './expo', './web-build', './.tmp', './src/generated/*'],
   rules: {
-    'react/prop-types': 'off',
-    'unicorn/filename-case': 'off',
-    'unicorn/import-style': 'off',
-    'unicorn/prefer-module': 'off',
-    'unicorn/prevent-abbreviations': 'off',
+    'unicorn/prefer-node-protocol': 'off', // Node >=16 only
   },
+  ignorePatterns: [
+    'node_modules',
+    'packages/**/node_modules',
+    'tmp',
+    'data',
+    '**/generated',
+    'packages/app/web-build',
+    'packages/admin/out',
+    'packages/admin/.next',
+    'packages/backend/data',
+    'packages/backend/dist',
+  ],
   overrides: [
     {
-      files: ['*.js', '*.jsx'],
+      files: [
+        '*.test.js',
+        '*.test.jsx',
+        '*.test.ts',
+        '*.test.tsx',
+        'next.config.js',
+        'webpack.config.js',
+      ],
       rules: {
-        '@typescript-eslint/no-var-requires': 'off',
+        'node/no-unpublished-import': 'off',
+        'node/no-unpublished-require': 'off',
       },
     },
   ],

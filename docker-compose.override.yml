@@ -1,23 +1,44 @@
 version: '3.8'
 services:
-  server:
-    image: node:16
+  backend:
+    image: node:16-alpine
     working_dir: /srv
     volumes:
       - ./:/srv
-    command: yarn serve
     user: 1000:1000
-    command: yarn dev
+    command: yarn backend
     ports:
       - '3000:3000'
+    environment:
+      NODE_ENV: development
+
+  admin:
+    image: node:16-alpine
+    working_dir: /srv
+    volumes:
+      - ./:/srv
+    user: 1000:1000
+    command: yarn admin
+    networks:
+      - lan
+    environment:
+      NEXT_TELEMETRY_DISABLED: 1
 
   hasura:
     ports:
       - '8080:8080'
-      - '8081:8081'
     environment:
       HASURA_GRAPHQL_DEV_MODE: 'true'
-      HASURA_GRAPHQL_ENABLED_LOG_TYPES: webhook-log
+      HASURA_GRAPHQL_ENABLED_LOG_TYPES: http-log, webhook-log
+
+  schema:
+    image: schemaspy/schemaspy
+    volumes:
+      - ./data/schema:/output
+      - ./:/config
+    networks:
+      - lan
+    command: -configFile /config/schemaspy.properties -noimplied -nopages -l -debug
 
 networks:
   lan:

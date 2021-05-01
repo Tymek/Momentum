@@ -1,0 +1,22 @@
+@mixin font-face($name, $path, $weight: null, $style: normal) {
+	@font-face {
+		font-family: quote($name);
+		font-style: $style;
+		font-weight: $weight;
+		src: local($name), url($path) format("woff2");
+		font-display: swap;
+	}
+}
+
+@include font-face("Roboto", "/panel/static/fonts/roboto-100.woff2", 100);
+@include font-face("Roboto", "/panel/static/fonts/roboto-100i.woff2", 100, italic);
+@include font-face("Roboto", "/panel/static/fonts/roboto-300.woff2", 300);
+@include font-face("RobotoLight", "/panel/static/fonts/roboto-300.woff2", 300);
+@include font-face("Roboto", "/panel/static/fonts/roboto-300i.woff2", 300, italic);
+@include font-face("Roboto", "/panel/static/fonts/roboto-500.woff2", 500);
+@include font-face("RobotoMedium", "/panel/static/fonts/roboto-500.woff2", 500);
+@include font-face("Roboto", "/panel/static/fonts/roboto-500i.woff2", 500, italic);
+@include font-face("Roboto", "/panel/static/fonts/roboto-700.woff2", 700);
+@include font-face("Roboto", "/panel/static/fonts/roboto-700i.woff2", 700, italic);
+@include font-face("Roboto Mono", "/panel/static/fonts/roboto_mono-300.woff2", 300);
+@include font-face("Roboto Mono", "/panel/static/fonts/roboto_mono-500.woff2", 500);

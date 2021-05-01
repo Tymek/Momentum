@@ -1,0 +1,29 @@
+{
+	"white": "#ffffff",
+	"light": "#f2f2f2",
+	"black": "#000000",
+	"dark": "#1a1a1a",
+	"primary": "#fcdc74",
+	"secondary": "#2ac9ff",
+	"tertiary": "#8bc751",
+	"muted": "#e6e6e6",
+	"gray": "#808080",
+	"primaryDarken": "#00779e",
+	"primaryLighten": "#38cdff",
+	"warning": "#f29146",
+	"spacing": "0.5rem",
+	"borderWeight": "1px",
+
+	"fontFamily": "Roboto, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Oxygen, Cantarell, \"Fira Sans\", \"Droid Sans\", \"Helvetica Neue\", Helvetica, Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+	"fontFamilyLight": "RobotoLight, Roboto, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Oxygen, Cantarell, \"Fira Sans\", \"Droid Sans\", \"Helvetica Neue\", Helvetica, Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+	"fontFamilyMedium": "RobotoMedium, Roboto, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Oxygen, Cantarell, \"Fira Sans\", \"Droid Sans\", \"Helvetica Neue\", Helvetica, Arial, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+	"fontFamilyMono": "\"Roboto Mono\", Consolas, monospace",
+	"fontWeightThin": 200,
+	"fontWeightLight": 300,
+	"fontWeightBold": 500,
+	"fontSizeSmall": "0.875rem",
+
+	"borderRadius": "0.1875rem",
+
+	"boxShadow": "0px 2px 5px rgba(0, 0, 0, 0.2), 0px 1px 2px rgba(0, 0, 0, 0.1)"
+}

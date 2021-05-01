@@ -1,0 +1,3 @@
+mutation LastUpdateNow($lastUpdate: String) {
+  last_update_now(last_update: $lastUpdate) @client
+}

@@ -1,0 +1,40 @@
+actions:
+- name: login
+  definition:
+    kind: synchronous
+    handler: '{{HASURA_ACTION_ENDPOINT}}/login'
+    headers:
+    - name: x-hasura-action-secret
+      value_from_env: HASURA_ACTION_SECRET
+  permissions:
+  - role: manager
+  - role: user
+  - role: anonymous
+- name: logout
+  definition:
+    kind: synchronous
+    handler: '{{HASURA_ACTION_ENDPOINT}}/logout'
+    headers:
+    - name: x-hasura-action-secret
+      value_from_env: HASURA_ACTION_SECRET
+  permissions:
+  - role: manager
+  - role: user
+  - role: anonymous
+- name: me
+  definition:
+    kind: ""
+    handler: '{{HASURA_ACTION_ENDPOINT}}/me'
+    headers:
+    - name: x-hasura-action-secret
+      value_from_env: HASURA_ACTION_SECRET
+  permissions:
+  - role: user
+  - role: anonymous
+  - role: manager
+custom_types:
+  enums: []
+  input_objects: []
+  objects:
+  - name: UserInfo
+  scalars: []

@@ -1,0 +1,10 @@
+#import "./page.gql"
+
+mutation createPage($title: String!, $content: String, $meta: jsonb) {
+  insert_page(objects: { title: $title, content: $content, meta: $meta }) {
+    affected_rows
+    returning {
+      ...page
+    }
+  }
+}
