@@ -7,6 +7,7 @@
     ]
   },
   "scripts": {
+    "start": "yarn workspace @-local/backend start",
     "app": "yarn workspace @-local/app start",
     "admin": "yarn workspace @-local/admin dev",
     "backend": "yarn workspace @-local/backend dev",

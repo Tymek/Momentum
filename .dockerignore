@@ -1,0 +1,10 @@
+data
+tmp
+node_modules
+*/node_modules
+*/*/node_modules
+packages/app
+!packages/app/web-build
+packages/admin
+!packages/admin/out
+!packages/admin/.next
