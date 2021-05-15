@@ -7,8 +7,7 @@
     "moduleResolution": "node",
     "sourceMap": true,
     "skipLibCheck": true,
-    "outDir": "dist",
-    "typeRoots": ["./node_modules/@types/", "../../node_modules/@types/"]
+    "outDir": "dist"
   },
   "include": ["./src/**/*"]
 }
