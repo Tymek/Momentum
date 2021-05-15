@@ -5,14 +5,14 @@
 import React, { FC } from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 
-import { Routing, ScreenList } from 'config/routes'
+import { config as routesConfig, ScreenList } from 'config/routes'
 import { useTheme } from '@emotion/react'
 import TabOneScreen from 'screens/TabOneScreen'
 import ScheduleScreen from 'screens/Schedule'
 import Notifications from 'screens/Notifications'
 import TabIcon from './components/TabIcon'
 
-type RootScreens = Routing['Root']['screens']
+type RootScreens = typeof routesConfig.screens.Root.screens
 
 const BottomTab = createBottomTabNavigator<ScreenList<keyof RootScreens>>()
 

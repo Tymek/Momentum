@@ -1,7 +1,7 @@
 import { LinkingOptions, PathConfigMap } from '@react-navigation/native'
 import * as Linking from 'expo-linking'
 
-export const config: LinkingOptions['config'] = {
+export const config = {
   screens: {
     Root: {
       screens: {
@@ -38,6 +38,9 @@ const routes: LinkingOptions = {
 
 export type Routing = PathConfigMap
 
-export type ScreenList<T extends keyof Routing> = Record<T, undefined>
+export type ScreenList<T extends keyof Routing = keyof typeof config['screens']> = Record<
+  T,
+  undefined
+>
 
 export default routes

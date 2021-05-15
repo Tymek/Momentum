@@ -12,11 +12,11 @@
     "backend": "yarn workspace @-local/backend dev",
     "db": "yarn workspace @-local/db dev",
     "migrate": "yarn workspace @-local/database migrate",
-    "build": "lerna run prebuild && lerna run build",
+    "build": "lerna run prebuild && lerna run --parallel build",
     "lint": "eslint --fix --ext .js,.ts,.tsx,.json .",
     "prettier": "prettier",
     "test:lint": "eslint --quiet --ext .js,.ts,.tsx,.json .",
-    "test": "yarn test:lint && lerna run test"
+    "test": "lerna run prebuild && yarn test:lint && lerna run --parallel test"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "4.23.0",

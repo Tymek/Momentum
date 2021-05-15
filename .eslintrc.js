@@ -22,6 +22,7 @@ module.exports = {
     'packages/admin/.next',
     'packages/backend/data',
     'packages/backend/dist',
+    'packages/database/lib',
   ],
   overrides: [
     {
