@@ -367,7 +367,7 @@ export type Notification = {
   content?: Maybe<Scalars['String']>;
   created_at: Scalars['timestamptz'];
   id: Scalars['uuid'];
-  scheduled_at?: Maybe<Scalars['timestamptz']>;
+  published_at?: Maybe<Scalars['timestamptz']>;
   title: Scalars['String'];
   updated_at: Scalars['timestamptz'];
 };
@@ -402,7 +402,7 @@ export type Notification_Bool_Exp = {
   content?: Maybe<String_Comparison_Exp>;
   created_at?: Maybe<Timestamptz_Comparison_Exp>;
   id?: Maybe<Uuid_Comparison_Exp>;
-  scheduled_at?: Maybe<Timestamptz_Comparison_Exp>;
+  published_at?: Maybe<Timestamptz_Comparison_Exp>;
   title?: Maybe<String_Comparison_Exp>;
   updated_at?: Maybe<Timestamptz_Comparison_Exp>;
 };
@@ -418,7 +418,7 @@ export type Notification_Insert_Input = {
   content?: Maybe<Scalars['String']>;
   created_at?: Maybe<Scalars['timestamptz']>;
   id?: Maybe<Scalars['uuid']>;
-  scheduled_at?: Maybe<Scalars['timestamptz']>;
+  published_at?: Maybe<Scalars['timestamptz']>;
   title?: Maybe<Scalars['String']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
 };
@@ -429,7 +429,7 @@ export type Notification_Max_Fields = {
   content?: Maybe<Scalars['String']>;
   created_at?: Maybe<Scalars['timestamptz']>;
   id?: Maybe<Scalars['uuid']>;
-  scheduled_at?: Maybe<Scalars['timestamptz']>;
+  published_at?: Maybe<Scalars['timestamptz']>;
   title?: Maybe<Scalars['String']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
 };
@@ -440,7 +440,7 @@ export type Notification_Min_Fields = {
   content?: Maybe<Scalars['String']>;
   created_at?: Maybe<Scalars['timestamptz']>;
   id?: Maybe<Scalars['uuid']>;
-  scheduled_at?: Maybe<Scalars['timestamptz']>;
+  published_at?: Maybe<Scalars['timestamptz']>;
   title?: Maybe<Scalars['String']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
 };
@@ -466,7 +466,7 @@ export type Notification_Order_By = {
   content?: Maybe<Order_By>;
   created_at?: Maybe<Order_By>;
   id?: Maybe<Order_By>;
-  scheduled_at?: Maybe<Order_By>;
+  published_at?: Maybe<Order_By>;
   title?: Maybe<Order_By>;
   updated_at?: Maybe<Order_By>;
 };
@@ -485,7 +485,7 @@ export enum Notification_Select_Column {
   /** column name */
   Id = 'id',
   /** column name */
-  ScheduledAt = 'scheduled_at',
+  PublishedAt = 'published_at',
   /** column name */
   Title = 'title',
   /** column name */
@@ -497,7 +497,7 @@ export type Notification_Set_Input = {
   content?: Maybe<Scalars['String']>;
   created_at?: Maybe<Scalars['timestamptz']>;
   id?: Maybe<Scalars['uuid']>;
-  scheduled_at?: Maybe<Scalars['timestamptz']>;
+  published_at?: Maybe<Scalars['timestamptz']>;
   title?: Maybe<Scalars['String']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
 };
@@ -511,7 +511,7 @@ export enum Notification_Update_Column {
   /** column name */
   Id = 'id',
   /** column name */
-  ScheduledAt = 'scheduled_at',
+  PublishedAt = 'published_at',
   /** column name */
   Title = 'title',
   /** column name */
@@ -1598,6 +1598,17 @@ export type CreatePageMutation = (
       { __typename?: 'page' }
       & PageFragment
     )> }
+  )> }
+);
+
+export type GetNotificationsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetNotificationsQuery = (
+  { __typename?: 'query_root' }
+  & { notification: Array<(
+    { __typename?: 'notification' }
+    & Pick<Notification, 'id' | 'title' | 'content' | 'published_at'>
   )> }
 );
 

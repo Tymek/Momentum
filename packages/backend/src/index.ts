@@ -1,3 +1,4 @@
+import { access } from 'fs/promises'
 import { resolve } from 'path'
 import dotenv from 'dotenv'
 import express from 'express'
@@ -74,7 +75,10 @@ app.get('/api/*', () => {
 
 // Client app index fallback (and 404)
 app.get('/*', async (req, res) => {
-  res.sendFile(resolve(__dirname, clientAppStaticDir, 'index.html'), (error) => {
+  const indexFile = resolve(__dirname, clientAppStaticDir, 'index.html')
+  await access(indexFile)
+
+  res.sendFile(indexFile, (error) => {
     if (error) {
       throw new HttpError('Error sending index.html', 500)
     }

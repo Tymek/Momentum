@@ -1937,7 +1937,7 @@
             "deprecationReason": null
           },
           {
-            "name": "scheduled_at",
+            "name": "published_at",
             "description": null,
             "args": [],
             "type": {
@@ -2222,7 +2222,7 @@
             "deprecationReason": null
           },
           {
-            "name": "scheduled_at",
+            "name": "published_at",
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
@@ -2322,7 +2322,7 @@
             "deprecationReason": null
           },
           {
-            "name": "scheduled_at",
+            "name": "published_at",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -2404,7 +2404,7 @@
             "deprecationReason": null
           },
           {
-            "name": "scheduled_at",
+            "name": "published_at",
             "description": null,
             "args": [],
             "type": {
@@ -2487,7 +2487,7 @@
             "deprecationReason": null
           },
           {
-            "name": "scheduled_at",
+            "name": "published_at",
             "description": null,
             "args": [],
             "type": {
@@ -2685,7 +2685,7 @@
             "deprecationReason": null
           },
           {
-            "name": "scheduled_at",
+            "name": "published_at",
             "description": null,
             "type": {
               "kind": "ENUM",
@@ -2779,7 +2779,7 @@
             "deprecationReason": null
           },
           {
-            "name": "scheduled_at",
+            "name": "published_at",
             "description": "column name",
             "isDeprecated": false,
             "deprecationReason": null
@@ -2842,7 +2842,7 @@
             "deprecationReason": null
           },
           {
-            "name": "scheduled_at",
+            "name": "published_at",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -2909,7 +2909,7 @@
             "deprecationReason": null
           },
           {
-            "name": "scheduled_at",
+            "name": "published_at",
             "description": "column name",
             "isDeprecated": false,
             "deprecationReason": null

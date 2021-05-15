@@ -14,5 +14,5 @@ module.exports = {
       '@-local/db': path.resolve(__dirname, '..', 'db'),
     },
   },
-  // watchFolders: [path.resolve(__dirname, "../../")],
+  watchFolders: [path.resolve(__dirname, '..', 'database')],
 }

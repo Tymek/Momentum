@@ -1,0 +1,8 @@
+query getNotifications {
+  notification(order_by: { published_at: desc }) {
+    id
+    title
+    content
+    published_at
+  }
+}

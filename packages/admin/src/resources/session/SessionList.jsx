@@ -19,7 +19,6 @@ const SessionList = (props) => (
       <ReferenceManyField sortable={false} reference="topic" target="session_id" label="tematy">
         <Total />
       </ReferenceManyField>
-      {/* <TextField source="speaker" emptyText="&mdash;" /> */}
       <RelativeTimeField source="updated_at" />
     </Datagrid>
   </List>

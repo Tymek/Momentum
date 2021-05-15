@@ -6,6 +6,7 @@
     "declaration": true,
     "sourceMap": true,
     "baseUrl": ".",
+    "outDir": "./lib",
     "allowJs": true,
     "strict": true,
     "noImplicitReturns": true,
@@ -17,8 +18,8 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "noEmit": true
+    "noEmit": false
   },
   "include": ["./**/*"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "lib"]
 }

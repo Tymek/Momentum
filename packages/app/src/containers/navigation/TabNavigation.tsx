@@ -5,9 +5,11 @@
 import React, { FC } from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 
-import TabOneScreen from 'screens/TabOneScreen'
 import { Routing, ScreenList } from 'config/routes'
 import { useTheme } from '@emotion/react'
+import TabOneScreen from 'screens/TabOneScreen'
+import ScheduleScreen from 'screens/Schedule'
+import Notifications from 'screens/Notifications'
 import TabIcon from './components/TabIcon'
 
 type RootScreens = Routing['Root']['screens']
@@ -49,7 +51,7 @@ const BottomTabNavigator: FC = () => {
     >
       <BottomTab.Screen
         name="Schedule"
-        component={TabOneScreen}
+        component={ScheduleScreen}
         options={{
           tabBarIcon: ScheduleIcon,
           title: 'Plan',
@@ -57,7 +59,7 @@ const BottomTabNavigator: FC = () => {
       />
       <BottomTab.Screen
         name="Notifications"
-        component={TabOneScreen}
+        component={Notifications}
         options={{
           tabBarIcon: NotificationIcon,
           title: 'Powiadomienia',

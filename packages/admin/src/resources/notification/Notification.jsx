@@ -21,10 +21,10 @@ export const NotificationList = (props) => (
     title="Lista powiadomień"
     exporter={false}
     bulkActionButtons={false}
-    sort={{ field: 'scheduled_at', order: 'DESC' }}
+    sort={{ field: 'published_at', order: 'DESC' }}
   >
     <Datagrid rowClick="show">
-      <DateTimeField source="scheduled_at" format="dddd, D MMMM, HH:mm" withRelative />
+      <DateTimeField source="published_at" format="dddd, D MMMM, HH:mm" withRelative />
       <TextField source="title" emptyText="&mdash;" />
       {/* <TextField source="content" emptyText="&mdash;" /> */}
       <FunctionField
@@ -56,7 +56,7 @@ export const NotificationCreate = (props) => (
     <SimpleForm redirect="list">
       <TextInput source="title" />
       <TextInput source="content" multiline />
-      <DateTimeInput source="scheduled_at" defaultValue={moment().toISOString()} />
+      <DateTimeInput source="published_at" defaultValue={moment().toISOString()} />
     </SimpleForm>
   </Create>
 )
@@ -66,7 +66,7 @@ export const NotificationEdit = (props) => (
     <SimpleForm redirect="list">
       <TextInput source="title" />
       <TextInput source="content" multiline />
-      <DateTimeInput source="scheduled_at" defaultValue={moment().toISOString()} />
+      <DateTimeInput source="published_at" defaultValue={moment().toISOString()} />
     </SimpleForm>
   </Edit>
 )

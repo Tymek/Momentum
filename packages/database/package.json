@@ -6,10 +6,11 @@
   "scripts": {
     "migrate": "hasura migrate apply && hasura metadata apply && hasura seed apply",
     "console": "hasura console",
+    "prebuild": "tsc",
     "dev": "tsc --watch --preserveWatchOutput true --pretty",
     "clear": "rimraf lib",
     "generate": "graphql-codegen --config scripts/codegen.js",
-    "test:ts": "tsc",
+    "test:ts": "tsc --noEmit",
     "test": "yarn test:ts"
   },
   "devDependencies": {

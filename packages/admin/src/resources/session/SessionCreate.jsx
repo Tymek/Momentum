@@ -7,7 +7,6 @@ const SessionCreate = (props) => (
       <TextInput source="name" />
       <DateTimeInput source="begins_at" validate={[required()]} />
       <DateTimeInput source="ends_at" />
-      <TextInput source="speaker" />
     </SimpleForm>
   </Create>
 )

@@ -368,7 +368,7 @@ export type Notification = {
   content?: Maybe<Scalars['String']>;
   created_at: Scalars['timestamptz'];
   id: Scalars['uuid'];
-  scheduled_at?: Maybe<Scalars['timestamptz']>;
+  published_at?: Maybe<Scalars['timestamptz']>;
   title: Scalars['String'];
   updated_at: Scalars['timestamptz'];
 };
@@ -401,7 +401,7 @@ export type Notification_Bool_Exp = {
   content?: Maybe<String_Comparison_Exp>;
   created_at?: Maybe<Timestamptz_Comparison_Exp>;
   id?: Maybe<Uuid_Comparison_Exp>;
-  scheduled_at?: Maybe<Timestamptz_Comparison_Exp>;
+  published_at?: Maybe<Timestamptz_Comparison_Exp>;
   title?: Maybe<String_Comparison_Exp>;
   updated_at?: Maybe<Timestamptz_Comparison_Exp>;
 };
@@ -417,7 +417,7 @@ export type Notification_Insert_Input = {
   content?: Maybe<Scalars['String']>;
   created_at?: Maybe<Scalars['timestamptz']>;
   id?: Maybe<Scalars['uuid']>;
-  scheduled_at?: Maybe<Scalars['timestamptz']>;
+  published_at?: Maybe<Scalars['timestamptz']>;
   title?: Maybe<Scalars['String']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
 };
@@ -427,7 +427,7 @@ export type Notification_Max_Fields = {
   content?: Maybe<Scalars['String']>;
   created_at?: Maybe<Scalars['timestamptz']>;
   id?: Maybe<Scalars['uuid']>;
-  scheduled_at?: Maybe<Scalars['timestamptz']>;
+  published_at?: Maybe<Scalars['timestamptz']>;
   title?: Maybe<Scalars['String']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
 };
@@ -437,7 +437,7 @@ export type Notification_Min_Fields = {
   content?: Maybe<Scalars['String']>;
   created_at?: Maybe<Scalars['timestamptz']>;
   id?: Maybe<Scalars['uuid']>;
-  scheduled_at?: Maybe<Scalars['timestamptz']>;
+  published_at?: Maybe<Scalars['timestamptz']>;
   title?: Maybe<Scalars['String']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
 };
@@ -462,7 +462,7 @@ export type Notification_Order_By = {
   content?: Maybe<Order_By>;
   created_at?: Maybe<Order_By>;
   id?: Maybe<Order_By>;
-  scheduled_at?: Maybe<Order_By>;
+  published_at?: Maybe<Order_By>;
   title?: Maybe<Order_By>;
   updated_at?: Maybe<Order_By>;
 };
@@ -481,7 +481,7 @@ export enum Notification_Select_Column {
   /** column name */
   Id = 'id',
   /** column name */
-  ScheduledAt = 'scheduled_at',
+  PublishedAt = 'published_at',
   /** column name */
   Title = 'title',
   /** column name */
@@ -493,7 +493,7 @@ export type Notification_Set_Input = {
   content?: Maybe<Scalars['String']>;
   created_at?: Maybe<Scalars['timestamptz']>;
   id?: Maybe<Scalars['uuid']>;
-  scheduled_at?: Maybe<Scalars['timestamptz']>;
+  published_at?: Maybe<Scalars['timestamptz']>;
   title?: Maybe<Scalars['String']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
 };
@@ -507,7 +507,7 @@ export enum Notification_Update_Column {
   /** column name */
   Id = 'id',
   /** column name */
-  ScheduledAt = 'scheduled_at',
+  PublishedAt = 'published_at',
   /** column name */
   Title = 'title',
   /** column name */
@@ -1564,6 +1564,11 @@ export type CreatePageMutation = { insert_page?: Maybe<(
     & { returning: Array<PageFragment> }
   )> };
 
+export type GetNotificationsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetNotificationsQuery = { notification: Array<Pick<Notification, 'id' | 'title' | 'content' | 'published_at'>> };
+
 export type PageFragment = Pick<Page, 'title' | 'content' | 'meta'>;
 
 export const PageFragmentDoc = gql`
@@ -1611,3 +1616,40 @@ export function useCreatePageMutation(baseOptions?: ApolloReactHooks.MutationHoo
 export type CreatePageMutationHookResult = ReturnType<typeof useCreatePageMutation>;
 export type CreatePageMutationResult = Apollo.MutationResult<CreatePageMutation>;
 export type CreatePageMutationOptions = Apollo.BaseMutationOptions<CreatePageMutation, CreatePageMutationVariables>;
+export const GetNotificationsDocument = gql`
+    query getNotifications {
+  notification(order_by: {published_at: desc}) {
+    id
+    title
+    content
+    published_at
+  }
+}
+    `;
+
+/**
+ * __useGetNotificationsQuery__
+ *
+ * To run a query within a React component, call `useGetNotificationsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetNotificationsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetNotificationsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetNotificationsQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<GetNotificationsQuery, GetNotificationsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return ApolloReactHooks.useQuery<GetNotificationsQuery, GetNotificationsQueryVariables>(GetNotificationsDocument, options);
+      }
+export function useGetNotificationsLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<GetNotificationsQuery, GetNotificationsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return ApolloReactHooks.useLazyQuery<GetNotificationsQuery, GetNotificationsQueryVariables>(GetNotificationsDocument, options);
+        }
+export type GetNotificationsQueryHookResult = ReturnType<typeof useGetNotificationsQuery>;
+export type GetNotificationsLazyQueryHookResult = ReturnType<typeof useGetNotificationsLazyQuery>;
+export type GetNotificationsQueryResult = Apollo.QueryResult<GetNotificationsQuery, GetNotificationsQueryVariables>;

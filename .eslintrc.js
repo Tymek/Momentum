@@ -5,6 +5,11 @@ module.exports = {
   },
   rules: {
     'unicorn/prefer-node-protocol': 'off', // Node >=16 only
+    'node/no-unsupported-features': 'off',
+    'node/no-unsupported-features/es-syntax': 'off',
+    'node/no-missing-import': 'off',
+    'node/no-missing-require': 'off',
+    'unicorn/new-for-builtins': 'off',
   },
   ignorePatterns: [
     'node_modules',

@@ -15,7 +15,7 @@ const fields = {
   location: 'lokalizacja',
   title: 'tytuł',
   content: 'treść',
-  scheduled_at: 'data publikacji',
+  published_at: 'data publikacji',
 }
 
 const messages = {

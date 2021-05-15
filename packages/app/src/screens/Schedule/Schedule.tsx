@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
-import { View } from 'react-native'
+// import { View } from 'react-native'
 // import Constants from 'expo-constants'
-// import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs'
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs'
 
 import TextPage from 'components/TextPage'
 import Markdown from 'components/Markdown'
@@ -9,6 +9,7 @@ import Markdown from 'components/Markdown'
 const schedule = [
   {
     title: 'Poniedziałek',
+    slug: 'pn',
     content: `
 12.00 - REJESTRACJA
 20.00 - SESJA WIECZORNA
@@ -17,6 +18,7 @@ const schedule = [
   },
   {
     title: 'Wtorek',
+    slug: 'wt',
     content: `
 8.00 - MODLITWA
 10.00 - SESJA PORANNA
@@ -33,6 +35,7 @@ const schedule = [
   },
   {
     title: 'Środa',
+    slug: 'śr',
     content: `
 8.00 - MODLITWA
 10.00 - SESJA PORANNA
@@ -54,54 +57,29 @@ Gosia i Dominik Tomaszewscy - Łuczniczka
   },
   {
     title: 'Czwartek',
-    sessions: [
-      {
-        time: '8:00',
-        title: 'Modlitwa',
-      },
-      {
-        time: '10:00',
-        title: 'Sesja poranna',
-      },
-      {
-        time: '12:00',
-        title: 'Equip',
-        topics: [
-          {
-            title: 'Wolność od zniewoleń',
-            speakers: [
-              {
-                title: 'Zbyszek Zarożny',
-              },
-            ],
-            location: 'Sala Główna',
-          },
-          {
-            title: 'Wolność do wykorzystania 100% swojego potencjału',
-            speakers: [
-              {
-                title: 'Gosia Bieniaszewska',
-              },
-            ],
-            location: 'Staff Room',
-          },
-          {
-            title: 'Wolność w relacjach. Język niosący życie',
-            description:
-              'Jak rozmawiać, komunikować w relacjach z rodzicami, przyjaciółmi, ludźmi z Kościoła i w związku?',
-            speakers: [
-              {
-                title: 'Daria i Kuba Marciniak',
-              },
-            ],
-            location: 'Łuczniczka',
-          },
-        ],
-      },
-    ],
+    slug: 'czw',
+    content: `
+8.00 - MODLITWA
+10.00 - SESJA PORANNA
+12.00 - EQUIP
+
+- Wolność od zniewoleń
+Zbyszek Zarożny - Sala Główna
+- Wolność do wykorzystania 100% swojego potencjału
+Gosia Bieniaszewska - Staff Room
+- Wolność w relacjach. Język niosący życie
+Jak rozmawiać, komunikować w relacjach z rodzicami, przyjaciółmi, ludźmi z Kościoła i w związku?
+Daria i Kuba Marciniak - Łuczniczka
+
+13.30 - STREFA CHILL & BE ACTIVE
+17.00 - MOMENTUM W AKCJI
+20.00 - SESJA WIECZORNA
+22.30 - FUN NIGHT
+    `,
   },
   {
     title: 'Piątek',
+    slug: 'pt',
     content: `
 8.00 - MODLITWA
 10.00 - SESJA PORANNA
@@ -124,6 +102,7 @@ Gosia i Dominik Tomaszewscy - Łuczniczka
   },
   {
     title: 'Sobota',
+    slug: 'sob',
     content: `
 8.00 - MODLITWA
 10.00 - SESJA PORANNA
@@ -131,40 +110,30 @@ Gosia i Dominik Tomaszewscy - Łuczniczka
   },
 ]
 
-// const Tab = createMaterialTopTabNavigator()
+const Tab = createMaterialTopTabNavigator()
 
 const Schedule: FC = () => (
-  <TextPage>
+  <Tab.Navigator
+    screenOptions={{ title: 'Plan' }}
+    initialRouteName={schedule[0].title.toLocaleLowerCase()}
+  >
     {schedule.map((day) => {
-      const { title, sessions } = day
+      const Page: FC = () => (
+        <TextPage>
+          <Markdown>{day.content || ''}</Markdown>
+        </TextPage>
+      )
+
       return (
-        <View key={title}>
-          <Markdown>{`## ${title}`}</Markdown>
-          {sessions?.map((session) => {
-            const { title: sessionTitle } = session
-            return <Markdown key={sessionTitle}>{`### ${sessionTitle}`}</Markdown>
-          })}
-        </View>
+        <Tab.Screen
+          key={day.title}
+          name={day.title.toLocaleLowerCase()}
+          component={Page}
+          options={{ title: day.title, tabBarLabel: day.slug.toUpperCase() }}
+        />
       )
     })}
-
-    {/* <Tab.Navigator screenOptions={{ title: 'Plan' }}>
-      {schedule.map((day) => {
-        const Page: FC = () => (
-            <Markdown>{day.content}</Markdown>
-            )
-            
-            return (
-              <Tab.Screen
-              key={day.title}
-              name={day.title.toLocaleLowerCase()}
-            component={Page}
-            options={{ title: day.title }}
-            />
-            )
-          })}
-    </Tab.Navigator> */}
-  </TextPage>
+  </Tab.Navigator>
 )
 
 export default Schedule

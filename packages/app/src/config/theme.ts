@@ -1,9 +1,11 @@
 import { DefaultTheme, DarkTheme } from '@react-navigation/native'
+import { transparentize } from 'color2k'
 
 const color = {
   primary: '#2ac9ff',
-  text: '#2a2a2a',
-  background: '#ffffff',
+  dark: '#2a2a2a',
+  gray: '#8e8e8e',
+  light: '#ffffff',
   accent: '#fcdc74',
   error: '#f49cfc',
 }
@@ -56,7 +58,11 @@ const spacing = {
 }
 
 const theme = {
-  color,
+  color: {
+    ...color,
+    text: color.dark,
+    background: color.light,
+  },
   font,
   fontSize,
   lineHeight,
@@ -72,14 +78,24 @@ const theme = {
       primary: color.primary,
     },
   },
+  contentSkelton: {
+    backgroundColor: transparentize(color.gray, 0.8),
+    foregroundColor: transparentize(color.accent, 0.5),
+    rect: {
+      x: 0,
+      y: 0,
+      rx: 0,
+      ry: 0,
+    },
+  },
 }
 
 export const darkTheme: typeof theme = {
   ...theme,
   color: {
     ...theme.color,
-    background: '#2a2a2a',
-    text: '#ffffff',
+    text: color.light,
+    background: color.dark,
   },
   statusBar: {
     darkText: false,
@@ -91,6 +107,11 @@ export const darkTheme: typeof theme = {
       ...DarkTheme.colors,
       primary: theme.navigation.colors.primary,
     },
+  },
+  contentSkelton: {
+    ...theme.contentSkelton,
+    backgroundColor: transparentize(color.light, 0.85),
+    foregroundColor: transparentize(color.accent, 0.67),
   },
 }
 

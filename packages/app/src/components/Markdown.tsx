@@ -30,6 +30,14 @@ const StyledMarkdown: FC<MarkdownProps> = ({ ...props }) => {
         list_item: {
           marginBottom: theme.spacing.xs,
         },
+        strong: {
+          fontWeight: 'normal',
+          fontFamily: theme.font.headers,
+        },
+        em: {
+          fontStyle: 'normal',
+          fontFamily: theme.font.accent,
+        },
       }}
       {...props}
     />

@@ -1,12 +1,19 @@
+import { LinkingOptions, PathConfigMap } from '@react-navigation/native'
 import * as Linking from 'expo-linking'
 
-export const config = {
+export const config: LinkingOptions['config'] = {
   screens: {
     Root: {
       screens: {
-        Schedule: 'plan',
+        Schedule: {
+          path: 'plan',
+          screens: {
+            Day: ':id',
+          },
+        },
         Notifications: 'powiadomienia',
         Info: {
+          path: 'info',
           screens: {
             InfoScreen: 'info',
             SpeakerScreen: 'mówca/:id',
@@ -24,13 +31,13 @@ export const config = {
  * @see https://reactnavigation.org/docs/deep-linking
  * @see https://reactnavigation.org/docs/configuring-links
  */
-const routes = {
+const routes: LinkingOptions = {
   prefixes: [Linking.makeUrl('/')],
   config,
 }
 
-export type Routing = typeof config['screens']
+export type Routing = PathConfigMap
 
-export type ScreenList<T extends string = keyof Routing> = Record<T, undefined>
+export type ScreenList<T extends keyof Routing> = Record<T, undefined>
 
 export default routes

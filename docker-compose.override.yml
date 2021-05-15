@@ -24,6 +24,14 @@ services:
     environment:
       NEXT_TELEMETRY_DISABLED: 1
 
+  db:
+    image: node:16-alpine
+    working_dir: /srv
+    volumes:
+      - ./:/srv
+    user: 1000:1000
+    command: yarn db
+
   hasura:
     ports:
       - '8080:8080'
