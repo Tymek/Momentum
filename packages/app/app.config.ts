@@ -7,6 +7,9 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   name: appJson.expo.name,
   ...config,
   extra: {
+    version: appJson.expo.version,
+    buildProfile: process.env.EAS_BUILD_PROFILE || 'dev',
+    buildHash: process.env.EAS_BUILD_GIT_COMMIT_HASH,
     apiUrl: process.env.API_URL || 'http://localhost:3000/graphql',
   },
 })

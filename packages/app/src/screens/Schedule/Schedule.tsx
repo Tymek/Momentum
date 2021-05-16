@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
-import Constants from 'expo-constants'
 // import Constants from 'expo-constants'
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs'
+import { createStackNavigator } from '@react-navigation/stack'
 
 import TextPage from 'components/TextPage'
 import Markdown from 'components/Markdown'
@@ -111,10 +111,10 @@ Daria i Kuba Marciniak - Łuczniczka
 ]
 
 const Tab = createMaterialTopTabNavigator()
+const Stack = createStackNavigator()
 
 const Schedule: FC = () => (
   <Tab.Navigator
-    style={{ paddingTop: Constants.statusBarHeight }}
     screenOptions={{ title: 'Plan' }}
     initialRouteName={schedule[0].title.toLocaleLowerCase()}
   >
@@ -137,4 +137,10 @@ const Schedule: FC = () => (
   </Tab.Navigator>
 )
 
-export default Schedule
+const ScheduleStack: FC = () => (
+  <Stack.Navigator>
+    <Stack.Screen name="Home" component={Schedule} options={{ title: 'Momentum' }} />
+  </Stack.Navigator>
+)
+
+export default ScheduleStack
