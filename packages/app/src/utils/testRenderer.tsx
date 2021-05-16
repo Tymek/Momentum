@@ -1,6 +1,6 @@
 import React, { FC, ReactElement } from 'react'
 import { render, RenderOptions, RenderAPI } from '@testing-library/react-native' // eslint-disable-line node/no-unpublished-import
-import '@testing-library/jest-native/extend-expect'
+import '@testing-library/jest-native/extend-expect' // eslint-disable-line node/no-unpublished-import
 
 import { ThemeProvider } from '@emotion/react'
 import theme from 'config/theme'
