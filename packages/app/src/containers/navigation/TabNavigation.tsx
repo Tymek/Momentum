@@ -9,7 +9,8 @@ import { config as routesConfig, ScreenList } from 'config/routes'
 import { useTheme } from '@emotion/react'
 import TabOneScreen from 'screens/TabOneScreen'
 import ScheduleScreen from 'screens/Schedule'
-import Notifications from 'screens/Notifications'
+import NotificationsScreen from 'screens/Notifications'
+import InformationsScreen from 'screens/Informations'
 import TabIcon from './components/TabIcon'
 
 type RootScreens = typeof routesConfig.screens.Root.screens
@@ -59,7 +60,7 @@ const BottomTabNavigator: FC = () => {
       />
       <BottomTab.Screen
         name="Notifications"
-        component={Notifications}
+        component={NotificationsScreen}
         options={{
           tabBarIcon: NotificationIcon,
           title: 'Powiadomienia',
@@ -67,7 +68,7 @@ const BottomTabNavigator: FC = () => {
       />
       <BottomTab.Screen
         name="Info"
-        component={TabOneScreen}
+        component={InformationsScreen}
         options={{
           tabBarIcon: InfoIcon,
           title: 'Informacje',
