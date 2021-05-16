@@ -33,6 +33,7 @@ module.exports = {
         '*.test.tsx',
         'next.config.js',
         'webpack.config.js',
+        'metro.config.js',
       ],
       rules: {
         'node/no-unpublished-import': 'off',

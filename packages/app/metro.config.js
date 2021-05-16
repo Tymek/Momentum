@@ -1,5 +1,10 @@
 const fs = require('fs')
 const path = require('path')
+const { getDefaultConfig } = require('@expo/metro-config')
+const defaultConfig = getDefaultConfig(__dirname)
+const {
+  resolver: { sourceExts, assetExts },
+} = defaultConfig
 
 function listDirectoryContents(directory) {
   try {
@@ -49,6 +54,7 @@ const projectRoot = path.resolve(__dirname)
 module.exports = {
   projectRoot,
   transformer: {
+    babelTransformerPath: require.resolve('react-native-svg-transformer'),
     getTransformOptions: async () => ({
       transform: {
         experimentalImportSupport: false,
@@ -63,6 +69,8 @@ module.exports = {
       ...getNodeModulesForDirectory(path.resolve(__dirname, '..', 'database')),
     },
     providesModuleNodeModules: [],
+    assetExts: assetExts.filter((ext) => ext !== 'svg'),
+    sourceExts: [...sourceExts, 'svg'],
   },
   watchFolders: [
     path.resolve(__dirname, 'node_modules'),

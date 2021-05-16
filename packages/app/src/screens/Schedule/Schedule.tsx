@@ -1,10 +1,9 @@
 import React, { FC } from 'react'
-// import Constants from 'expo-constants'
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs'
-import { createStackNavigator } from '@react-navigation/stack'
 
 import TextPage from 'components/TextPage'
 import Markdown from 'components/Markdown'
+import Header from 'components/Header'
 
 const schedule = [
   {
@@ -111,36 +110,32 @@ Daria i Kuba Marciniak - Łuczniczka
 ]
 
 const Tab = createMaterialTopTabNavigator()
-const Stack = createStackNavigator()
 
 const Schedule: FC = () => (
-  <Tab.Navigator
-    screenOptions={{ title: 'Plan' }}
-    initialRouteName={schedule[0].title.toLocaleLowerCase()}
-  >
-    {schedule.map((day) => {
-      const Page: FC = () => (
-        <TextPage>
-          <Markdown>{day.content || ''}</Markdown>
-        </TextPage>
-      )
+  <>
+    <Header>MOMENTUM KONF 2021</Header>
+    <Tab.Navigator
+      screenOptions={{ title: 'Plan' }}
+      initialRouteName={schedule[0].title.toLocaleLowerCase()}
+    >
+      {schedule.map((day) => {
+        const Page: FC = () => (
+          <TextPage>
+            <Markdown>{day.content || ''}</Markdown>
+          </TextPage>
+        )
 
-      return (
-        <Tab.Screen
-          key={day.title}
-          name={day.title.toLocaleLowerCase()}
-          component={Page}
-          options={{ title: day.title, tabBarLabel: day.slug.toUpperCase() }}
-        />
-      )
-    })}
-  </Tab.Navigator>
+        return (
+          <Tab.Screen
+            key={day.title}
+            name={day.title.toLocaleLowerCase()}
+            component={Page}
+            options={{ title: day.title, tabBarLabel: day.slug.toUpperCase() }}
+          />
+        )
+      })}
+    </Tab.Navigator>
+  </>
 )
 
-const ScheduleStack: FC = () => (
-  <Stack.Navigator>
-    <Stack.Screen name="Home" component={Schedule} options={{ title: 'Momentum' }} />
-  </Stack.Navigator>
-)
-
-export default ScheduleStack
+export default Schedule

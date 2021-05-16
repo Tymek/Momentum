@@ -63,6 +63,7 @@
   "devDependencies": {
     "@babel/core": "^7.9.0",
     "@emotion/babel-plugin": "^11.3.0",
+    "@expo/metro-config": "^0.1.67",
     "@expo/webpack-config": "^0.12.69",
     "@testing-library/jest-native": "^4.0.1",
     "@testing-library/react": "^11.2.7",

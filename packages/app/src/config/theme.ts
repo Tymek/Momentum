@@ -3,11 +3,12 @@ import { transparentize } from 'color2k'
 
 const color = {
   primary: '#2ac9ff',
-  dark: '#2a2a2a',
+  dark: '#121212',
   gray: '#8e8e8e',
   light: '#ffffff',
   accent: '#fcdc74',
   error: '#f49cfc',
+  darkBorder: '#272729',
 }
 
 const font = {
@@ -69,7 +70,11 @@ const theme = {
   spacing,
   statusBar: {
     darkText: true,
-    backgroundColor: 'rgba(255, 255, 255, 0.5)',
+    backgroundColor: transparentize(color.light, 0.5),
+  },
+  header: {
+    background: color.light,
+    border: 'transparent',
   },
   navigation: {
     ...DefaultTheme,
@@ -100,6 +105,10 @@ export const darkTheme: typeof theme = {
   statusBar: {
     darkText: false,
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
+  },
+  header: {
+    background: color.dark,
+    border: color.darkBorder,
   },
   navigation: {
     ...DarkTheme,
