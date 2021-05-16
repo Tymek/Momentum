@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-// import { View } from 'react-native'
+import Constants from 'expo-constants'
 // import Constants from 'expo-constants'
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs'
 
@@ -114,6 +114,7 @@ const Tab = createMaterialTopTabNavigator()
 
 const Schedule: FC = () => (
   <Tab.Navigator
+    style={{ paddingTop: Constants.statusBarHeight }}
     screenOptions={{ title: 'Plan' }}
     initialRouteName={schedule[0].title.toLocaleLowerCase()}
   >

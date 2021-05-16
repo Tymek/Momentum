@@ -5,4 +5,4 @@ WORKDIR /srv
 
 RUN yarn install --production
 
-CMD ['yarn', 'start']
+CMD "yarn" "start"
