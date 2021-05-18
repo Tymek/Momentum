@@ -1,0 +1,6 @@
+fragment topic on topic {
+  id
+  subject
+  description
+  location
+}

@@ -1,0 +1,11 @@
+query getSchedule {
+  session(order_by: { begins_at: asc }) {
+    id
+    name
+    begins_at
+    ends_at
+    topics(order_by: { subject: asc }) {
+      ...topic
+    }
+  }
+}
