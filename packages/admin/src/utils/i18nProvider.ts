@@ -1,4 +1,4 @@
-import polishMessages from '@scrlk/ra-language-polish'
+import polishMessages from 'ra-language-polish'
 import { TranslationMessages } from 'ra-core'
 import polyglotI18nProvider from 'ra-i18n-polyglot'
 

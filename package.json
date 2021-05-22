@@ -20,6 +20,7 @@
     "test": "lerna run prebuild && yarn test:lint && lerna run --parallel test"
   },
   "devDependencies": {
+    "@-local/eslint-plugin": "*",
     "@typescript-eslint/eslint-plugin": "4.23.0",
     "@typescript-eslint/parser": "4.23.0",
     "eslint": "7.26.0",

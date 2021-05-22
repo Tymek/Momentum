@@ -1,5 +1,5 @@
 module.exports = {
-  extends: ['plugin:jest/all', 'scrlk'],
+  extends: ['plugin:@-local/rules', 'plugin:jest/all', 'scrlk'],
   env: {
     'jest/globals': true,
   },
@@ -16,6 +16,7 @@ module.exports = {
     'packages/**/node_modules',
     'tmp',
     'data',
+    'data/*',
     '**/generated',
     'packages/app/web-build',
     'packages/admin/out',
