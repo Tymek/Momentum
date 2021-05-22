@@ -3,5 +3,6 @@
   "compilerOptions": {
     "baseUrl": "src",
     "strict": true
-  }
+  },
+  "exclude": ["node_modules"]
 }

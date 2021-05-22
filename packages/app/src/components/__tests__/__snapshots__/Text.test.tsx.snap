@@ -5,14 +5,11 @@ exports[`component StyledText renders correctly 1`] = `
   style={
     Array [
       Object {
-        "color": "#000",
+        "color": "#121212",
+        "fontFamily": "Proxima",
+        "fontSize": 18,
       },
-      Array [
-        undefined,
-        Object {
-          "fontFamily": "space-mono",
-        },
-      ],
+      undefined,
     ]
   }
 >

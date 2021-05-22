@@ -25,6 +25,7 @@ build:
       - ./packages/app/web-build
       - ./packages/admin/out
       - ./packages/backend/dist
+      - ./packages/database/lib
 
 include:
   - project: "Tymek/CI"

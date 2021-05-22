@@ -1,13 +1,15 @@
 import * as React from 'react'
-import { StyleSheet } from 'react-native'
+import { StyleSheet, View } from 'react-native'
+import config from 'utils/config'
 
-import { Text, View } from '../components/Themed'
+import Text from 'components/Text'
 
 export default function TabOneScreen() {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Do wypełnienia&hellip;</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
+      <View style={styles.separator} />
+      <Text>{JSON.stringify(config, null, 2)}</Text>
     </View>
   )
 }

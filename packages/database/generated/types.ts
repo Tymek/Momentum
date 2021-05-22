@@ -1612,7 +1612,27 @@ export type GetNotificationsQuery = (
   )> }
 );
 
+export type GetScheduleQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetScheduleQuery = (
+  { __typename?: 'query_root' }
+  & { session: Array<(
+    { __typename?: 'session' }
+    & Pick<Session, 'id' | 'name' | 'begins_at' | 'ends_at'>
+    & { topics: Array<(
+      { __typename?: 'topic' }
+      & TopicFragment
+    )> }
+  )> }
+);
+
 export type PageFragment = (
   { __typename?: 'page' }
   & Pick<Page, 'title' | 'content' | 'meta'>
+);
+
+export type TopicFragment = (
+  { __typename?: 'topic' }
+  & Pick<Topic, 'id' | 'subject' | 'description' | 'location'>
 );

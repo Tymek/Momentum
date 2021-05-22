@@ -7,6 +7,7 @@ const CustomStatusBar: FC = () => {
   const {
     statusBar: { darkText, backgroundColor },
   } = useTheme()
+
   return (
     <StatusBar
       translucent

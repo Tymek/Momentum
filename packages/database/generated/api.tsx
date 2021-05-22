@@ -1569,13 +1569,31 @@ export type GetNotificationsQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type GetNotificationsQuery = { notification: Array<Pick<Notification, 'id' | 'title' | 'content' | 'published_at'>> };
 
+export type GetScheduleQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetScheduleQuery = { session: Array<(
+    Pick<Session, 'id' | 'name' | 'begins_at' | 'ends_at'>
+    & { topics: Array<TopicFragment> }
+  )> };
+
 export type PageFragment = Pick<Page, 'title' | 'content' | 'meta'>;
+
+export type TopicFragment = Pick<Topic, 'id' | 'subject' | 'description' | 'location'>;
 
 export const PageFragmentDoc = gql`
     fragment page on page {
   title
   content
   meta
+}
+    `;
+export const TopicFragmentDoc = gql`
+    fragment topic on topic {
+  id
+  subject
+  description
+  location
 }
     `;
 export const CreatePageDocument = gql`
@@ -1653,3 +1671,43 @@ export function useGetNotificationsLazyQuery(baseOptions?: ApolloReactHooks.Lazy
 export type GetNotificationsQueryHookResult = ReturnType<typeof useGetNotificationsQuery>;
 export type GetNotificationsLazyQueryHookResult = ReturnType<typeof useGetNotificationsLazyQuery>;
 export type GetNotificationsQueryResult = Apollo.QueryResult<GetNotificationsQuery, GetNotificationsQueryVariables>;
+export const GetScheduleDocument = gql`
+    query getSchedule {
+  session(order_by: {begins_at: asc}) {
+    id
+    name
+    begins_at
+    ends_at
+    topics(order_by: {subject: asc}) {
+      ...topic
+    }
+  }
+}
+    ${TopicFragmentDoc}`;
+
+/**
+ * __useGetScheduleQuery__
+ *
+ * To run a query within a React component, call `useGetScheduleQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetScheduleQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetScheduleQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetScheduleQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<GetScheduleQuery, GetScheduleQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return ApolloReactHooks.useQuery<GetScheduleQuery, GetScheduleQueryVariables>(GetScheduleDocument, options);
+      }
+export function useGetScheduleLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<GetScheduleQuery, GetScheduleQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return ApolloReactHooks.useLazyQuery<GetScheduleQuery, GetScheduleQueryVariables>(GetScheduleDocument, options);
+        }
+export type GetScheduleQueryHookResult = ReturnType<typeof useGetScheduleQuery>;
+export type GetScheduleLazyQueryHookResult = ReturnType<typeof useGetScheduleLazyQuery>;
+export type GetScheduleQueryResult = Apollo.QueryResult<GetScheduleQuery, GetScheduleQueryVariables>;

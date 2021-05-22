@@ -1,16 +1,18 @@
 import React, { FC } from 'react'
 
 import TextPage from 'components/TextPage'
+import Header from 'components/Header'
 import ErrorBoundary from 'containers/error/Boundary'
 import NotificationsList from './components/NotificationsList'
 
 const Notifications: FC = () => {
   return (
-    <TextPage>
-      <ErrorBoundary>
+    <ErrorBoundary>
+      <Header />
+      <TextPage>
         <NotificationsList />
-      </ErrorBoundary>
-    </TextPage>
+      </TextPage>
+    </ErrorBoundary>
   )
 }
 
