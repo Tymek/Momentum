@@ -12,7 +12,7 @@ const Session: FC<SessionProps> = ({ name, begins_at, ends_at, topics }) => {
       <Text>{name}</Text>
       <Text>{begins_at}</Text>
       <Text>{ends_at}</Text>
-      <Text>{JSON.stringify(topics, null, 2)}</Text>
+      {topics && <Text>{JSON.stringify(topics, null, 2)}</Text>}
     </Wrapper>
   )
 }

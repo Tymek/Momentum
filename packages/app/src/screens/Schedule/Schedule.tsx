@@ -16,7 +16,8 @@ const Schedule: FC = () => {
   const days = useMemo(() => session && getDays(session), [session])
 
   if (loading) return null
-  if (error || !data || !days) throw error
+  // if (error || !data || !days) throw error
+  if (error || !data || !days) return null
 
   const currentDay = days.find(({ value }) => isSameDay(Date.now(), value))?.name || days[0].name
 
