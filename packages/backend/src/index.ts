@@ -8,7 +8,7 @@ import HttpError from './utils/httpError'
 import errorHandler from './utils/errorHandler'
 import healthcheck from './routes/healthcheck'
 import authWebhook from './routes/authWebhook'
-import storage from './routes/storage'
+// import storage from './routes/storage'
 import actions from './routes/actions'
 import cookieParser from 'cookie-parser'
 import cors from 'cors'
@@ -67,7 +67,7 @@ app.get('/api', (_, res) => {
 })
 app.get('/api/healthcheck', healthcheck)
 app.use('/api/auth-webhook', authWebhook)
-app.use('/api/storage', storage)
+// app.use('/api/storage', storage)
 app.use('/api/actions', actions)
 app.get('/api/*', () => {
   throw new HttpError(404)
