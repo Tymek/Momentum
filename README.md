@@ -1,14 +1,24 @@
 # Momentum
 
-## 🚀 How to develop
+## 🏗️ How to develop
+
+### Requirements
+
+- [Node.js](https://nodejs.org/) (v15 or v16)
+- [Yarn](https://classic.yarnpkg.com/en/docs/install/) (v1)
+- [Docker](https://docs.docker.com/engine/install/),
+- [docker-componse](https://docs.docker.com/compose/install/).
+
+### Installation
 
 1. Run `yarn install`.
-
 2. Run `docker-compose up`.<br/>It will start Hasura, Core, Admin and Backend service.
-
 3. Apply migrations with `yarn migrate`
 
-4. Run `yarn app` to work on Expo application.
+### Development
+
+- Admin panel is available on [`localhost:3000/panel`](`http://localhost:3000/panel`) from docker
+- Run `yarn app` to start work on Expo application (./packages/app)
 
 ### 📁 File Structure
 
