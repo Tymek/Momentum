@@ -7,7 +7,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 
 import { config as routesConfig, ScreenList } from 'config/routes'
 import { useTheme } from '@emotion/react'
-import TabOneScreen from 'screens/TabOneScreen'
+import Map from 'screens/Map'
 import ScheduleScreen from 'screens/Schedule'
 import NotificationsScreen from 'screens/Notifications'
 import InformationsScreen from 'screens/Informations'
@@ -76,7 +76,7 @@ const BottomTabNavigator: FC = () => {
       />
       <BottomTab.Screen
         name="Map"
-        component={TabOneScreen}
+        component={Map}
         options={{
           tabBarIcon: MapIcon,
           title: 'Mapa',

@@ -10,6 +10,7 @@ module.exports = {
     'node/no-missing-import': 'off',
     'node/no-missing-require': 'off',
     'unicorn/new-for-builtins': 'off',
+    'unicorn/numeric-separators-style': 'off',
   },
   ignorePatterns: [
     'node_modules',

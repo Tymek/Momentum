@@ -5,7 +5,6 @@ module.exports = function (api) {
     presets: ['babel-preset-expo'],
     sourceMaps: 'both',
     plugins: [
-      'react-native-reanimated/plugin',
       [
         '@emotion',
         {
@@ -30,6 +29,7 @@ module.exports = function (api) {
           },
         },
       ],
+      'react-native-reanimated/plugin',
     ],
   }
 }

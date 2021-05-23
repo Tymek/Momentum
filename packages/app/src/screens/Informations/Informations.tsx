@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
 
-import Rules from './Rules'
+import Rules from './screens/Rules'
 
 const Stack = createStackNavigator()
 
