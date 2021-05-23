@@ -12,8 +12,9 @@
 ### Installation
 
 1. Run `yarn install`.
-2. Run `docker-compose up`.<br/>It will start Hasura, Core, Admin and Backend service.
-3. Apply migrations with `yarn migrate`
+2. Run `yarn build`.
+3. Run `docker-compose up`.<br/>It will start Hasura, Core, Admin and Backend service.
+4. Apply migrations with `yarn migrate`
 
 ### Development
 
