@@ -1,7 +1,7 @@
 import { RequestHandler } from 'express'
 import { compare, hash } from 'bcrypt'
 
-import { Mutation_RootLoginArgs, Mutation_Root, User } from '@-local/db/generated/types'
+import { Mutation_RootLoginArgs, Mutation_Root, User } from '@-local/db/lib/generated/types'
 import HttpError from '../../utils/httpError'
 import actionInput from '../../utils/actionInput'
 import db, { sql } from '../../utils/database'
@@ -10,13 +10,14 @@ import createLoginCookie from '../../utils/createLoginCookie'
 const hander: RequestHandler = async (req, res, next) => {
   try {
     const { username, password } = actionInput<Mutation_RootLoginArgs>(req)
+    console.log({ username, password })
 
     const data: User | null = await db.maybeOne(
       sql`
-		SELECT *
-		FROM public.user
-		WHERE username = ${username}
-	`,
+        SELECT *
+        FROM public.user
+        WHERE username = ${username}
+      `,
     )
 
     if (!data) {

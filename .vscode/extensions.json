@@ -1,6 +1,7 @@
 {
   "recommendations": [
     "anthonycjw.vscode-styled-components-cre-edition",
+    "esbenp.prettier-vscode",
     "apollographql.vscode-apollo",
     "codezombiech.gitignore",
     "dbaeumer.vscode-eslint",

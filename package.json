@@ -14,6 +14,7 @@
     "db": "yarn workspace @-local/db dev",
     "migrate": "yarn workspace @-local/db migrate",
     "build": "lerna run prebuild && lerna run --parallel build",
+    "windows": "lerna run --parallel dev",
     "lint": "eslint --fix --ext .js,.ts,.tsx,.json .",
     "prettier": "prettier",
     "test:lint": "eslint --quiet --ext .js,.ts,.tsx,.json .",

@@ -1,5 +1,5 @@
 import { serialize, CookieSerializeOptions } from 'cookie'
-import { Mutation_RootLoginArgs } from '@-local/db/generated/types'
+import { Mutation_RootLoginArgs } from '@-local/db/lib/generated/types'
 
 const createLoginCookie = (
   data?: Mutation_RootLoginArgs,

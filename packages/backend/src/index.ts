@@ -20,6 +20,7 @@ const app = express()
 const port = 3000
 const clientAppStaticDir = '../../app/web-build'
 const adminAppStaticDir = '../../admin/out'
+const isWindows = process.platform === 'win32'
 
 app.disable('x-powered-by')
 
@@ -41,7 +42,7 @@ app.get('/*', (req, res, next) => {
 app.use(
   ['/graphql', '/v1/graphql'],
   createProxyMiddleware({
-    target: 'http://hasura:8080',
+    target: isWindows ? 'http://localhost:8080' : 'http://hasura:8080',
     pathRewrite: {
       '^/graphql': '/v1/graphql',
     },
@@ -55,7 +56,10 @@ app.use(express.static(resolve(__dirname, clientAppStaticDir)))
 
 // Proxy admin panel
 if (process.env.NODE_ENV === 'development') {
-  app.use('/panel', createProxyMiddleware('http://admin:3000/'))
+  app.use(
+    '/panel',
+    createProxyMiddleware(isWindows ? 'http://localhost:5000' : 'http://admin:5000/'),
+  )
 } else {
   app.use('/panel', express.static(resolve(__dirname, adminAppStaticDir)))
 }
