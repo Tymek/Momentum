@@ -1,0 +1,29 @@
+version: '3.8'
+services:
+  postgres:
+    image: postgres:12
+    restart: always
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./data/postgres:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: '${POSTGRES_PASSWORD:-postgres}'
+
+  hasura:
+    image: '${HASURA_IMAGE:-hasura/graphql-engine:v2.0.0-alpha.10.cli-migrations-v3}'
+    depends_on:
+      - 'postgres'
+    restart: always
+    ports:
+      - "8080:8080"
+    environment:
+      HASURA_GRAPHQL_ENABLE_CONSOLE: 'false'
+      HASURA_GRAPHQL_ENABLE_TELEMETRY: 'false'
+      HASURA_GRAPHQL_DATABASE_URL: '${HASURA_GRAPHQL_DATABASE_URL:-postgres://postgres:postgres@postgres:5432/postgres}'
+      HASURA_GRAPHQL_ADMIN_SECRET: '${HASURA_GRAPHQL_ADMIN_SECRET:-admin}'
+      HASURA_GRAPHQL_AUTH_HOOK: '${HASURA_GRAPHQL_AUTH_HOOK:-http://host.docker.internal:3000/api/auth-webhook}'
+      HASURA_ACTION_ENDPOINT: '${HASURA_ACTION_ENDPOINT:-http://host.docker.internal:3000/api/actions}'
+      HASURA_ACTION_SECRET: '${HASURA_ACTION_SECRET:-secret}'
+      HASURA_GRAPHQL_DEV_MODE: 'true'
+      HASURA_GRAPHQL_ENABLED_LOG_TYPES: http-log, webhook-log
