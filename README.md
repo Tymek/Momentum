@@ -62,6 +62,15 @@ _routes_ or _linking_ file (global data coupling). A _screen_ file exports both 
 navigation stack in a simple way - by moving files and only adjusting linking in the same file where
 component import path changed.
 
+### 📲 Running native version (eject Expo)
+
+https://reactnative.dev/docs/environment-setup (click _React Native CLI Quickstart_)
+
+- `yarn android` (keep running)
+- `cd packages/app && npx react-native run-android`
+
+Fill `API_URL` in `packages/app/.env` (Backend IP, for example `http://192.168.1.101:3000/graphql`)
+
 ## 📝 Notes
 
 - example template

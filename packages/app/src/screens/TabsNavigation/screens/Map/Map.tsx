@@ -1,5 +1,6 @@
 import React, { FC } from 'react'
 import { StyleSheet, View } from 'react-native'
+// import MapView from './components/MapView'
 // import MapboxGL from '@react-native-mapbox-gl/maps'
 
 // import config from 'utils/config'
@@ -8,7 +9,7 @@ import { StyleSheet, View } from 'react-native'
 
 const Map: FC = () => (
   <View style={styles.page}>
-    <View style={styles.container}>{/* <MapboxGL.MapView style={styles.map} /> */}</View>
+    <View style={styles.container}>{/* <MapView /> */}</View>
   </View>
 )
 

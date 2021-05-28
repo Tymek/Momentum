@@ -12,8 +12,8 @@ const apiUrl = manifest?.extra?.apiUrl || `http://${hostUri}/graphql`
  **/
 const config = {
   ...manifest.extra,
-  apiUrl,
-  mapboxToken: manifest.extra?.mapboxToken,
+  apiUrl: process.env.API_URL || apiUrl,
+  mapboxToken: process.env.MAPBOX_API_KEY,
 }
 
 export default config
