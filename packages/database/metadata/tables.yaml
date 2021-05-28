@@ -145,6 +145,60 @@
       filter: {}
 - table:
     schema: public
+    name: speaker
+  insert_permissions:
+  - role: manager
+    permission:
+      check: {}
+      columns:
+      - description
+      - id
+      - image
+      - name
+      backend_only: false
+  select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+      - description
+      - id
+      - image
+      - name
+      filter: {}
+  - role: manager
+    permission:
+      columns:
+      - description
+      - image
+      - name
+      - created_at
+      - updated_at
+      - id
+      filter: {}
+  - role: user
+    permission:
+      columns:
+      - description
+      - id
+      - image
+      - name
+      filter: {}
+  update_permissions:
+  - role: manager
+    permission:
+      columns:
+      - description
+      - id
+      - image
+      - name
+      filter: {}
+      check: null
+  delete_permissions:
+  - role: manager
+    permission:
+      filter: {}
+- table:
+    schema: public
     name: topic
   object_relationships:
   - name: session
