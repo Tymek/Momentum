@@ -5,17 +5,29 @@
 import React, { FC } from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 
-import { config as routesConfig, ScreenList } from 'config/routes'
 import { useTheme } from '@emotion/react'
-import Map from 'screens/Map'
-import ScheduleScreen from 'screens/Schedule'
-import NotificationsScreen from 'screens/Notifications'
-import InformationsScreen from 'screens/Informations'
+import Map from './screens/Map'
+import ScheduleScreen, { screens as scheduleScreens } from './screens/Schedule'
+import NotificationsScreen from './screens/Notifications'
+import InformationsScreen, {
+  screens as infoScreens,
+} from 'screens/TabsNavigation/screens/Informations'
 import TabIcon from './components/TabIcon'
 
-type RootScreens = typeof routesConfig.screens.Root.screens
+export const screens = {
+  Schedule: {
+    path: 'plan',
+    screens: scheduleScreens,
+  },
+  Notifications: 'powiadomienia',
+  Info: {
+    path: 'info',
+    screens: infoScreens,
+  },
+  Map: 'mapa',
+}
 
-const BottomTab = createBottomTabNavigator<ScreenList<keyof RootScreens>>()
+const BottomTab = createBottomTabNavigator<Record<keyof typeof screens, undefined>>()
 
 const ScheduleIcon: FC<{ color: string }> = ({ color }) => (
   <TabIcon name="calendar-sharp" color={color} />
@@ -49,6 +61,7 @@ const BottomTabNavigator: FC = () => {
           bottom: theme.spacing.xs,
         },
       }}
+      backBehavior="initialRoute"
     >
       <BottomTab.Screen
         name="Schedule"
@@ -64,6 +77,7 @@ const BottomTabNavigator: FC = () => {
         options={{
           tabBarIcon: NotificationIcon,
           title: 'Powiadomienia',
+          tabBarBadge: '1', // TODO: number of new notifications
         }}
       />
       <BottomTab.Screen
@@ -72,7 +86,12 @@ const BottomTabNavigator: FC = () => {
         options={{
           tabBarIcon: InfoIcon,
           title: 'Informacje',
+          unmountOnBlur: true,
         }}
+        listeners={({ navigation }) => ({
+          // Issue with `unmountOnBlur`: https://git.io/JGOxL
+          blur: () => navigation.setParams({ screen: undefined }),
+        })}
       />
       <BottomTab.Screen
         name="Map"

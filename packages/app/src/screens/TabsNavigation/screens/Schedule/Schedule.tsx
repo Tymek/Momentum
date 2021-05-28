@@ -10,6 +10,10 @@ import Session from './components/Session'
 import ErrorBoundary from 'containers/error/Boundary'
 import { FullLoader as Loader } from 'components/Loader'
 
+export const screens = {
+  Day: ':id',
+}
+
 const Tab = createMaterialTopTabNavigator()
 
 const DaysTabs: FC = () => {

@@ -53,6 +53,15 @@ monolith for ease of configuration and local development.
 
 ```
 
+### 🧭 App navigation structure
+
+Routing with [`@react-navigation/native`](https://reactnavigation.org/). In this repo _screens_ are
+all kept in a nested structure with unidirectional imports. It's a better idea than a single
+_routes_ or _linking_ file (global data coupling). A _screen_ file exports both it's component (as
+`default`) and a `screens` routing object for deep linking. This solution allows for moving entire
+navigation stack in a simple way - by moving files and only adjusting linking in the same file where
+component import path changed.
+
 ## 📝 Notes
 
 - example template

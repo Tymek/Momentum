@@ -12,5 +12,6 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     buildProfile: process.env.EAS_BUILD_PROFILE || 'dev',
     buildHash: process.env.EAS_BUILD_GIT_COMMIT_HASH,
     apiUrl: process.env.API_URL,
+    mapboxToken: process.env.MAPBOX_API_KEY,
   },
 })
