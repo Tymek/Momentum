@@ -6,12 +6,6 @@ stages:
   image: node:16
   before_script:
     - yarn install --cache-folder .yarn || yarn install --cache-folder .yarn
-  cache:
-    key: "JS-$CI_COMMIT_REF_SLUG"
-    paths:
-      - node_modules/
-      - .yarn
-    policy: pull-push
 
 build:
   stage: build
@@ -28,5 +22,5 @@ build:
       - ./packages/database/lib
 
 include:
-  - project: "Tymek/CI"
-    file: "/.dockerize.yml"
+  - project: 'Tymek/CI'
+    file: '/.dockerize.yml'
