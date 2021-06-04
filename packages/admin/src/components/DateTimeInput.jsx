@@ -18,7 +18,6 @@ const DateTimeInput = ({ ...props }) => {
   const onChange = (value) => {
     if (Date.parse(value)) {
       const parsed = moment(value).toISOString()
-      console.log(parsed)
       input.onChange(parsed)
     } else {
       input.onChange(null)

@@ -3,7 +3,7 @@ import { render, RenderOptions, RenderAPI } from '@testing-library/react-native'
 import '@testing-library/jest-native/extend-expect' // eslint-disable-line node/no-unpublished-import
 
 import { ThemeProvider } from '@emotion/react'
-import theme from 'config/theme'
+import theme from 'utils/theme'
 
 const CustomThemeProvider: FC = ({ children }) => (
   <ThemeProvider theme={theme}>{children}</ThemeProvider>

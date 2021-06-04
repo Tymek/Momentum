@@ -69,7 +69,8 @@ https://reactnative.dev/docs/environment-setup (click _React Native CLI Quicksta
 - `yarn android` (keep running)
 - `cd packages/app && npx react-native run-android`
 
-Fill `API_URL` in `packages/app/.env` (Backend IP, for example `http://192.168.1.101:3000/graphql`)
+Fill both `API_URL` (Backend IP, for example `http://192.168.1.101:3000/graphql`) and `MAPBOX_TOKEN`
+in `packages/app/.env`
 
 ## 📝 Notes
 

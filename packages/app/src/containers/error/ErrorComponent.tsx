@@ -1,6 +1,5 @@
 import React, { FC } from 'react'
-import Markdown from 'react-native-markdown-display'
-import Constants from 'expo-constants'
+import Markdown from 'components/Markdown'
 
 import TextPage from 'components/TextPage'
 
@@ -13,12 +12,16 @@ type ErrorComponentProps = {
 }
 
 const ErrorComponent: FC<ErrorComponentProps> = ({ message }) => {
+  const text = `
+# Wystąpił błąd 🥺
+Coś jest nie tak po naszej stronie.
+
+## _${message && typeof message === 'string' ? message : messages.unknownError}_
+`
+
   return (
     <TextPage>
-      <Markdown>
-        {message && typeof message === 'string' ? message : messages.unknownError}
-      </Markdown>
-      <Markdown>{JSON.stringify(Constants.manifest, null, 2)}</Markdown>
+      <Markdown>{text}</Markdown>
     </TextPage>
   )
 }

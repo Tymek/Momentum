@@ -94,6 +94,10 @@ export type Mutation_Root = {
   delete_session?: Maybe<Session_Mutation_Response>;
   /** delete single row from the table: "session" */
   delete_session_by_pk?: Maybe<Session>;
+  /** delete data from the table: "speaker" */
+  delete_speaker?: Maybe<Speaker_Mutation_Response>;
+  /** delete single row from the table: "speaker" */
+  delete_speaker_by_pk?: Maybe<Speaker>;
   /** delete data from the table: "topic" */
   delete_topic?: Maybe<Topic_Mutation_Response>;
   /** delete single row from the table: "topic" */
@@ -114,6 +118,10 @@ export type Mutation_Root = {
   insert_session?: Maybe<Session_Mutation_Response>;
   /** insert a single row into the table: "session" */
   insert_session_one?: Maybe<Session>;
+  /** insert data into the table: "speaker" */
+  insert_speaker?: Maybe<Speaker_Mutation_Response>;
+  /** insert a single row into the table: "speaker" */
+  insert_speaker_one?: Maybe<Speaker>;
   /** insert data into the table: "topic" */
   insert_topic?: Maybe<Topic_Mutation_Response>;
   /** insert a single row into the table: "topic" */
@@ -136,6 +144,10 @@ export type Mutation_Root = {
   update_session?: Maybe<Session_Mutation_Response>;
   /** update single row of the table: "session" */
   update_session_by_pk?: Maybe<Session>;
+  /** update data of the table: "speaker" */
+  update_speaker?: Maybe<Speaker_Mutation_Response>;
+  /** update single row of the table: "speaker" */
+  update_speaker_by_pk?: Maybe<Speaker>;
   /** update data of the table: "topic" */
   update_topic?: Maybe<Topic_Mutation_Response>;
   /** update single row of the table: "topic" */
@@ -179,6 +191,18 @@ export type Mutation_RootDelete_SessionArgs = {
 
 /** mutation root */
 export type Mutation_RootDelete_Session_By_PkArgs = {
+  id: Scalars['uuid'];
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_SpeakerArgs = {
+  where: Speaker_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Speaker_By_PkArgs = {
   id: Scalars['uuid'];
 };
 
@@ -246,6 +270,20 @@ export type Mutation_RootInsert_SessionArgs = {
 export type Mutation_RootInsert_Session_OneArgs = {
   object: Session_Insert_Input;
   on_conflict?: Maybe<Session_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_SpeakerArgs = {
+  objects: Array<Speaker_Insert_Input>;
+  on_conflict?: Maybe<Speaker_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Speaker_OneArgs = {
+  object: Speaker_Insert_Input;
+  on_conflict?: Maybe<Speaker_On_Conflict>;
 };
 
 
@@ -333,6 +371,20 @@ export type Mutation_RootUpdate_SessionArgs = {
 export type Mutation_RootUpdate_Session_By_PkArgs = {
   _set?: Maybe<Session_Set_Input>;
   pk_columns: Session_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_SpeakerArgs = {
+  _set?: Maybe<Speaker_Set_Input>;
+  where: Speaker_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Speaker_By_PkArgs = {
+  _set?: Maybe<Speaker_Set_Input>;
+  pk_columns: Speaker_Pk_Columns_Input;
 };
 
 
@@ -719,6 +771,12 @@ export type Query_Root = {
   session_aggregate: Session_Aggregate;
   /** fetch data from the table: "session" using primary key columns */
   session_by_pk?: Maybe<Session>;
+  /** fetch data from the table: "speaker" */
+  speaker: Array<Speaker>;
+  /** fetch aggregated fields from the table: "speaker" */
+  speaker_aggregate: Speaker_Aggregate;
+  /** fetch data from the table: "speaker" using primary key columns */
+  speaker_by_pk?: Maybe<Speaker>;
   /** fetch data from the table: "topic" */
   topic: Array<Topic>;
   /** fetch aggregated fields from the table: "topic" */
@@ -799,6 +857,29 @@ export type Query_RootSession_AggregateArgs = {
 
 
 export type Query_RootSession_By_PkArgs = {
+  id: Scalars['uuid'];
+};
+
+
+export type Query_RootSpeakerArgs = {
+  distinct_on?: Maybe<Array<Speaker_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Speaker_Order_By>>;
+  where?: Maybe<Speaker_Bool_Exp>;
+};
+
+
+export type Query_RootSpeaker_AggregateArgs = {
+  distinct_on?: Maybe<Array<Speaker_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Speaker_Order_By>>;
+  where?: Maybe<Speaker_Bool_Exp>;
+};
+
+
+export type Query_RootSpeaker_By_PkArgs = {
   id: Scalars['uuid'];
 };
 
@@ -1033,6 +1114,157 @@ export enum Session_Update_Column {
   UpdatedAt = 'updated_at'
 }
 
+/** columns and relationships of "speaker" */
+export type Speaker = {
+  created_at: Scalars['timestamptz'];
+  description?: Maybe<Scalars['String']>;
+  id: Scalars['uuid'];
+  image?: Maybe<Scalars['String']>;
+  name: Scalars['String'];
+  updated_at: Scalars['timestamptz'];
+};
+
+/** aggregated selection of "speaker" */
+export type Speaker_Aggregate = {
+  aggregate?: Maybe<Speaker_Aggregate_Fields>;
+  nodes: Array<Speaker>;
+};
+
+/** aggregate fields of "speaker" */
+export type Speaker_Aggregate_Fields = {
+  count: Scalars['Int'];
+  max?: Maybe<Speaker_Max_Fields>;
+  min?: Maybe<Speaker_Min_Fields>;
+};
+
+
+/** aggregate fields of "speaker" */
+export type Speaker_Aggregate_FieldsCountArgs = {
+  columns?: Maybe<Array<Speaker_Select_Column>>;
+  distinct?: Maybe<Scalars['Boolean']>;
+};
+
+/** Boolean expression to filter rows from the table "speaker". All fields are combined with a logical 'AND'. */
+export type Speaker_Bool_Exp = {
+  _and?: Maybe<Array<Speaker_Bool_Exp>>;
+  _not?: Maybe<Speaker_Bool_Exp>;
+  _or?: Maybe<Array<Speaker_Bool_Exp>>;
+  created_at?: Maybe<Timestamptz_Comparison_Exp>;
+  description?: Maybe<String_Comparison_Exp>;
+  id?: Maybe<Uuid_Comparison_Exp>;
+  image?: Maybe<String_Comparison_Exp>;
+  name?: Maybe<String_Comparison_Exp>;
+  updated_at?: Maybe<Timestamptz_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "speaker" */
+export enum Speaker_Constraint {
+  /** unique or primary key constraint */
+  SpeakerPkey = 'speaker_pkey'
+}
+
+/** input type for inserting data into table "speaker" */
+export type Speaker_Insert_Input = {
+  created_at?: Maybe<Scalars['timestamptz']>;
+  description?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['uuid']>;
+  image?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** aggregate max on columns */
+export type Speaker_Max_Fields = {
+  created_at?: Maybe<Scalars['timestamptz']>;
+  description?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['uuid']>;
+  image?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** aggregate min on columns */
+export type Speaker_Min_Fields = {
+  created_at?: Maybe<Scalars['timestamptz']>;
+  description?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['uuid']>;
+  image?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** response of any mutation on the table "speaker" */
+export type Speaker_Mutation_Response = {
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Speaker>;
+};
+
+/** on conflict condition type for table "speaker" */
+export type Speaker_On_Conflict = {
+  constraint: Speaker_Constraint;
+  update_columns?: Array<Speaker_Update_Column>;
+  where?: Maybe<Speaker_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "speaker". */
+export type Speaker_Order_By = {
+  created_at?: Maybe<Order_By>;
+  description?: Maybe<Order_By>;
+  id?: Maybe<Order_By>;
+  image?: Maybe<Order_By>;
+  name?: Maybe<Order_By>;
+  updated_at?: Maybe<Order_By>;
+};
+
+/** primary key columns input for table: speaker */
+export type Speaker_Pk_Columns_Input = {
+  id: Scalars['uuid'];
+};
+
+/** select columns of table "speaker" */
+export enum Speaker_Select_Column {
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  Description = 'description',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Image = 'image',
+  /** column name */
+  Name = 'name',
+  /** column name */
+  UpdatedAt = 'updated_at'
+}
+
+/** input type for updating data in table "speaker" */
+export type Speaker_Set_Input = {
+  created_at?: Maybe<Scalars['timestamptz']>;
+  description?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['uuid']>;
+  image?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** update columns of table "speaker" */
+export enum Speaker_Update_Column {
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  Description = 'description',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Image = 'image',
+  /** column name */
+  Name = 'name',
+  /** column name */
+  UpdatedAt = 'updated_at'
+}
+
 export type Subscription_Root = {
   /** fetch data from the table: "notification" */
   notification: Array<Notification>;
@@ -1052,6 +1284,12 @@ export type Subscription_Root = {
   session_aggregate: Session_Aggregate;
   /** fetch data from the table: "session" using primary key columns */
   session_by_pk?: Maybe<Session>;
+  /** fetch data from the table: "speaker" */
+  speaker: Array<Speaker>;
+  /** fetch aggregated fields from the table: "speaker" */
+  speaker_aggregate: Speaker_Aggregate;
+  /** fetch data from the table: "speaker" using primary key columns */
+  speaker_by_pk?: Maybe<Speaker>;
   /** fetch data from the table: "topic" */
   topic: Array<Topic>;
   /** fetch aggregated fields from the table: "topic" */
@@ -1132,6 +1370,29 @@ export type Subscription_RootSession_AggregateArgs = {
 
 
 export type Subscription_RootSession_By_PkArgs = {
+  id: Scalars['uuid'];
+};
+
+
+export type Subscription_RootSpeakerArgs = {
+  distinct_on?: Maybe<Array<Speaker_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Speaker_Order_By>>;
+  where?: Maybe<Speaker_Bool_Exp>;
+};
+
+
+export type Subscription_RootSpeaker_AggregateArgs = {
+  distinct_on?: Maybe<Array<Speaker_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Speaker_Order_By>>;
+  where?: Maybe<Speaker_Bool_Exp>;
+};
+
+
+export type Subscription_RootSpeaker_By_PkArgs = {
   id: Scalars['uuid'];
 };
 
@@ -1577,6 +1838,11 @@ export type GetScheduleQuery = { session: Array<(
     & { topics: Array<TopicFragment> }
   )> };
 
+export type GetSpeakersQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetSpeakersQuery = { speaker: Array<Pick<Speaker, 'id' | 'name' | 'description' | 'image'>> };
+
 export type PageFragment = Pick<Page, 'title' | 'content' | 'meta'>;
 
 export type TopicFragment = Pick<Topic, 'id' | 'subject' | 'description' | 'location'>;
@@ -1711,3 +1977,40 @@ export function useGetScheduleLazyQuery(baseOptions?: ApolloReactHooks.LazyQuery
 export type GetScheduleQueryHookResult = ReturnType<typeof useGetScheduleQuery>;
 export type GetScheduleLazyQueryHookResult = ReturnType<typeof useGetScheduleLazyQuery>;
 export type GetScheduleQueryResult = Apollo.QueryResult<GetScheduleQuery, GetScheduleQueryVariables>;
+export const GetSpeakersDocument = gql`
+    query getSpeakers {
+  speaker {
+    id
+    name
+    description
+    image
+  }
+}
+    `;
+
+/**
+ * __useGetSpeakersQuery__
+ *
+ * To run a query within a React component, call `useGetSpeakersQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetSpeakersQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetSpeakersQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetSpeakersQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<GetSpeakersQuery, GetSpeakersQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return ApolloReactHooks.useQuery<GetSpeakersQuery, GetSpeakersQueryVariables>(GetSpeakersDocument, options);
+      }
+export function useGetSpeakersLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<GetSpeakersQuery, GetSpeakersQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return ApolloReactHooks.useLazyQuery<GetSpeakersQuery, GetSpeakersQueryVariables>(GetSpeakersDocument, options);
+        }
+export type GetSpeakersQueryHookResult = ReturnType<typeof useGetSpeakersQuery>;
+export type GetSpeakersLazyQueryHookResult = ReturnType<typeof useGetSpeakersLazyQuery>;
+export type GetSpeakersQueryResult = Apollo.QueryResult<GetSpeakersQuery, GetSpeakersQueryVariables>;

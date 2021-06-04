@@ -48,6 +48,16 @@ const messages = {
         empty: 'Brak powiadomień na liście',
         invite: 'Czy chcesz dodać nową wiadomość?',
       },
+      speaker: {
+        name: 'Mówca |||| Mówcy',
+        fields: {
+          ...fields,
+          name: 'imię',
+          image: 'zdjęcie',
+        },
+        empty: 'Brak osób na liście',
+        invite: 'Dodać?',
+      },
     },
   },
 }

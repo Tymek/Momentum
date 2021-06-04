@@ -29,7 +29,6 @@ const rule: Rule.RuleModule = {
               start,
               end: { line: start.line, column: start.column + length + 2 },
             }
-            console.log(loc)
             context.report({ node: templateElement, message, loc })
           }
         })

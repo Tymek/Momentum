@@ -58,6 +58,12 @@ const spacing = {
   xxl: 48,
 }
 
+const borderRadius = {
+  s: 1,
+  m: 2,
+  l: 4,
+}
+
 const theme = {
   color: {
     ...color,
@@ -68,6 +74,7 @@ const theme = {
   fontSize,
   lineHeight,
   spacing,
+  borderRadius,
   statusBar: {
     darkText: true,
     backgroundColor: transparentize(color.light, 0.5),

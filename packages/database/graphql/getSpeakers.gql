@@ -1,0 +1,8 @@
+query getSpeakers {
+  speaker {
+    id
+    name
+    description
+    image
+  }
+}

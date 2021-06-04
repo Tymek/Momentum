@@ -10,7 +10,6 @@ import createLoginCookie from '../../utils/createLoginCookie'
 const hander: RequestHandler = async (req, res, next) => {
   try {
     const { username, password } = actionInput<Mutation_RootLoginArgs>(req)
-    console.log({ username, password })
 
     const data: User | null = await db.maybeOne(
       sql`

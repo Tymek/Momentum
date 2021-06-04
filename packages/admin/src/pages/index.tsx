@@ -16,6 +16,7 @@ import i18nProvider from 'utils/i18nProvider'
 import session from 'resources/session'
 import topic from 'resources/topic'
 import notification from 'resources/notification'
+import speaker from 'resources/speaker'
 
 const Panel: FC = () => {
   const client = useApolloClient()
@@ -43,6 +44,7 @@ const Panel: FC = () => {
         <Resource {...notification} />
         <Resource {...session} />
         <Resource {...topic} />
+        <Resource {...speaker} />
       </Admin>
       <StyleVariables />
       <StyleReset />

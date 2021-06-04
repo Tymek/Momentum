@@ -2,7 +2,6 @@ import React, { FC } from 'react'
 import { StackScreenProps } from '@react-navigation/stack'
 import styled from '@emotion/native'
 
-import { ScreenList } from 'config/routes'
 import Text from 'components/Text'
 
 const messages = {
@@ -10,7 +9,9 @@ const messages = {
   action: '🔙 Wróć do aplikacji',
 }
 
-const NotFoundScreen: FC<StackScreenProps<ScreenList, 'NotFound'>> = ({ navigation }) => {
+const NotFoundScreen: FC<StackScreenProps<Record<'NotFound' | 'Root', undefined>, 'NotFound'>> = ({
+  navigation,
+}) => {
   return (
     <Container>
       <Title>{messages.title}</Title>

@@ -1,15 +1,16 @@
 import React, { FC } from 'react'
 import Constants from 'expo-constants'
 import styled from '@emotion/native'
-import { StyleSheet } from 'react-native'
 
 import Text from 'components/Text'
+import useShadow from 'hooks/useShadow'
 
 type HeaderProps = {
   children?: string | number | JSX.Element
 }
 
 const Header: FC<HeaderProps> = ({ children }) => {
+  const shadow = useShadow(3)
   const content =
     typeof children === 'string' || typeof children === 'number' ? (
       <TitleText>{`${children}`}</TitleText>
@@ -18,26 +19,12 @@ const Header: FC<HeaderProps> = ({ children }) => {
     )
 
   return (
-    <Background style={[styles.container, {}]}>
+    <Background style={[shadow, {}]}>
       <StatusBarSpacing />
       {children && <Wrapper>{content}</Wrapper>}
     </Background>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 1,
-    },
-    shadowOpacity: 0.22,
-    shadowRadius: 2.22,
-
-    elevation: 3,
-  },
-})
 
 const Background = styled.View`
   background: ${({ theme }) => theme.header.background};

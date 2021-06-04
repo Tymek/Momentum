@@ -6,7 +6,6 @@ import userFromCookies from '../utils/userFromCookies'
  */
 const handler: RequestHandler = async (req, res) => {
   const data = await userFromCookies(req)
-  console.log({ authWebhook: data })
 
   if (!data) {
     return res.json({

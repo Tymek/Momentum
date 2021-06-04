@@ -175,6 +175,7 @@
       - updated_at
       - id
       filter: {}
+      allow_aggregations: true
   - role: user
     permission:
       columns:
