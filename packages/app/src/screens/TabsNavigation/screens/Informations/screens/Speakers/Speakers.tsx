@@ -9,16 +9,7 @@ import { FullLoader as Loader } from 'components/Loader'
 import Text from 'components/Text'
 import useDarkTheme from 'hooks/useDarkTheme'
 import useShadow from 'hooks/useShadow'
-
-const images = {
-  placeholder: require('assets/images/speakers/placeholder.jpg'),
-  'dominik-tomaszewski.jpg': require('assets/images/speakers/dominik-tomaszewski.jpg'),
-  'ewa-kaminska.jpg': require('assets/images/speakers/ewa-kaminska.jpg'),
-  'jacek-gromadzki.jpg': require('assets/images/speakers/jacek-gromadzki.jpg'),
-  'luke-greenwood.jpg': require('assets/images/speakers/luke-greenwood.jpg'),
-  'marek-kaminski.jpg': require('assets/images/speakers/marek-kaminski.jpg'),
-  'zbyszek-zarozny.jpg': require('assets/images/speakers/zbyszek-zarozny.jpg'),
-}
+import speakerImages from 'utils/speakerImages'
 
 const SpeakerCard: FC<Pick<Speaker, 'name' | 'description' | 'image'>> = ({ name, image }) => {
   const isDark = useDarkTheme()
@@ -32,9 +23,9 @@ const SpeakerCard: FC<Pick<Speaker, 'name' | 'description' | 'image'>> = ({ name
           <Content style={!isDark ? { backgroundColor: theme.color.light } : {}}>
             <Photo
               source={
-                image && Object.keys(images).includes(image)
-                  ? images[image as keyof typeof images]
-                  : images.placeholder
+                image && Object.keys(speakerImages).includes(image)
+                  ? speakerImages[image as keyof typeof speakerImages]
+                  : speakerImages.placeholder
               }
               style={{ height: 160, width: 600 }}
             />

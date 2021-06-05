@@ -83,6 +83,9 @@ export const TopicEdit = (
         choices={locations}
         resettable
       />
+      <ReferenceInput label="mówca" source="speaker_id" reference="speaker" resettable>
+        <SelectInput optionText="name" />
+      </ReferenceInput>
     </SimpleForm>
   </Edit>
 )
@@ -119,6 +122,9 @@ export const TopicCreate = (props) => {
           choices={locations}
           resettable
         />
+        <ReferenceInput label="mówca" source="speaker_id" reference="speaker" resettable>
+          <SelectInput optionText="name" />
+        </ReferenceInput>
       </SimpleForm>
     </Create>
   )

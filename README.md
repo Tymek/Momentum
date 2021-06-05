@@ -9,7 +9,16 @@
 - [Docker](https://docs.docker.com/engine/install/),
 - [docker-componse](https://docs.docker.com/compose/install/).
 
-### Installation
+### Quick start
+
+Development without local backend depends on setting `API_URL` in `packages/app/.env` to
+`https://momentum.scrlk.pl/graphql`. Do not do this if you intend to use local backend.
+
+Only step needed to start frontend after that is `yarn && yarn app` command.
+
+### With backend
+
+#### Installation
 
 1. Run `yarn install`.
 2. Run `yarn build`.
@@ -18,12 +27,12 @@
    `docker-compose down`
 4. Apply migrations with `yarn migrate`
 
-### Development (🐧|🍏)
+#### Development (🐧|🍏)
 
 - Admin panel is available on [`localhost:3000/panel`](`http://localhost:3000/panel`) from docker
 - Run `yarn app` to start work on Expo application (`./packages/app`)
 
-### 🪟 Windows setup
+#### 🪟 Windows setup
 
 On Windows some development servers are not Dockerized.
 

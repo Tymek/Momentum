@@ -31,6 +31,14 @@
       - updated_at
       filter: {}
       allow_aggregations: true
+  - role: user
+    permission:
+      columns:
+      - content
+      - id
+      - published_at
+      - title
+      filter: {}
   update_permissions:
   - role: manager
     permission:
@@ -75,6 +83,13 @@
       - updated_at
       filter: {}
       allow_aggregations: true
+  - role: user
+    permission:
+      columns:
+      - content
+      - meta
+      - title
+      filter: {}
   update_permissions:
   - role: manager
     permission:
@@ -91,6 +106,10 @@
 - table:
     schema: public
     name: session
+  object_relationships:
+  - name: speaker
+    using:
+      foreign_key_constraint_on: speaker_id
   array_relationships:
   - name: topics
     using:
@@ -108,6 +127,7 @@
       - ends_at
       - id
       - name
+      - speaker_id
       backend_only: false
   select_permissions:
   - role: anonymous
@@ -117,18 +137,29 @@
       - ends_at
       - id
       - name
+      - speaker_id
       filter: {}
   - role: manager
     permission:
       columns:
-      - name
       - begins_at
       - created_at
       - ends_at
-      - updated_at
       - id
+      - name
+      - speaker_id
+      - updated_at
       filter: {}
       allow_aggregations: true
+  - role: user
+    permission:
+      columns:
+      - begins_at
+      - ends_at
+      - id
+      - name
+      - speaker_id
+      filter: {}
   update_permissions:
   - role: manager
     permission:
@@ -137,6 +168,7 @@
       - ends_at
       - id
       - name
+      - speaker_id
       filter: {}
       check: null
   delete_permissions:
@@ -146,6 +178,21 @@
 - table:
     schema: public
     name: speaker
+  array_relationships:
+  - name: sessions
+    using:
+      foreign_key_constraint_on:
+        column: speaker_id
+        table:
+          schema: public
+          name: session
+  - name: topics
+    using:
+      foreign_key_constraint_on:
+        column: speaker_id
+        table:
+          schema: public
+          name: topic
   insert_permissions:
   - role: manager
     permission:
@@ -205,6 +252,9 @@
   - name: session
     using:
       foreign_key_constraint_on: session_id
+  - name: speaker
+    using:
+      foreign_key_constraint_on: speaker_id
   insert_permissions:
   - role: manager
     permission:
@@ -214,6 +264,7 @@
       - id
       - location
       - session_id
+      - speaker_id
       - subject
       backend_only: false
   select_permissions:
@@ -224,6 +275,7 @@
       - id
       - location
       - session_id
+      - speaker_id
       - subject
       filter: {}
   - role: manager
@@ -234,10 +286,21 @@
       - id
       - location
       - session_id
+      - speaker_id
       - subject
       - updated_at
       filter: {}
       allow_aggregations: true
+  - role: user
+    permission:
+      columns:
+      - description
+      - id
+      - location
+      - session_id
+      - speaker_id
+      - subject
+      filter: {}
   update_permissions:
   - role: manager
     permission:
@@ -246,6 +309,7 @@
       - id
       - location
       - session_id
+      - speaker_id
       - subject
       filter: {}
       check: null

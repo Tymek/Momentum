@@ -4,6 +4,9 @@ query getSchedule {
     name
     begins_at
     ends_at
+    speaker {
+      ...speaker
+    }
     topics(order_by: { subject: asc }) {
       ...topic
     }

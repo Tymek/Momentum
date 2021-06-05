@@ -9,6 +9,7 @@ import {
   EditButton,
   TopToolbar,
   Button,
+  ReferenceField,
 } from 'react-admin'
 import { Link } from 'react-router-dom'
 import SpeakerNotesIcon from '@material-ui/icons/SpeakerNotes'
@@ -71,6 +72,9 @@ const SessionShow = (props) => (
     <TabbedShowLayout>
       <Tab label="sesja">
         <TextField source="name" emptyText="&mdash;" />
+        <ReferenceField label="mówca" source="speaker_id" reference="speaker" emptyText="&mdash;">
+          <TextField source="name" />
+        </ReferenceField>
         <FunctionField
           label="data i godzina"
           render={(record) =>
@@ -82,7 +86,6 @@ const SessionShow = (props) => (
         <ReferenceManyField reference="topic" target="session_id" label="tematy">
           <Total />
         </ReferenceManyField>
-        <TextField source="speaker" emptyText="&mdash;" />
       </Tab>
       <Tab label="tematy" path="topics">
         <ReferenceManyField reference="topic" target="session_id" addLabel={false}>

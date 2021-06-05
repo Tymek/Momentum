@@ -1,0 +1,6 @@
+fragment speaker on speaker {
+  id
+  name
+  description
+  image
+}

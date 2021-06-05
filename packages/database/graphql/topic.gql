@@ -3,4 +3,7 @@ fragment topic on topic {
   subject
   description
   location
+  speaker {
+    ...speaker
+  }
 }

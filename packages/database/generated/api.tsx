@@ -18,6 +18,7 @@ export type Scalars = {
   uuid: string;
 };
 
+
 /** Boolean expression to compare columns of type "String". All fields are combined with logical 'AND'. */
 export type String_Comparison_Exp = {
   _eq?: Maybe<Scalars['String']>;
@@ -52,8 +53,8 @@ export type String_Comparison_Exp = {
 };
 
 export type UserInfo = {
-  id: Scalars['uuid'];
-  username: Scalars['String'];
+  id?: Maybe<Scalars['uuid']>;
+  username?: Maybe<Scalars['String']>;
 };
 
 
@@ -936,6 +937,9 @@ export type Session = {
   ends_at?: Maybe<Scalars['timestamptz']>;
   id: Scalars['uuid'];
   name?: Maybe<Scalars['String']>;
+  /** An object relationship */
+  speaker?: Maybe<Speaker>;
+  speaker_id?: Maybe<Scalars['uuid']>;
   /** An array relationship */
   topics: Array<Topic>;
   /** An aggregate relationship */
@@ -983,6 +987,20 @@ export type Session_Aggregate_FieldsCountArgs = {
   distinct?: Maybe<Scalars['Boolean']>;
 };
 
+/** order by aggregate values of table "session" */
+export type Session_Aggregate_Order_By = {
+  count?: Maybe<Order_By>;
+  max?: Maybe<Session_Max_Order_By>;
+  min?: Maybe<Session_Min_Order_By>;
+};
+
+/** input type for inserting array relation for remote table "session" */
+export type Session_Arr_Rel_Insert_Input = {
+  data: Array<Session_Insert_Input>;
+  /** on conflict condition */
+  on_conflict?: Maybe<Session_On_Conflict>;
+};
+
 /** Boolean expression to filter rows from the table "session". All fields are combined with a logical 'AND'. */
 export type Session_Bool_Exp = {
   _and?: Maybe<Array<Session_Bool_Exp>>;
@@ -993,6 +1011,8 @@ export type Session_Bool_Exp = {
   ends_at?: Maybe<Timestamptz_Comparison_Exp>;
   id?: Maybe<Uuid_Comparison_Exp>;
   name?: Maybe<String_Comparison_Exp>;
+  speaker?: Maybe<Speaker_Bool_Exp>;
+  speaker_id?: Maybe<Uuid_Comparison_Exp>;
   topics?: Maybe<Topic_Bool_Exp>;
   updated_at?: Maybe<Timestamptz_Comparison_Exp>;
 };
@@ -1010,6 +1030,8 @@ export type Session_Insert_Input = {
   ends_at?: Maybe<Scalars['timestamptz']>;
   id?: Maybe<Scalars['uuid']>;
   name?: Maybe<Scalars['String']>;
+  speaker?: Maybe<Speaker_Obj_Rel_Insert_Input>;
+  speaker_id?: Maybe<Scalars['uuid']>;
   topics?: Maybe<Topic_Arr_Rel_Insert_Input>;
   updated_at?: Maybe<Scalars['timestamptz']>;
 };
@@ -1021,7 +1043,19 @@ export type Session_Max_Fields = {
   ends_at?: Maybe<Scalars['timestamptz']>;
   id?: Maybe<Scalars['uuid']>;
   name?: Maybe<Scalars['String']>;
+  speaker_id?: Maybe<Scalars['uuid']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** order by max() on columns of table "session" */
+export type Session_Max_Order_By = {
+  begins_at?: Maybe<Order_By>;
+  created_at?: Maybe<Order_By>;
+  ends_at?: Maybe<Order_By>;
+  id?: Maybe<Order_By>;
+  name?: Maybe<Order_By>;
+  speaker_id?: Maybe<Order_By>;
+  updated_at?: Maybe<Order_By>;
 };
 
 /** aggregate min on columns */
@@ -1031,7 +1065,19 @@ export type Session_Min_Fields = {
   ends_at?: Maybe<Scalars['timestamptz']>;
   id?: Maybe<Scalars['uuid']>;
   name?: Maybe<Scalars['String']>;
+  speaker_id?: Maybe<Scalars['uuid']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** order by min() on columns of table "session" */
+export type Session_Min_Order_By = {
+  begins_at?: Maybe<Order_By>;
+  created_at?: Maybe<Order_By>;
+  ends_at?: Maybe<Order_By>;
+  id?: Maybe<Order_By>;
+  name?: Maybe<Order_By>;
+  speaker_id?: Maybe<Order_By>;
+  updated_at?: Maybe<Order_By>;
 };
 
 /** response of any mutation on the table "session" */
@@ -1063,6 +1109,8 @@ export type Session_Order_By = {
   ends_at?: Maybe<Order_By>;
   id?: Maybe<Order_By>;
   name?: Maybe<Order_By>;
+  speaker?: Maybe<Speaker_Order_By>;
+  speaker_id?: Maybe<Order_By>;
   topics_aggregate?: Maybe<Topic_Aggregate_Order_By>;
   updated_at?: Maybe<Order_By>;
 };
@@ -1085,6 +1133,8 @@ export enum Session_Select_Column {
   /** column name */
   Name = 'name',
   /** column name */
+  SpeakerId = 'speaker_id',
+  /** column name */
   UpdatedAt = 'updated_at'
 }
 
@@ -1095,6 +1145,7 @@ export type Session_Set_Input = {
   ends_at?: Maybe<Scalars['timestamptz']>;
   id?: Maybe<Scalars['uuid']>;
   name?: Maybe<Scalars['String']>;
+  speaker_id?: Maybe<Scalars['uuid']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
 };
 
@@ -1111,6 +1162,8 @@ export enum Session_Update_Column {
   /** column name */
   Name = 'name',
   /** column name */
+  SpeakerId = 'speaker_id',
+  /** column name */
   UpdatedAt = 'updated_at'
 }
 
@@ -1121,7 +1174,55 @@ export type Speaker = {
   id: Scalars['uuid'];
   image?: Maybe<Scalars['String']>;
   name: Scalars['String'];
+  /** An array relationship */
+  sessions: Array<Session>;
+  /** An aggregate relationship */
+  sessions_aggregate: Session_Aggregate;
+  /** An array relationship */
+  topics: Array<Topic>;
+  /** An aggregate relationship */
+  topics_aggregate: Topic_Aggregate;
   updated_at: Scalars['timestamptz'];
+};
+
+
+/** columns and relationships of "speaker" */
+export type SpeakerSessionsArgs = {
+  distinct_on?: Maybe<Array<Session_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Session_Order_By>>;
+  where?: Maybe<Session_Bool_Exp>;
+};
+
+
+/** columns and relationships of "speaker" */
+export type SpeakerSessions_AggregateArgs = {
+  distinct_on?: Maybe<Array<Session_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Session_Order_By>>;
+  where?: Maybe<Session_Bool_Exp>;
+};
+
+
+/** columns and relationships of "speaker" */
+export type SpeakerTopicsArgs = {
+  distinct_on?: Maybe<Array<Topic_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Topic_Order_By>>;
+  where?: Maybe<Topic_Bool_Exp>;
+};
+
+
+/** columns and relationships of "speaker" */
+export type SpeakerTopics_AggregateArgs = {
+  distinct_on?: Maybe<Array<Topic_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Topic_Order_By>>;
+  where?: Maybe<Topic_Bool_Exp>;
 };
 
 /** aggregated selection of "speaker" */
@@ -1154,6 +1255,8 @@ export type Speaker_Bool_Exp = {
   id?: Maybe<Uuid_Comparison_Exp>;
   image?: Maybe<String_Comparison_Exp>;
   name?: Maybe<String_Comparison_Exp>;
+  sessions?: Maybe<Session_Bool_Exp>;
+  topics?: Maybe<Topic_Bool_Exp>;
   updated_at?: Maybe<Timestamptz_Comparison_Exp>;
 };
 
@@ -1170,6 +1273,8 @@ export type Speaker_Insert_Input = {
   id?: Maybe<Scalars['uuid']>;
   image?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
+  sessions?: Maybe<Session_Arr_Rel_Insert_Input>;
+  topics?: Maybe<Topic_Arr_Rel_Insert_Input>;
   updated_at?: Maybe<Scalars['timestamptz']>;
 };
 
@@ -1201,6 +1306,13 @@ export type Speaker_Mutation_Response = {
   returning: Array<Speaker>;
 };
 
+/** input type for inserting object relation for remote table "speaker" */
+export type Speaker_Obj_Rel_Insert_Input = {
+  data: Speaker_Insert_Input;
+  /** on conflict condition */
+  on_conflict?: Maybe<Speaker_On_Conflict>;
+};
+
 /** on conflict condition type for table "speaker" */
 export type Speaker_On_Conflict = {
   constraint: Speaker_Constraint;
@@ -1215,6 +1327,8 @@ export type Speaker_Order_By = {
   id?: Maybe<Order_By>;
   image?: Maybe<Order_By>;
   name?: Maybe<Order_By>;
+  sessions_aggregate?: Maybe<Session_Aggregate_Order_By>;
+  topics_aggregate?: Maybe<Topic_Aggregate_Order_By>;
   updated_at?: Maybe<Order_By>;
 };
 
@@ -1465,6 +1579,9 @@ export type Topic = {
   /** An object relationship */
   session: Session;
   session_id: Scalars['uuid'];
+  /** An object relationship */
+  speaker?: Maybe<Speaker>;
+  speaker_id?: Maybe<Scalars['uuid']>;
   subject?: Maybe<Scalars['String']>;
   updated_at: Scalars['timestamptz'];
 };
@@ -1514,6 +1631,8 @@ export type Topic_Bool_Exp = {
   location?: Maybe<String_Comparison_Exp>;
   session?: Maybe<Session_Bool_Exp>;
   session_id?: Maybe<Uuid_Comparison_Exp>;
+  speaker?: Maybe<Speaker_Bool_Exp>;
+  speaker_id?: Maybe<Uuid_Comparison_Exp>;
   subject?: Maybe<String_Comparison_Exp>;
   updated_at?: Maybe<Timestamptz_Comparison_Exp>;
 };
@@ -1532,6 +1651,8 @@ export type Topic_Insert_Input = {
   location?: Maybe<Scalars['String']>;
   session?: Maybe<Session_Obj_Rel_Insert_Input>;
   session_id?: Maybe<Scalars['uuid']>;
+  speaker?: Maybe<Speaker_Obj_Rel_Insert_Input>;
+  speaker_id?: Maybe<Scalars['uuid']>;
   subject?: Maybe<Scalars['String']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
 };
@@ -1543,6 +1664,7 @@ export type Topic_Max_Fields = {
   id?: Maybe<Scalars['uuid']>;
   location?: Maybe<Scalars['String']>;
   session_id?: Maybe<Scalars['uuid']>;
+  speaker_id?: Maybe<Scalars['uuid']>;
   subject?: Maybe<Scalars['String']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
 };
@@ -1554,6 +1676,7 @@ export type Topic_Max_Order_By = {
   id?: Maybe<Order_By>;
   location?: Maybe<Order_By>;
   session_id?: Maybe<Order_By>;
+  speaker_id?: Maybe<Order_By>;
   subject?: Maybe<Order_By>;
   updated_at?: Maybe<Order_By>;
 };
@@ -1565,6 +1688,7 @@ export type Topic_Min_Fields = {
   id?: Maybe<Scalars['uuid']>;
   location?: Maybe<Scalars['String']>;
   session_id?: Maybe<Scalars['uuid']>;
+  speaker_id?: Maybe<Scalars['uuid']>;
   subject?: Maybe<Scalars['String']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
 };
@@ -1576,6 +1700,7 @@ export type Topic_Min_Order_By = {
   id?: Maybe<Order_By>;
   location?: Maybe<Order_By>;
   session_id?: Maybe<Order_By>;
+  speaker_id?: Maybe<Order_By>;
   subject?: Maybe<Order_By>;
   updated_at?: Maybe<Order_By>;
 };
@@ -1603,6 +1728,8 @@ export type Topic_Order_By = {
   location?: Maybe<Order_By>;
   session?: Maybe<Session_Order_By>;
   session_id?: Maybe<Order_By>;
+  speaker?: Maybe<Speaker_Order_By>;
+  speaker_id?: Maybe<Order_By>;
   subject?: Maybe<Order_By>;
   updated_at?: Maybe<Order_By>;
 };
@@ -1625,6 +1752,8 @@ export enum Topic_Select_Column {
   /** column name */
   SessionId = 'session_id',
   /** column name */
+  SpeakerId = 'speaker_id',
+  /** column name */
   Subject = 'subject',
   /** column name */
   UpdatedAt = 'updated_at'
@@ -1637,6 +1766,7 @@ export type Topic_Set_Input = {
   id?: Maybe<Scalars['uuid']>;
   location?: Maybe<Scalars['String']>;
   session_id?: Maybe<Scalars['uuid']>;
+  speaker_id?: Maybe<Scalars['uuid']>;
   subject?: Maybe<Scalars['String']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
 };
@@ -1653,6 +1783,8 @@ export enum Topic_Update_Column {
   Location = 'location',
   /** column name */
   SessionId = 'session_id',
+  /** column name */
+  SpeakerId = 'speaker_id',
   /** column name */
   Subject = 'subject',
   /** column name */
@@ -1835,7 +1967,7 @@ export type GetScheduleQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type GetScheduleQuery = { session: Array<(
     Pick<Session, 'id' | 'name' | 'begins_at' | 'ends_at'>
-    & { topics: Array<TopicFragment> }
+    & { speaker?: Maybe<SpeakerFragment>, topics: Array<TopicFragment> }
   )> };
 
 export type GetSpeakersQueryVariables = Exact<{ [key: string]: never; }>;
@@ -1845,7 +1977,12 @@ export type GetSpeakersQuery = { speaker: Array<Pick<Speaker, 'id' | 'name' | 'd
 
 export type PageFragment = Pick<Page, 'title' | 'content' | 'meta'>;
 
-export type TopicFragment = Pick<Topic, 'id' | 'subject' | 'description' | 'location'>;
+export type SpeakerFragment = Pick<Speaker, 'id' | 'name' | 'description' | 'image'>;
+
+export type TopicFragment = (
+  Pick<Topic, 'id' | 'subject' | 'description' | 'location'>
+  & { speaker?: Maybe<SpeakerFragment> }
+);
 
 export const PageFragmentDoc = gql`
     fragment page on page {
@@ -1854,14 +1991,25 @@ export const PageFragmentDoc = gql`
   meta
 }
     `;
+export const SpeakerFragmentDoc = gql`
+    fragment speaker on speaker {
+  id
+  name
+  description
+  image
+}
+    `;
 export const TopicFragmentDoc = gql`
     fragment topic on topic {
   id
   subject
   description
   location
+  speaker {
+    ...speaker
+  }
 }
-    `;
+    ${SpeakerFragmentDoc}`;
 export const CreatePageDocument = gql`
     mutation createPage($title: String!, $content: String, $meta: jsonb) {
   insert_page(objects: {title: $title, content: $content, meta: $meta}) {
@@ -1944,12 +2092,16 @@ export const GetScheduleDocument = gql`
     name
     begins_at
     ends_at
+    speaker {
+      ...speaker
+    }
     topics(order_by: {subject: asc}) {
       ...topic
     }
   }
 }
-    ${TopicFragmentDoc}`;
+    ${SpeakerFragmentDoc}
+${TopicFragmentDoc}`;
 
 /**
  * __useGetScheduleQuery__
