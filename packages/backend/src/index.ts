@@ -39,15 +39,18 @@ app.get('/*', (req, res, next) => {
 })
 
 // Proxy GraphQL
+const gqlProxySettings = {
+  target: isWindows ? 'http://localhost:8080' : 'http://hasura:8080',
+  changeOrigin: true,
+}
+app.use(['/v1', '/v1/*'], createProxyMiddleware(gqlProxySettings))
 app.use(
-  ['/graphql', '/v1'],
+  '/graphql',
   createProxyMiddleware({
-    target: isWindows ? 'http://localhost:8080' : 'http://hasura:8080',
+    ...gqlProxySettings,
     pathRewrite: {
       '^/graphql': '/v1/graphql',
     },
-    changeOrigin: true,
-    // logLevel: 'debug',
   }),
 )
 
