@@ -14,12 +14,23 @@ import {
 // import { DateTimeField } from 'components/fields'
 
 const images = [
+  { id: 'ania-greenwood.jpg', name: 'ania-greenwood.jpg' },
+  { id: 'augustyniaki.jpg', name: 'augustyniaki.jpg' },
+  { id: 'biskup.jpg', name: 'biskup.jpg' },
   { id: 'dominik-tomaszewski.jpg', name: 'dominik-tomaszewski.jpg' },
-  { id: 'ewa-kaminska.jpg', name: 'ewa-kaminska.jpg' },
+  { id: 'ewa-wasilewska-kaminska.jpg', name: 'ewa-wasilewska-kaminska.jpg' },
   { id: 'jacek-gromadzki.jpg', name: 'jacek-gromadzki.jpg' },
+  { id: 'kuzynin.jpg', name: 'kuzynin.jpg' },
+  { id: 'luiz-f-cardoso.jpg', name: 'luiz-f-cardoso.jpg' },
   { id: 'luke-greenwood.jpg', name: 'luke-greenwood.jpg' },
-  { id: 'marek-kaminski.jpg', name: 'marek-kaminski.jpg' },
-  { id: 'zbyszek-zarozny.jpg', name: 'zbyszek-zarozny.jpg' },
+  { id: 'malgorzata-bieniaszewska.jpg', name: 'malgorzata-bieniaszewska.jpg' },
+  { id: 'marciniaki.jpg', name: 'marciniaki.jpg' },
+  { id: 'marcin-lindner.jpg', name: 'marcin-lindner.jpg' },
+  { id: 'maria-marszalek.jpg', name: 'maria-marszalek.jpg' },
+  { id: 'marysia-lindner.jpg', name: 'marysia-lindner.jpg' },
+  { id: 'tomaszewscy.jpg', name: 'tomaszewscy.jpg' },
+  { id: 'weronika-butowicz.jpg', name: 'weronika-butowicz.jpg' },
+  { id: 'zbyszek-zarozny.jpeg', name: 'zbyszek-zarozny.jpeg' },
 ]
 
 export const SpeakerList = (props) => (
