@@ -32,7 +32,7 @@ services:
       - lan
 
   hasura:
-    image: '${HASURA_IMAGE:-hasura/graphql-engine:v2.0.0-alpha.10.cli-migrations-v3}'
+    image: '${HASURA_IMAGE:-hasura/graphql-engine:v2.0.0-beta.1.cli-migrations-v3}'
     depends_on:
       - 'postgres'
     restart: always

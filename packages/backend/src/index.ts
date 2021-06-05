@@ -40,7 +40,7 @@ app.get('/*', (req, res, next) => {
 
 // Proxy GraphQL
 app.use(
-  ['/graphql', '/v1/graphql'],
+  ['/graphql', '/v1'],
   createProxyMiddleware({
     target: isWindows ? 'http://localhost:8080' : 'http://hasura:8080',
     pathRewrite: {

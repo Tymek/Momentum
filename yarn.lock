@@ -11857,10 +11857,10 @@ hashids@1.1.4:
   resolved "https://registry.yarnpkg.com/hashids/-/hashids-1.1.4.tgz#e4ff92ad66b684a3bd6aace7c17d66618ee5fa21"
   integrity sha512-U/fnTE3edW0AV92ZI/BfEluMZuVcu3MDOopsN7jS+HqDYcarQo8rXQiWlsBlm0uX48/taYSdxRsfzh2HRg5Z6w==
 
-hasura-cli@2.0.0-alpha.10:
-  version "2.0.0-alpha.10"
-  resolved "https://registry.yarnpkg.com/hasura-cli/-/hasura-cli-2.0.0-alpha.10.tgz#17f91d5944931314484d9e07ea56fe412e695f46"
-  integrity sha512-QnBSGgR5RamEoXfScQj+uY69HW94U5F8lhSJNZhaZ52Po+LwcZEvSaCRJ7jRK5XGyYnvCeM13dlwmdeCx9ngcw==
+hasura-cli@2.0.0-beta.1:
+  version "2.0.0-beta.1"
+  resolved "https://registry.yarnpkg.com/hasura-cli/-/hasura-cli-2.0.0-beta.1.tgz#cfa76e85010af1c48992365672c110d7dc74f444"
+  integrity sha512-SetnuMVwlHXj//NpwOdQq37SFJJ3oVmzp7DtOny/X/G2Kza3mff8oNXZ8GvBUfpwkV0Gac3T6H5qlSvztk5p+w==
   dependencies:
     axios "^0.21.1"
     chalk "^2.4.2"
