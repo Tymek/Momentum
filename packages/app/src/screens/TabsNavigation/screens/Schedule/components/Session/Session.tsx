@@ -2,96 +2,33 @@ import React, { FC } from 'react'
 import { format, parseISO } from 'date-fns'
 
 import { GetScheduleQuery } from '@-local/db/lib/generated/api'
-import Text from 'components/Text'
-import styled from '@emotion/native'
-import useShadow from 'hooks/useShadow'
-import Speaker from './components/Speaker'
+import Block from './components/Block'
+import { View } from 'react-native'
 
 type SessionProps = ArrayElement<GetScheduleQuery['session']>
 
-const Session: FC<SessionProps> = ({
-  name,
-  begins_at,
-  /*ends_at,*/
-  topics,
-  speaker,
-}) => {
-  const shadow = useShadow(2)
+const Session: FC<SessionProps> = ({ name, begins_at, ends_at, topics, speaker, location }) => {
   const hasTopics = topics && topics.length > 0
   const muted = Number.parseInt(format(parseISO(begins_at), 'H'), 10) < 4
 
   return (
-    <Wrapper style={!hasTopics && !muted ? shadow : {}} muted={muted} withTopics={hasTopics}>
-      <Info>
-        <SessionName>{name}</SessionName>
-        <SessionTime>{format(parseISO(begins_at), 'HH:mm')}</SessionTime>
-        {/* {ends_at && <Text>{format(parseISO(ends_at), 'HH:mm')}</Text>} */}
-      </Info>
-      {speaker && (
-        <SessionSpeaker>
-          <Speaker {...speaker} />
-        </SessionSpeaker>
-      )}
+    <Block
+      muted={muted || hasTopics}
+      title={name}
+      speaker={speaker}
+      location={location}
+      begins_at={begins_at}
+      ends_at={ends_at}
+    >
       {hasTopics && (
-        <TopicsSection>
+        <View>
           {topics.map((topic) => (
-            <Topic key={topic.id} style={shadow}>
-              <Text>{topic.subject}</Text>
-              {topic.speaker && (
-                <TopicSpeaker>
-                  <Speaker {...topic.speaker} />
-                </TopicSpeaker>
-              )}
-            </Topic>
+            <Block key={topic.id} {...topic} title={topic.subject} isTopic />
           ))}
-        </TopicsSection>
+        </View>
       )}
-    </Wrapper>
+    </Block>
   )
 }
-
-const Wrapper = styled.View<{ withTopics?: boolean; muted?: boolean }>`
-  background: ${({ theme, muted, withTopics }) =>
-    withTopics || muted ? 'transparent' : theme.color.background};
-  margin-bottom: ${({ theme }) => `${theme.spacing.m}px`};
-  border-radius: ${({ theme }) => `${theme.borderRadius.m}px`};
-`
-
-const Info = styled.View`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding: ${({ theme }) => `${theme.spacing.m}px`};
-`
-
-const SessionName = styled(Text)`
-  font-family: ${({ theme }) => theme.font.headers};
-  text-transform: uppercase;
-  font-size: ${({ theme }) => `${theme.fontSize.l}px`};
-  margin-right: auto;
-`
-
-const SessionTime = styled(Text)`
-  font-family: ${({ theme }) => theme.font.accent};
-`
-
-const SessionSpeaker = styled.View`
-  padding: ${({ theme }) => `0 ${theme.spacing.m}px ${theme.spacing.m}px`};
-`
-
-const TopicSpeaker = styled.View`
-  padding-top: ${({ theme }) => `${theme.spacing.s}px`};
-`
-
-const TopicsSection = styled.View`
-  padding-bottom: ${({ theme }) => `${theme.spacing.s}px`};
-`
-
-const Topic = styled.View`
-  margin-bottom: ${({ theme }) => `${theme.spacing.m}px`};
-  padding: ${({ theme }) => `${theme.spacing.s}px ${theme.spacing.m}px`};
-  background: ${({ theme }) => theme.color.background};
-  border-radius: ${({ theme }) => `${theme.borderRadius.m}px`};
-`
 
 export default Session

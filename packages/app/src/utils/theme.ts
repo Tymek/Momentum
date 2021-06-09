@@ -17,8 +17,8 @@ const font = {
   accent: 'Proxima-Light',
 }
 
-const fontBase = 18 // @see https://type-scale.com/
-const fontRatio = 1.25 // Major Third
+const fontBase = 17 // @see https://type-scale.com/
+const fontRatio = 1.333333
 const fontScale = {
   xxxxxl: 6,
   xxxxl: 5,
@@ -49,13 +49,13 @@ const lineHeight = {
 }
 
 const spacing = {
-  xxs: 4,
-  xs: 8,
-  s: 12,
-  m: 16,
-  l: 24,
-  xl: 36,
-  xxl: 48,
+  xxs: 3,
+  xs: 7,
+  s: 11,
+  m: 15,
+  l: 21,
+  xl: 42,
+  xxl: 56,
 }
 
 const borderRadius = {
