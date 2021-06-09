@@ -7,7 +7,7 @@ exports[`component StyledText renders correctly 1`] = `
       Object {
         "color": "#121212",
         "fontFamily": "Proxima",
-        "fontSize": 18,
+        "fontSize": 17,
       },
       undefined,
     ]
