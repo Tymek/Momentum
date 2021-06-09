@@ -20,6 +20,30 @@ const DaysTabs: FC = () => {
   const { loading, error, data } = useGetScheduleQuery()
   const { session } = data || {}
   const days = useMemo(() => session && getDays(session), [session])
+  const tabs = useMemo(
+    () =>
+      days
+        ? days.map(({ id, name, shortName, sessions }) => {
+            const Page: FC = () => (
+              <TextPage>
+                {sessions.map((session) => (
+                  <Session key={session.id} {...session} />
+                ))}
+              </TextPage>
+            )
+
+            return (
+              <Tab.Screen
+                key={id}
+                name={name}
+                component={Page}
+                options={{ title: `Plan na ${name} | Momentum`, tabBarLabel: shortName }}
+              />
+            )
+          })
+        : [],
+    [days],
+  )
 
   if (loading) return <Loader />
   if (error || !data || !days) throw error
@@ -28,25 +52,7 @@ const DaysTabs: FC = () => {
 
   return (
     <Tab.Navigator screenOptions={{ title: 'Plan' }} initialRouteName={currentDay}>
-      {days &&
-        days.map(({ id, name, sessions }) => {
-          const Page: FC = () => (
-            <TextPage>
-              {sessions.map((session) => (
-                <Session key={session.id} {...session} />
-              ))}
-            </TextPage>
-          )
-
-          return (
-            <Tab.Screen
-              key={id}
-              name={name}
-              component={Page}
-              options={{ title: `Plan na ${name} | Momentum`, tabBarLabel: id }}
-            />
-          )
-        })}
+      {tabs}
     </Tab.Navigator>
   )
 }

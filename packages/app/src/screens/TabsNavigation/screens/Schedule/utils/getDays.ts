@@ -5,6 +5,7 @@ import { pl } from 'date-fns/locale'
 export type Day = {
   id: string
   name: string
+  shortName: string
   value: Date
   sessions: GetScheduleQuery['session']
 }
@@ -14,7 +15,10 @@ const getDays = (sessions: GetScheduleQuery['session']): Day[] => {
 
   for (const session of sessions) {
     const day = parseISO(session.begins_at)
-    const dayId = format(day, 'E', { locale: pl }).replace('.', '')
+    const hour = Number.parseInt(format(day, 'H'), 10)
+    const isAfterMidnight = hour < 4
+    const dayId = `${Number.parseInt(format(day, 'DDD')) - (isAfterMidnight ? 1 : 0)}`
+    const shortName = format(day, 'E', { locale: pl }).replace('.', '')
     const dayName = format(day, 'EEEE', { locale: pl })
     const index = days.findIndex(({ id }) => id === dayId) // NOTE: Very crude!
 
@@ -22,6 +26,7 @@ const getDays = (sessions: GetScheduleQuery['session']): Day[] => {
       days.push({
         id: dayId,
         name: dayName,
+        shortName,
         value: day,
         sessions: [session],
       })

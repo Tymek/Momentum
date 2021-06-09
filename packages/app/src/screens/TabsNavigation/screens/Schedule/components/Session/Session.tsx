@@ -9,12 +9,19 @@ import Speaker from './components/Speaker'
 
 type SessionProps = ArrayElement<GetScheduleQuery['session']>
 
-const Session: FC<SessionProps> = ({ name, begins_at, /*ends_at,*/ topics, speaker }) => {
-  const shadow = useShadow(3)
+const Session: FC<SessionProps> = ({
+  name,
+  begins_at,
+  /*ends_at,*/
+  topics,
+  speaker,
+}) => {
+  const shadow = useShadow(2)
   const hasTopics = topics && topics.length > 0
+  const muted = Number.parseInt(format(parseISO(begins_at), 'H'), 10) < 4
 
   return (
-    <Wrapper style={shadow} withTopics={hasTopics}>
+    <Wrapper style={!hasTopics && !muted ? shadow : {}} muted={muted} withTopics={hasTopics}>
       <Info>
         <SessionName>{name}</SessionName>
         <SessionTime>{format(parseISO(begins_at), 'HH:mm')}</SessionTime>
@@ -28,7 +35,7 @@ const Session: FC<SessionProps> = ({ name, begins_at, /*ends_at,*/ topics, speak
       {hasTopics && (
         <TopicsSection>
           {topics.map((topic) => (
-            <Topic key={topic.id}>
+            <Topic key={topic.id} style={shadow}>
               <Text>{topic.subject}</Text>
               {topic.speaker && (
                 <TopicSpeaker>
@@ -43,8 +50,9 @@ const Session: FC<SessionProps> = ({ name, begins_at, /*ends_at,*/ topics, speak
   )
 }
 
-const Wrapper = styled.View<{ withTopics?: boolean }>`
-  background: ${({ theme, withTopics }) => (withTopics ? 'transparent' : theme.color.background)};
+const Wrapper = styled.View<{ withTopics?: boolean; muted?: boolean }>`
+  background: ${({ theme, muted, withTopics }) =>
+    withTopics || muted ? 'transparent' : theme.color.background};
   margin-bottom: ${({ theme }) => `${theme.spacing.m}px`};
   border-radius: ${({ theme }) => `${theme.borderRadius.m}px`};
 `
@@ -80,7 +88,7 @@ const TopicsSection = styled.View`
 `
 
 const Topic = styled.View`
-  margin-bottom: ${({ theme }) => `${theme.spacing.xs}px`};
+  margin-bottom: ${({ theme }) => `${theme.spacing.m}px`};
   padding: ${({ theme }) => `${theme.spacing.s}px ${theme.spacing.m}px`};
   background: ${({ theme }) => theme.color.background};
   border-radius: ${({ theme }) => `${theme.borderRadius.m}px`};
