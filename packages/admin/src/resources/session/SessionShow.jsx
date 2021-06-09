@@ -83,6 +83,7 @@ const SessionShow = (props) => (
             }`
           }
         />
+        <TextField source="location" emptyText="&mdash;" />
         <ReferenceManyField reference="topic" target="session_id" label="tematy">
           <Total />
         </ReferenceManyField>

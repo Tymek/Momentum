@@ -936,6 +936,7 @@ export type Session = {
   created_at: Scalars['timestamptz'];
   ends_at?: Maybe<Scalars['timestamptz']>;
   id: Scalars['uuid'];
+  location?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
   /** An object relationship */
   speaker?: Maybe<Speaker>;
@@ -1010,6 +1011,7 @@ export type Session_Bool_Exp = {
   created_at?: Maybe<Timestamptz_Comparison_Exp>;
   ends_at?: Maybe<Timestamptz_Comparison_Exp>;
   id?: Maybe<Uuid_Comparison_Exp>;
+  location?: Maybe<String_Comparison_Exp>;
   name?: Maybe<String_Comparison_Exp>;
   speaker?: Maybe<Speaker_Bool_Exp>;
   speaker_id?: Maybe<Uuid_Comparison_Exp>;
@@ -1029,6 +1031,7 @@ export type Session_Insert_Input = {
   created_at?: Maybe<Scalars['timestamptz']>;
   ends_at?: Maybe<Scalars['timestamptz']>;
   id?: Maybe<Scalars['uuid']>;
+  location?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
   speaker?: Maybe<Speaker_Obj_Rel_Insert_Input>;
   speaker_id?: Maybe<Scalars['uuid']>;
@@ -1042,6 +1045,7 @@ export type Session_Max_Fields = {
   created_at?: Maybe<Scalars['timestamptz']>;
   ends_at?: Maybe<Scalars['timestamptz']>;
   id?: Maybe<Scalars['uuid']>;
+  location?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
   speaker_id?: Maybe<Scalars['uuid']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
@@ -1053,6 +1057,7 @@ export type Session_Max_Order_By = {
   created_at?: Maybe<Order_By>;
   ends_at?: Maybe<Order_By>;
   id?: Maybe<Order_By>;
+  location?: Maybe<Order_By>;
   name?: Maybe<Order_By>;
   speaker_id?: Maybe<Order_By>;
   updated_at?: Maybe<Order_By>;
@@ -1064,6 +1069,7 @@ export type Session_Min_Fields = {
   created_at?: Maybe<Scalars['timestamptz']>;
   ends_at?: Maybe<Scalars['timestamptz']>;
   id?: Maybe<Scalars['uuid']>;
+  location?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
   speaker_id?: Maybe<Scalars['uuid']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
@@ -1075,6 +1081,7 @@ export type Session_Min_Order_By = {
   created_at?: Maybe<Order_By>;
   ends_at?: Maybe<Order_By>;
   id?: Maybe<Order_By>;
+  location?: Maybe<Order_By>;
   name?: Maybe<Order_By>;
   speaker_id?: Maybe<Order_By>;
   updated_at?: Maybe<Order_By>;
@@ -1108,6 +1115,7 @@ export type Session_Order_By = {
   created_at?: Maybe<Order_By>;
   ends_at?: Maybe<Order_By>;
   id?: Maybe<Order_By>;
+  location?: Maybe<Order_By>;
   name?: Maybe<Order_By>;
   speaker?: Maybe<Speaker_Order_By>;
   speaker_id?: Maybe<Order_By>;
@@ -1131,6 +1139,8 @@ export enum Session_Select_Column {
   /** column name */
   Id = 'id',
   /** column name */
+  Location = 'location',
+  /** column name */
   Name = 'name',
   /** column name */
   SpeakerId = 'speaker_id',
@@ -1144,6 +1154,7 @@ export type Session_Set_Input = {
   created_at?: Maybe<Scalars['timestamptz']>;
   ends_at?: Maybe<Scalars['timestamptz']>;
   id?: Maybe<Scalars['uuid']>;
+  location?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
   speaker_id?: Maybe<Scalars['uuid']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
@@ -1159,6 +1170,8 @@ export enum Session_Update_Column {
   EndsAt = 'ends_at',
   /** column name */
   Id = 'id',
+  /** column name */
+  Location = 'location',
   /** column name */
   Name = 'name',
   /** column name */
@@ -1966,7 +1979,7 @@ export type GetScheduleQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type GetScheduleQuery = { session: Array<(
-    Pick<Session, 'id' | 'name' | 'begins_at' | 'ends_at'>
+    Pick<Session, 'id' | 'name' | 'begins_at' | 'ends_at' | 'location'>
     & { speaker?: Maybe<SpeakerFragment>, topics: Array<TopicFragment> }
   )> };
 
@@ -2092,6 +2105,7 @@ export const GetScheduleDocument = gql`
     name
     begins_at
     ends_at
+    location
     speaker {
       ...speaker
     }

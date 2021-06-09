@@ -4,6 +4,7 @@ query getSchedule {
     name
     begins_at
     ends_at
+    location
     speaker {
       ...speaker
     }

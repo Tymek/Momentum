@@ -1,5 +1,6 @@
 import { Edit, SimpleForm, TextInput, required, ReferenceInput, SelectInput } from 'react-admin'
 import DateTimeInput from 'components/DateTimeInput'
+import LocationInput from 'components/LocationInput'
 
 const SessionEdit = (props) => (
   <Edit {...props} title="Edytuj sesję">
@@ -10,6 +11,7 @@ const SessionEdit = (props) => (
       <ReferenceInput label="mówca" source="speaker_id" reference="speaker" resettable>
         <SelectInput optionText="name" />
       </ReferenceInput>
+      <LocationInput />
     </SimpleForm>
   </Edit>
 )

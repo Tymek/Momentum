@@ -126,6 +126,7 @@
       - begins_at
       - ends_at
       - id
+      - location
       - name
       - speaker_id
       backend_only: false
@@ -136,6 +137,7 @@
       - begins_at
       - ends_at
       - id
+      - location
       - name
       - speaker_id
       filter: {}
@@ -146,6 +148,7 @@
       - created_at
       - ends_at
       - id
+      - location
       - name
       - speaker_id
       - updated_at
@@ -157,6 +160,7 @@
       - begins_at
       - ends_at
       - id
+      - location
       - name
       - speaker_id
       filter: {}
@@ -167,6 +171,7 @@
       - begins_at
       - ends_at
       - id
+      - location
       - name
       - speaker_id
       filter: {}

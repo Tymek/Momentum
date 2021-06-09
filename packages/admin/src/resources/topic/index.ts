@@ -1,5 +1,7 @@
 import SpeakerNotesIcon from '@material-ui/icons/SpeakerNotes'
-import { TopicCreate, TopicEdit, TopicList } from './Topic'
+import TopicEdit from './TopicEdit'
+import TopicCreate from './TopicCreate'
+import TopicList from './TopicList'
 
 export default {
   name: 'topic',
