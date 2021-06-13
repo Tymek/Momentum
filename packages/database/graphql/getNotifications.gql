@@ -4,5 +4,6 @@ query getNotifications {
     title
     content
     published_at
+    isRead @client
   }
 }

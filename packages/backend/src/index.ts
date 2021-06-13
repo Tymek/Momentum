@@ -60,11 +60,11 @@ app.use(express.static(resolve(__dirname, clientAppStaticDir)))
 // Proxy admin panel
 if (process.env.NODE_ENV === 'development') {
   app.use(
-    '/panel',
+    ['/panel', '/panel/*'],
     createProxyMiddleware(isWindows ? 'http://localhost:5000' : 'http://admin:5000/'),
   )
 } else {
-  app.use('/panel', express.static(resolve(__dirname, adminAppStaticDir)))
+  app.use(['/panel', '/panel/*'], express.static(resolve(__dirname, adminAppStaticDir)))
 }
 
 // Backend API

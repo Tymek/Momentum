@@ -124,6 +124,7 @@
       check: {}
       columns:
       - begins_at
+      - description
       - ends_at
       - id
       - location
@@ -135,6 +136,7 @@
     permission:
       columns:
       - begins_at
+      - description
       - ends_at
       - id
       - location
@@ -146,6 +148,7 @@
       columns:
       - begins_at
       - created_at
+      - description
       - ends_at
       - id
       - location
@@ -158,6 +161,7 @@
     permission:
       columns:
       - begins_at
+      - description
       - ends_at
       - id
       - location
@@ -169,6 +173,7 @@
     permission:
       columns:
       - begins_at
+      - description
       - ends_at
       - id
       - location

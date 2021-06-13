@@ -8,6 +8,6 @@ import { Ionicons } from '@expo/vector-icons'
 const TabIcon: FC<{
   name: ComponentProps<typeof Ionicons>['name']
   color: string
-}> = (props) => <Ionicons size={30} {...props} />
+}> = (props) => <Ionicons size={24} {...props} />
 
 export default TabIcon

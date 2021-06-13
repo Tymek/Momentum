@@ -1,0 +1,7 @@
+extend type query_root {
+  isDarkTheme: Boolean
+}
+
+extend type notification {
+  isRead: Boolean
+}

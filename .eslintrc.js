@@ -11,6 +11,7 @@ module.exports = {
     'node/no-missing-require': 'off',
     'unicorn/new-for-builtins': 'off',
     'unicorn/numeric-separators-style': 'off',
+    'unicorn/no-useless-undefined': 'off',
   },
   ignorePatterns: [
     'node_modules',

@@ -7,7 +7,15 @@ import { View } from 'react-native'
 
 type SessionProps = ArrayElement<GetScheduleQuery['session']>
 
-const Session: FC<SessionProps> = ({ name, begins_at, ends_at, topics, speaker, location }) => {
+const Session: FC<SessionProps> = ({
+  name,
+  begins_at,
+  ends_at,
+  topics,
+  speaker,
+  location,
+  description,
+}) => {
   const hasTopics = topics && topics.length > 0
   const muted = Number.parseInt(format(parseISO(begins_at), 'H'), 10) < 4
 
@@ -17,6 +25,7 @@ const Session: FC<SessionProps> = ({ name, begins_at, ends_at, topics, speaker, 
       title={name}
       speaker={speaker}
       location={location}
+      description={description}
       begins_at={begins_at}
       ends_at={ends_at}
     >

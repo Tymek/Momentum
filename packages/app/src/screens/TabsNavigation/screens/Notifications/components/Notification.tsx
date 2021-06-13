@@ -18,7 +18,6 @@ type NotificationProps = Pick<Notification, 'id' | 'title' | 'content' | 'publis
 
 const NotificationComponent: FC<NotificationProps> = ({
   published_at,
-  id,
   title,
   content,
   unread,
@@ -36,8 +35,9 @@ const NotificationComponent: FC<NotificationProps> = ({
         <Timestamp highlighted={unread}>
           {time ? `${absoluteTime} (${relativeTime} temu)` : ''}
         </Timestamp>
-        <Markdown>{`# ${title}\n${content}`}</Markdown>
-        <Markdown>{`${id}`}</Markdown>
+        <Main>
+          <Markdown>{`# ${title}\n${content}`}</Markdown>
+        </Main>
       </Content>
       <Timeline>
         <TimelinePrefixLine highlighted={unread && prevUnread} />
@@ -56,6 +56,10 @@ const NotificationContainer = styled.View`
   width: 100%;
 `
 
+const Main = styled.View<{ last?: boolean }>`
+  padding-right: ${({ theme }) => `${theme.spacing.s}px`};
+`
+
 const Content = styled.View<{ last?: boolean }>`
   margin: ${({ theme }) => `${theme.spacing.l}px 0`};
   padding-left: ${({ theme }) => `${theme.spacing.xxs}px`};
@@ -66,7 +70,8 @@ const Content = styled.View<{ last?: boolean }>`
 const Timestamp = styled(Text)<{ highlighted?: boolean }>`
   text-align: right;
   padding-bottom: ${({ theme }) => `${theme.spacing.xxs}px`};
-  color: ${({ theme, highlighted }) => (highlighted ? theme.color.accent : theme.color.text)};
+  color: ${({ theme, highlighted }) =>
+    highlighted ? theme.timeline.highlightedTextColor : theme.timeline.textColor};
 `
 
 const Timeline = styled.View`

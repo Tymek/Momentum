@@ -12,6 +12,7 @@ const SessionCreate = (props) => (
         <SelectInput optionText="name" />
       </ReferenceInput>
       <LocationInput />
+      <TextInput source="description" multiline />
     </SimpleForm>
   </Create>
 )

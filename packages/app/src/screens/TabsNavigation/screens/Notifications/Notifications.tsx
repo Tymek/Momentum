@@ -1,18 +1,15 @@
-import React, { FC, Fragment } from 'react'
-import { parseISO, isAfter } from 'date-fns'
+import React, { FC } from 'react'
+import { parseISO, isBefore } from 'date-fns'
+import { ScrollView } from 'react-native'
 import { useGetNotificationsQuery } from '@-local/db/lib/generated/api'
 import { FullLoader as Loader } from 'components/Loader'
-
 import Header from 'components/Header'
 import ErrorBoundary from 'containers/error/Boundary'
 import Notification from './components/Notification'
 import styled from '@emotion/native'
-import { ScrollView } from 'react-native'
 
 const NotificationsList: FC = () => {
   const { loading, error, data } = useGetNotificationsQuery()
-  // eslint-disable-next-line unicorn/prefer-set-has
-  const readNotifications: Array<string> = []
 
   if (loading) {
     return (
@@ -23,39 +20,35 @@ const NotificationsList: FC = () => {
   }
 
   if (error) throw error
+
   const { notification: notifications } = data || {}
 
   return (
     <NotificationsPage>
       {notifications &&
-        notifications.map((notification, index) => {
-          const isLast = index + 1 === data?.notification.length
-          const isInFuture =
-            !!notification.published_at && isAfter(parseISO(notification.published_at), Date.now())
-
-          if (isInFuture) {
-            return <Fragment key={notification.id} />
-          }
-
-          const isRead = readNotifications.includes(notification.id)
-          const isNextRead = !isLast
-            ? readNotifications.includes(notifications[index + 1].id)
-            : true
-          const isPrevRead =
-            index !== 0 ? readNotifications.includes(notifications[index - 1].id) : true
-
-          console.log({ isRead, isNextRead, isPrevRead })
-          return (
-            <Notification
-              key={notification.id}
-              {...notification}
-              unread={!isRead}
-              prevUnread={!isPrevRead || (!isRead && index === 0)}
-              nextUnread={!isNextRead}
-              last={isLast}
-            />
+        notifications
+          .filter(
+            ({ published_at }) => !published_at || isBefore(parseISO(published_at), Date.now()),
           )
-        })}
+          .map((notification, index) => {
+            const isFirst = index === 0
+            const isLast = index + 1 === data?.notification.length
+
+            const isRead = notification.isRead
+            const isNextRead = !isLast ? notifications[index + 1].isRead : true
+            const isPrevRead = !isFirst ? notifications[index - 1].isRead : true
+
+            return (
+              <Notification
+                key={notification.id}
+                {...notification}
+                unread={!notification.isRead}
+                prevUnread={!isPrevRead || (!isRead && index === 0)}
+                nextUnread={!isNextRead}
+                last={isLast}
+              />
+            )
+          })}
     </NotificationsPage>
   )
 }

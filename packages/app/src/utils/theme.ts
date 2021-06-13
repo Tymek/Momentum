@@ -17,7 +17,7 @@ const font = {
   accent: 'Proxima-Light',
 }
 
-const fontBase = 17 // @see https://type-scale.com/
+const fontBase = 16 // @see https://type-scale.com/
 const fontRatio = 1.333333
 const fontScale = {
   xxxxxl: 6,
@@ -100,6 +100,10 @@ const theme = {
       ry: 0,
     },
   },
+  timeline: {
+    textColor: color.gray,
+    highlightedTextColor: color.dark,
+  },
 }
 
 export const darkTheme: typeof theme = {
@@ -128,6 +132,10 @@ export const darkTheme: typeof theme = {
     ...theme.contentSkelton,
     backgroundColor: transparentize(color.light, 0.85),
     foregroundColor: transparentize(color.accent, 0.67),
+  },
+  timeline: {
+    textColor: color.light,
+    highlightedTextColor: color.accent,
   },
 }
 

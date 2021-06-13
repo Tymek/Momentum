@@ -421,6 +421,7 @@ export type Notification = {
   content?: Maybe<Scalars['String']>;
   created_at: Scalars['timestamptz'];
   id: Scalars['uuid'];
+  isRead?: Maybe<Scalars['Boolean']>;
   published_at?: Maybe<Scalars['timestamptz']>;
   title: Scalars['String'];
   updated_at: Scalars['timestamptz'];
@@ -753,6 +754,7 @@ export enum Page_Update_Column {
 }
 
 export type Query_Root = {
+  isDarkTheme?: Maybe<Scalars['Boolean']>;
   me?: Maybe<UserInfo>;
   /** fetch data from the table: "notification" */
   notification: Array<Notification>;
@@ -934,6 +936,7 @@ export type Query_RootUser_By_PkArgs = {
 export type Session = {
   begins_at: Scalars['timestamptz'];
   created_at: Scalars['timestamptz'];
+  description?: Maybe<Scalars['String']>;
   ends_at?: Maybe<Scalars['timestamptz']>;
   id: Scalars['uuid'];
   location?: Maybe<Scalars['String']>;
@@ -1009,6 +1012,7 @@ export type Session_Bool_Exp = {
   _or?: Maybe<Array<Session_Bool_Exp>>;
   begins_at?: Maybe<Timestamptz_Comparison_Exp>;
   created_at?: Maybe<Timestamptz_Comparison_Exp>;
+  description?: Maybe<String_Comparison_Exp>;
   ends_at?: Maybe<Timestamptz_Comparison_Exp>;
   id?: Maybe<Uuid_Comparison_Exp>;
   location?: Maybe<String_Comparison_Exp>;
@@ -1029,6 +1033,7 @@ export enum Session_Constraint {
 export type Session_Insert_Input = {
   begins_at?: Maybe<Scalars['timestamptz']>;
   created_at?: Maybe<Scalars['timestamptz']>;
+  description?: Maybe<Scalars['String']>;
   ends_at?: Maybe<Scalars['timestamptz']>;
   id?: Maybe<Scalars['uuid']>;
   location?: Maybe<Scalars['String']>;
@@ -1043,6 +1048,7 @@ export type Session_Insert_Input = {
 export type Session_Max_Fields = {
   begins_at?: Maybe<Scalars['timestamptz']>;
   created_at?: Maybe<Scalars['timestamptz']>;
+  description?: Maybe<Scalars['String']>;
   ends_at?: Maybe<Scalars['timestamptz']>;
   id?: Maybe<Scalars['uuid']>;
   location?: Maybe<Scalars['String']>;
@@ -1055,6 +1061,7 @@ export type Session_Max_Fields = {
 export type Session_Max_Order_By = {
   begins_at?: Maybe<Order_By>;
   created_at?: Maybe<Order_By>;
+  description?: Maybe<Order_By>;
   ends_at?: Maybe<Order_By>;
   id?: Maybe<Order_By>;
   location?: Maybe<Order_By>;
@@ -1067,6 +1074,7 @@ export type Session_Max_Order_By = {
 export type Session_Min_Fields = {
   begins_at?: Maybe<Scalars['timestamptz']>;
   created_at?: Maybe<Scalars['timestamptz']>;
+  description?: Maybe<Scalars['String']>;
   ends_at?: Maybe<Scalars['timestamptz']>;
   id?: Maybe<Scalars['uuid']>;
   location?: Maybe<Scalars['String']>;
@@ -1079,6 +1087,7 @@ export type Session_Min_Fields = {
 export type Session_Min_Order_By = {
   begins_at?: Maybe<Order_By>;
   created_at?: Maybe<Order_By>;
+  description?: Maybe<Order_By>;
   ends_at?: Maybe<Order_By>;
   id?: Maybe<Order_By>;
   location?: Maybe<Order_By>;
@@ -1113,6 +1122,7 @@ export type Session_On_Conflict = {
 export type Session_Order_By = {
   begins_at?: Maybe<Order_By>;
   created_at?: Maybe<Order_By>;
+  description?: Maybe<Order_By>;
   ends_at?: Maybe<Order_By>;
   id?: Maybe<Order_By>;
   location?: Maybe<Order_By>;
@@ -1135,6 +1145,8 @@ export enum Session_Select_Column {
   /** column name */
   CreatedAt = 'created_at',
   /** column name */
+  Description = 'description',
+  /** column name */
   EndsAt = 'ends_at',
   /** column name */
   Id = 'id',
@@ -1152,6 +1164,7 @@ export enum Session_Select_Column {
 export type Session_Set_Input = {
   begins_at?: Maybe<Scalars['timestamptz']>;
   created_at?: Maybe<Scalars['timestamptz']>;
+  description?: Maybe<Scalars['String']>;
   ends_at?: Maybe<Scalars['timestamptz']>;
   id?: Maybe<Scalars['uuid']>;
   location?: Maybe<Scalars['String']>;
@@ -1166,6 +1179,8 @@ export enum Session_Update_Column {
   BeginsAt = 'begins_at',
   /** column name */
   CreatedAt = 'created_at',
+  /** column name */
+  Description = 'description',
   /** column name */
   EndsAt = 'ends_at',
   /** column name */
@@ -1973,15 +1988,20 @@ export type CreatePageMutation = { insert_page?: Maybe<(
 export type GetNotificationsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetNotificationsQuery = { notification: Array<Pick<Notification, 'id' | 'title' | 'content' | 'published_at'>> };
+export type GetNotificationsQuery = { notification: Array<Pick<Notification, 'id' | 'title' | 'content' | 'published_at' | 'isRead'>> };
 
 export type GetScheduleQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type GetScheduleQuery = { session: Array<(
-    Pick<Session, 'id' | 'name' | 'begins_at' | 'ends_at' | 'location'>
+    Pick<Session, 'id' | 'name' | 'begins_at' | 'ends_at' | 'location' | 'description'>
     & { speaker?: Maybe<SpeakerFragment>, topics: Array<TopicFragment> }
   )> };
+
+export type GetSettingsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetSettingsQuery = Pick<Query_Root, 'isDarkTheme'>;
 
 export type GetSpeakersQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -2068,6 +2088,7 @@ export const GetNotificationsDocument = gql`
     title
     content
     published_at
+    isRead @client
   }
 }
     `;
@@ -2106,6 +2127,7 @@ export const GetScheduleDocument = gql`
     begins_at
     ends_at
     location
+    description
     speaker {
       ...speaker
     }
@@ -2143,6 +2165,38 @@ export function useGetScheduleLazyQuery(baseOptions?: ApolloReactHooks.LazyQuery
 export type GetScheduleQueryHookResult = ReturnType<typeof useGetScheduleQuery>;
 export type GetScheduleLazyQueryHookResult = ReturnType<typeof useGetScheduleLazyQuery>;
 export type GetScheduleQueryResult = Apollo.QueryResult<GetScheduleQuery, GetScheduleQueryVariables>;
+export const GetSettingsDocument = gql`
+    query getSettings {
+  isDarkTheme @client
+}
+    `;
+
+/**
+ * __useGetSettingsQuery__
+ *
+ * To run a query within a React component, call `useGetSettingsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetSettingsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetSettingsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetSettingsQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<GetSettingsQuery, GetSettingsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return ApolloReactHooks.useQuery<GetSettingsQuery, GetSettingsQueryVariables>(GetSettingsDocument, options);
+      }
+export function useGetSettingsLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<GetSettingsQuery, GetSettingsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return ApolloReactHooks.useLazyQuery<GetSettingsQuery, GetSettingsQueryVariables>(GetSettingsDocument, options);
+        }
+export type GetSettingsQueryHookResult = ReturnType<typeof useGetSettingsQuery>;
+export type GetSettingsLazyQueryHookResult = ReturnType<typeof useGetSettingsLazyQuery>;
+export type GetSettingsQueryResult = Apollo.QueryResult<GetSettingsQuery, GetSettingsQueryVariables>;
 export const GetSpeakersDocument = gql`
     query getSpeakers {
   speaker {

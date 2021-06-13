@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction } from 'react'
 import useAsyncStorage from './useAsyncStorage'
 
-const useJsonStorage = <T>(
+const useAsyncJsonStorage = <T>(
   key: string,
   initialValue?: T,
 ): [T | undefined, Dispatch<SetStateAction<T | undefined>>, boolean] => {
@@ -17,4 +17,4 @@ const useJsonStorage = <T>(
   return [currentValue, dispatch, isLoaded]
 }
 
-export default useJsonStorage
+export default useAsyncJsonStorage

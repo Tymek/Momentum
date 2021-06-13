@@ -946,6 +946,7 @@ export type Session = {
   __typename?: 'session';
   begins_at: Scalars['timestamptz'];
   created_at: Scalars['timestamptz'];
+  description?: Maybe<Scalars['String']>;
   ends_at?: Maybe<Scalars['timestamptz']>;
   id: Scalars['uuid'];
   location?: Maybe<Scalars['String']>;
@@ -1023,6 +1024,7 @@ export type Session_Bool_Exp = {
   _or?: Maybe<Array<Session_Bool_Exp>>;
   begins_at?: Maybe<Timestamptz_Comparison_Exp>;
   created_at?: Maybe<Timestamptz_Comparison_Exp>;
+  description?: Maybe<String_Comparison_Exp>;
   ends_at?: Maybe<Timestamptz_Comparison_Exp>;
   id?: Maybe<Uuid_Comparison_Exp>;
   location?: Maybe<String_Comparison_Exp>;
@@ -1043,6 +1045,7 @@ export enum Session_Constraint {
 export type Session_Insert_Input = {
   begins_at?: Maybe<Scalars['timestamptz']>;
   created_at?: Maybe<Scalars['timestamptz']>;
+  description?: Maybe<Scalars['String']>;
   ends_at?: Maybe<Scalars['timestamptz']>;
   id?: Maybe<Scalars['uuid']>;
   location?: Maybe<Scalars['String']>;
@@ -1058,6 +1061,7 @@ export type Session_Max_Fields = {
   __typename?: 'session_max_fields';
   begins_at?: Maybe<Scalars['timestamptz']>;
   created_at?: Maybe<Scalars['timestamptz']>;
+  description?: Maybe<Scalars['String']>;
   ends_at?: Maybe<Scalars['timestamptz']>;
   id?: Maybe<Scalars['uuid']>;
   location?: Maybe<Scalars['String']>;
@@ -1070,6 +1074,7 @@ export type Session_Max_Fields = {
 export type Session_Max_Order_By = {
   begins_at?: Maybe<Order_By>;
   created_at?: Maybe<Order_By>;
+  description?: Maybe<Order_By>;
   ends_at?: Maybe<Order_By>;
   id?: Maybe<Order_By>;
   location?: Maybe<Order_By>;
@@ -1083,6 +1088,7 @@ export type Session_Min_Fields = {
   __typename?: 'session_min_fields';
   begins_at?: Maybe<Scalars['timestamptz']>;
   created_at?: Maybe<Scalars['timestamptz']>;
+  description?: Maybe<Scalars['String']>;
   ends_at?: Maybe<Scalars['timestamptz']>;
   id?: Maybe<Scalars['uuid']>;
   location?: Maybe<Scalars['String']>;
@@ -1095,6 +1101,7 @@ export type Session_Min_Fields = {
 export type Session_Min_Order_By = {
   begins_at?: Maybe<Order_By>;
   created_at?: Maybe<Order_By>;
+  description?: Maybe<Order_By>;
   ends_at?: Maybe<Order_By>;
   id?: Maybe<Order_By>;
   location?: Maybe<Order_By>;
@@ -1130,6 +1137,7 @@ export type Session_On_Conflict = {
 export type Session_Order_By = {
   begins_at?: Maybe<Order_By>;
   created_at?: Maybe<Order_By>;
+  description?: Maybe<Order_By>;
   ends_at?: Maybe<Order_By>;
   id?: Maybe<Order_By>;
   location?: Maybe<Order_By>;
@@ -1152,6 +1160,8 @@ export enum Session_Select_Column {
   /** column name */
   CreatedAt = 'created_at',
   /** column name */
+  Description = 'description',
+  /** column name */
   EndsAt = 'ends_at',
   /** column name */
   Id = 'id',
@@ -1169,6 +1179,7 @@ export enum Session_Select_Column {
 export type Session_Set_Input = {
   begins_at?: Maybe<Scalars['timestamptz']>;
   created_at?: Maybe<Scalars['timestamptz']>;
+  description?: Maybe<Scalars['String']>;
   ends_at?: Maybe<Scalars['timestamptz']>;
   id?: Maybe<Scalars['uuid']>;
   location?: Maybe<Scalars['String']>;
@@ -1183,6 +1194,8 @@ export enum Session_Update_Column {
   BeginsAt = 'begins_at',
   /** column name */
   CreatedAt = 'created_at',
+  /** column name */
+  Description = 'description',
   /** column name */
   EndsAt = 'ends_at',
   /** column name */
@@ -1993,81 +2006,3 @@ export type Uuid_Comparison_Exp = {
   _neq?: Maybe<Scalars['uuid']>;
   _nin?: Maybe<Array<Scalars['uuid']>>;
 };
-
-export type CreatePageMutationVariables = Exact<{
-  title: Scalars['String'];
-  content?: Maybe<Scalars['String']>;
-  meta?: Maybe<Scalars['jsonb']>;
-}>;
-
-
-export type CreatePageMutation = (
-  { __typename?: 'mutation_root' }
-  & { insert_page?: Maybe<(
-    { __typename?: 'page_mutation_response' }
-    & Pick<Page_Mutation_Response, 'affected_rows'>
-    & { returning: Array<(
-      { __typename?: 'page' }
-      & PageFragment
-    )> }
-  )> }
-);
-
-export type GetNotificationsQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type GetNotificationsQuery = (
-  { __typename?: 'query_root' }
-  & { notification: Array<(
-    { __typename?: 'notification' }
-    & Pick<Notification, 'id' | 'title' | 'content' | 'published_at'>
-  )> }
-);
-
-export type GetScheduleQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type GetScheduleQuery = (
-  { __typename?: 'query_root' }
-  & { session: Array<(
-    { __typename?: 'session' }
-    & Pick<Session, 'id' | 'name' | 'begins_at' | 'ends_at' | 'location'>
-    & { speaker?: Maybe<(
-      { __typename?: 'speaker' }
-      & SpeakerFragment
-    )>, topics: Array<(
-      { __typename?: 'topic' }
-      & TopicFragment
-    )> }
-  )> }
-);
-
-export type GetSpeakersQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type GetSpeakersQuery = (
-  { __typename?: 'query_root' }
-  & { speaker: Array<(
-    { __typename?: 'speaker' }
-    & Pick<Speaker, 'id' | 'name' | 'description' | 'image'>
-  )> }
-);
-
-export type PageFragment = (
-  { __typename?: 'page' }
-  & Pick<Page, 'title' | 'content' | 'meta'>
-);
-
-export type SpeakerFragment = (
-  { __typename?: 'speaker' }
-  & Pick<Speaker, 'id' | 'name' | 'description' | 'image'>
-);
-
-export type TopicFragment = (
-  { __typename?: 'topic' }
-  & Pick<Topic, 'id' | 'subject' | 'description' | 'location'>
-  & { speaker?: Maybe<(
-    { __typename?: 'speaker' }
-    & SpeakerFragment
-  )> }
-);

@@ -12,6 +12,7 @@ const SessionEdit = (props) => (
         <SelectInput optionText="name" />
       </ReferenceInput>
       <LocationInput />
+      <TextInput source="description" multiline />
     </SimpleForm>
   </Edit>
 )

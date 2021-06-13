@@ -32,6 +32,7 @@
     "@react-navigation/native": "~5.8.10",
     "@react-navigation/stack": "~5.12.8",
     "@svgr/webpack": "^5.5.0",
+    "apollo3-cache-persist": "^0.9.1",
     "color2k": "^1.2.4",
     "date-fns": "^2.21.3",
     "expo": "~41.0.1",
