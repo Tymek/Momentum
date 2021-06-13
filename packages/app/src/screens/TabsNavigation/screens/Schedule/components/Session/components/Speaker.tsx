@@ -36,6 +36,7 @@ const SpeakerSection = styled.View`
 const SpeakerPhoto = styled(Image)`
   margin-right: ${({ theme }) => `${theme.spacing.s}px`};
   border-radius: ${({ theme }) => `${theme.borderRadius.l}px`};
+  background: rgba(229, 229, 231, 0.5);
 `
 
 export default Speaker

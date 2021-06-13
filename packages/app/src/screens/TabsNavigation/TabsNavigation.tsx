@@ -13,6 +13,7 @@ import InformationsScreen, {
   screens as infoScreens,
 } from 'screens/TabsNavigation/screens/Informations'
 import TabIcon from './components/TabIcon'
+import useNewNotificationsCount from 'hooks/useNewNotificationsCount'
 
 export const screens = {
   Schedule: {
@@ -42,6 +43,7 @@ const MapIcon: FC<{ color: string }> = ({ color }) => <TabIcon name="map-sharp" 
 
 const BottomTabNavigator: FC = () => {
   const theme = useTheme()
+  const [unreadNotifications] = useNewNotificationsCount()
 
   return (
     <BottomTab.Navigator
@@ -77,7 +79,8 @@ const BottomTabNavigator: FC = () => {
         options={{
           tabBarIcon: NotificationIcon,
           title: 'Powiadomienia',
-          tabBarBadge: '1', // TODO: number of new notifications
+          tabBarBadge: unreadNotifications ? `${unreadNotifications}` : undefined,
+          tabBarBadgeStyle: { backgroundColor: theme.color.accent },
         }}
       />
       <BottomTab.Screen
