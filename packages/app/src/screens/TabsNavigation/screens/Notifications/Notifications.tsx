@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import { parseISO, isBefore } from 'date-fns'
 import { ScrollView } from 'react-native'
-import { useGetNotificationsQuery } from '@-local/db/lib/generated/api'
+import { useGetNotificationsQuery } from '@-local/db/lib/api'
 import { FullLoader as Loader } from 'components/Loader'
 import Header from 'components/Header'
 import ErrorBoundary from 'containers/error/Boundary'

@@ -1,6 +1,6 @@
 import { RequestHandler } from 'express'
 
-import { Mutation_Root } from '@-local/db/lib/generated/types'
+import { Mutation_Root } from '@-local/db/lib/types'
 import createLoginCookie from '../../utils/createLoginCookie'
 import type { ActionBody } from '../../utils/actionInput'
 

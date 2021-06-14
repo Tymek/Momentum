@@ -1,6 +1,6 @@
 import { RequestHandler } from 'express'
 
-import { Query_Root } from '@-local/db/lib/generated/types'
+import { Query_Root } from '@-local/db/lib/types'
 import HttpError from '../../utils/httpError'
 import type { ActionBody } from '../../utils/actionInput'
 

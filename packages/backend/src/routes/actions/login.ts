@@ -1,7 +1,7 @@
 import { RequestHandler } from 'express'
 import { compare, hash } from 'bcrypt'
 
-import { Mutation_RootLoginArgs, Mutation_Root, User } from '@-local/db/lib/generated/types'
+import { Mutation_RootLoginArgs, Mutation_Root, User } from '@-local/db/lib/types'
 import HttpError from '../../utils/httpError'
 import actionInput from '../../utils/actionInput'
 import db, { sql } from '../../utils/database'

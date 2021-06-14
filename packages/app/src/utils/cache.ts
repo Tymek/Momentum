@@ -1,6 +1,6 @@
 import { InMemoryCache, makeVar } from '@apollo/client'
-import { Notification } from '@-local/db/generated/types'
-import { TypedTypePolicies } from '@-local/db/generated/helpers'
+import { Notification } from '@-local/db/lib/types'
+import { TypedTypePolicies } from '@-local/db/lib/helpers'
 
 // eslint-disable-next-line unicorn/no-useless-undefined
 export const isDarkThemeVar = makeVar<boolean | undefined>(undefined)

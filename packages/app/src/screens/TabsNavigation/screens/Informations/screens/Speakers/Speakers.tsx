@@ -3,7 +3,7 @@ import { FlatList, Image, ImageBackground } from 'react-native'
 import styled from '@emotion/native'
 import { useTheme } from '@emotion/react'
 
-import { Speaker, useGetSpeakersQuery } from '@-local/db/lib/generated/api'
+import { Speaker, useGetSpeakersQuery } from '@-local/db/lib/api'
 import ErrorBoundary from 'containers/error/Boundary'
 import { FullLoader as Loader } from 'components/Loader'
 import Text from 'components/Text'

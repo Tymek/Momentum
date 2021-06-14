@@ -1,7 +1,7 @@
 import React, { FC, useState } from 'react'
 import { format, parseISO } from 'date-fns'
 
-import { Maybe, Scalars, SpeakerFragment } from '@-local/db/lib/generated/api'
+import { Maybe, Scalars, SpeakerFragment } from '@-local/db/lib/api'
 import Text from 'components/Text'
 import styled from '@emotion/native'
 import useShadow from 'hooks/useShadow'

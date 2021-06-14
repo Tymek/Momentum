@@ -2,7 +2,7 @@ import React, { FC, useMemo } from 'react'
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs'
 import { isSameDay } from 'date-fns'
 
-import { useGetScheduleQuery } from '@-local/db/lib/generated/api'
+import { useGetScheduleQuery } from '@-local/db/lib/api'
 import Header from 'components/Header'
 import TextPage from 'components/TextPage'
 import getDays from './utils/getDays'

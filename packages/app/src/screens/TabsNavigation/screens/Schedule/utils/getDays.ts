@@ -1,4 +1,4 @@
-import { GetScheduleQuery } from '@-local/db/lib/generated/api'
+import { GetScheduleQuery } from '@-local/db/lib/api'
 import { format, parseISO } from 'date-fns'
 import { pl } from 'date-fns/locale'
 

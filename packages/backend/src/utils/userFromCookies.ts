@@ -2,7 +2,7 @@ import { isEmpty } from 'ramda'
 import { compare } from 'bcrypt'
 import type { Request } from 'express'
 
-import { User, Mutation_RootLoginArgs } from '@-local/db/lib/generated/types'
+import { User, Mutation_RootLoginArgs } from '@-local/db/lib/types'
 import db, { sql } from './database'
 
 const userFromCookies = async (req: Request): Promise<User | null> => {

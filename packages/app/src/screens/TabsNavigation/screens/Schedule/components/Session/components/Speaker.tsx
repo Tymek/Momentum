@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 import { Image } from 'react-native'
 import styled from '@emotion/native'
 
-import { SpeakerFragment } from '@-local/db/lib/generated/api'
+import { SpeakerFragment } from '@-local/db/lib/api'
 import Text from 'components/Text'
 import speakerImages from 'utils/speakerImages'
 

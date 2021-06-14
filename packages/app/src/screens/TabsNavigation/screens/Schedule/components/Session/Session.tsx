@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import { format, parseISO } from 'date-fns'
 
-import { GetScheduleQuery } from '@-local/db/lib/generated/api'
+import { GetScheduleQuery } from '@-local/db/lib/api'
 import Block from './components/Block'
 import { View } from 'react-native'
 
