@@ -22,7 +22,7 @@ const typePolicies: TypedTypePolicies = {
     fields: {
       isDarkTheme: {
         read() {
-          return undefined // TODO: settings toggle dark theme
+          return isDarkThemeVar()
         },
       },
     },

@@ -6,9 +6,11 @@ import useColorSchemeTheme from './hooks/useColorSchemeTheme'
 
 const Theme: FC = ({ children }) => {
   const [fontsLoaded] = useFonts({
-    Proxima: require('assets/fonts/ProximaNova-Regular.ttf'),
-    'Proxima-Light': require('assets/fonts/ProximaNova-Light.ttf'),
-    'Proxima-Black': require('assets/fonts/ProximaNova-Black.ttf'),
+    'Maven Pro': require('assets/fonts/MavenPro-Black.ttf'),
+    Lato: require('assets/fonts/Lato.ttf'),
+    'Lato-Bold': require('assets/fonts/Lato-Bold.ttf'),
+    'Lato-Light': require('assets/fonts/Lato-Light.ttf'),
+    'Lato-Italic': require('assets/fonts/Lato-Italic.ttf'),
   })
   const theme = useColorSchemeTheme()
 

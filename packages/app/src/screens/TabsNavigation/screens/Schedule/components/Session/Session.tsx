@@ -3,6 +3,7 @@ import { format, parseISO } from 'date-fns'
 
 import { GetScheduleQuery } from '@-local/db/lib/api'
 import Block from './components/Block'
+import TopicBlock from './components/TopicBlock'
 import { View } from 'react-native'
 
 type SessionProps = ArrayElement<GetScheduleQuery['session']>
@@ -32,7 +33,7 @@ const Session: FC<SessionProps> = ({
       {hasTopics && (
         <View>
           {topics.map((topic) => (
-            <Block key={topic.id} {...topic} title={topic.subject} isTopic />
+            <TopicBlock key={topic.id} {...topic} title={topic.subject} />
           ))}
         </View>
       )}

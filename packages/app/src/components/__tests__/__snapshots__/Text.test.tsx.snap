@@ -6,7 +6,7 @@ exports[`component StyledText renders correctly 1`] = `
     Array [
       Object {
         "color": "#121212",
-        "fontFamily": "Proxima",
+        "fontFamily": "Lato",
         "fontSize": 16,
       },
       undefined,

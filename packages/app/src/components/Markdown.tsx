@@ -36,7 +36,7 @@ const StyledMarkdown: FC<MarkdownProps> = ({ ...props }) => {
         },
         em: {
           fontStyle: 'normal',
-          fontFamily: theme.font.accent,
+          fontFamily: theme.font.bold,
         },
       }}
       {...props}

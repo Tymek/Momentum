@@ -12,9 +12,11 @@ const color = {
 }
 
 const font = {
-  default: 'Proxima',
-  headers: 'Proxima-Black',
-  accent: 'Proxima-Light',
+  default: 'Lato',
+  headers: 'Maven Pro',
+  accent: 'Lato-Italic',
+  light: 'Lato-Light',
+  bold: 'Lato-Bold',
 }
 
 const fontBase = 16 // @see https://type-scale.com/

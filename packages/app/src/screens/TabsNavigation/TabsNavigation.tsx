@@ -2,7 +2,7 @@
  * Learn more about createBottomTabNavigator:
  * https://reactnavigation.org/docs/bottom-tab-navigator
  */
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 
 import { useTheme } from '@emotion/react'
@@ -13,6 +13,7 @@ import InformationsScreen, {
   screens as infoScreens,
 } from 'screens/TabsNavigation/screens/Informations'
 import TabIcon from './components/TabIcon'
+import useNotifications from 'hooks/useNotifications'
 
 export const screens = {
   Schedule: {
@@ -42,6 +43,9 @@ const MapIcon: FC<{ color: string }> = ({ color }) => <TabIcon name="map-sharp" 
 
 const BottomTabNavigator: FC = () => {
   const theme = useTheme()
+  const { unreadCount } = useNotifications()
+  // TODO: refactor - icon and badge should be moved to different component (re-rendering issue)
+  const [notificationsFocused, setNotificationsFocused] = useState<boolean>(false)
 
   return (
     <BottomTab.Navigator
@@ -74,10 +78,21 @@ const BottomTabNavigator: FC = () => {
       <BottomTab.Screen
         name="Notifications"
         component={NotificationsScreen}
+        listeners={() => ({
+          focus: () => {
+            setNotificationsFocused(true)
+          },
+          blur: () => {
+            setTimeout(() => {
+              // NOTE: additional time for unread count badge to update
+              setNotificationsFocused(false)
+            }, 1000)
+          },
+        })}
         options={{
           tabBarIcon: NotificationIcon,
           title: 'Powiadomienia',
-          tabBarBadge: undefined,
+          tabBarBadge: !unreadCount || notificationsFocused ? undefined : `${unreadCount}`,
           tabBarBadgeStyle: { backgroundColor: theme.color.accent },
         }}
       />

@@ -1,15 +1,12 @@
-import React, { FC, useState } from 'react'
+import React, { FC } from 'react'
 import { format, parseISO } from 'date-fns'
 
 import { Maybe, Scalars, SpeakerFragment } from '@-local/db/lib/api'
 import Text from 'components/Text'
 import styled from '@emotion/native'
 import useShadow from 'hooks/useShadow'
-import Speaker from './Speaker'
-import Location from './Location'
-import { MaterialIcons } from '@expo/vector-icons'
 import { TouchableOpacity } from 'react-native-gesture-handler'
-import { useTheme } from '@react-navigation/native'
+import ExtendedInfo from './ExtendedInfo'
 
 type SessionProps = {
   title?: Maybe<Scalars['String']>
@@ -19,7 +16,6 @@ type SessionProps = {
   ends_at?: Maybe<Scalars['timestamptz']>
   speaker?: Maybe<SpeakerFragment>
   muted?: boolean
-  isTopic?: boolean
 }
 
 const Block: FC<SessionProps> = ({
@@ -31,59 +27,30 @@ const Block: FC<SessionProps> = ({
   speaker,
   location,
   muted,
-  isTopic, // TODO: refactor into separate components
 }) => {
   const shadow = useShadow(2)
-  const [isOpen, setIsOpen] = useState<boolean>()
-  const theme = useTheme()
 
   return (
     <Wrapper style={!muted ? shadow : {}} muted={muted}>
-      {isTopic ? (
-        <TouchableInfo
-          // style={styles.iconContainer}
-          onPress={() => setIsOpen(!isOpen)}
-        >
-          <Text>{title}</Text>
-          <MaterialIcons
-            name={isOpen ? 'unfold-less' : 'unfold-more'}
-            size={24}
-            color={theme.colors.text}
-          />
-        </TouchableInfo>
-      ) : (
+      {
         <Info>
           <SessionName>{title}</SessionName>
           {begins_at && <SessionTime>{format(parseISO(begins_at), 'HH:mm')}</SessionTime>}
           {/* {ends_at && <Text>{format(parseISO(ends_at), 'HH:mm')}</Text>} */}
         </Info>
-      )}
+      }
 
-      {!isTopic || isOpen ? (
-        <>
-          {description && (
-            <DescriptionSection>
-              <DescriptionText>{description}</DescriptionText>
-            </DescriptionSection>
-          )}
-          {location || speaker ? (
-            <SpeakerAndLocation>
-              {location && <Location>{location}</Location>}
-              {speaker && <Speaker {...speaker} />}
-            </SpeakerAndLocation>
-          ) : null}
-          {children}
-        </>
-      ) : null}
+      <ExtendedInfo {...{ description, location, speaker, children }} />
     </Wrapper>
   )
 }
 
-const Wrapper = styled.View<{ withTopics?: boolean; muted?: boolean }>`
+export const Wrapper = styled.View<{ withTopics?: boolean; muted?: boolean }>`
   background: ${({ theme, muted, withTopics }) =>
     withTopics || muted ? 'transparent' : theme.color.background};
   margin-bottom: ${({ theme }) => `${theme.spacing.m}px`};
   border-radius: ${({ theme }) => `${theme.borderRadius.m}px`};
+  padding-bottom: 2px; /* NOTE: font bug compensation */
 `
 
 const Info = styled.View`
@@ -94,7 +61,7 @@ const Info = styled.View`
   padding: ${({ theme }) => `${theme.spacing.m}px`};
 `
 
-const TouchableInfo = styled(TouchableOpacity)`
+export const TouchableInfo = styled(TouchableOpacity)`
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -110,22 +77,7 @@ const SessionName = styled(Text)`
 `
 
 const SessionTime = styled(Text)`
-  font-family: ${({ theme }) => theme.font.accent};
-`
-
-const DescriptionSection = styled.View`
-  padding: ${({ theme }) => `0 ${theme.spacing.m}px ${theme.spacing.l}px`};
-`
-
-const DescriptionText = styled(Text)`
-  font-family: ${({ theme }) => theme.font.accent};
-`
-
-const SpeakerAndLocation = styled.View`
-  display: flex;
-  flex-direction: row-reverse;
-  align-items: center;
-  /* justify-content: space-between; */
+  font-family: ${({ theme }) => theme.font.default};
 `
 
 export default Block

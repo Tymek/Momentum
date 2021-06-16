@@ -1,11 +1,11 @@
 import React, { FC } from 'react'
+import { pl } from 'date-fns/locale'
+import styled from '@emotion/native'
+import { format, formatDistance, parseISO } from 'date-fns'
 
+import { Notification } from '@-local/db/lib/api'
 import Markdown from 'components/Markdown'
 import Text from 'components/Text'
-import styled from '@emotion/native'
-import { Notification } from '@-local/db/lib/api'
-import { format, formatDistance, parseISO } from 'date-fns'
-import { pl } from 'date-fns/locale'
 
 const dateOptions = { locale: pl }
 

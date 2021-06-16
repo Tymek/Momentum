@@ -4,43 +4,47 @@ import useColorSchemeTheme from './hooks/useColorSchemeTheme'
 
 const fonts = css`
   @font-face {
-    font-family: 'Proxima';
-    src: url('/fonts/ProximaNova-Regular.eot');
-    src: url('/fonts/ProximaNova-Regular.eot?#iefix') format('embedded-opentype'),
-      url('/fonts/ProximaNova-Regular.woff2') format('woff2'),
-      url('/fonts/ProximaNova-Regular.woff') format('woff'),
-      url('/fonts/ProximaNova-Regular.ttf') format('truetype'),
-      url('/fonts/ProximaNova-Regular.svg#ProximaNova-Regular') format('svg');
-    font-weight: normal;
+    font-family: 'Maven Pro';
     font-style: normal;
+    font-weight: 400;
+    src: local(''), url('/fonts/MavenPro-Black.woff2') format('woff2'),
+      url('/fonts/MavenPro-Black.woff') format('woff');
   }
 
   @font-face {
-    font-family: 'Proxima-Light';
-    src: url('/fonts/ProximaNova-Light.eot');
-    src: url('/fonts/ProximaNova-Light.eot?#iefix') format('embedded-opentype'),
-      url('/fonts/ProximaNova-Light.woff2') format('woff2'),
-      url('/fonts/ProximaNova-Light.woff') format('woff'),
-      url('/fonts/ProximaNova-Light.ttf') format('truetype'),
-      url('/fonts/ProximaNova-Light.svg#ProximaNova-Light') format('svg');
-    font-weight: 300;
+    font-family: 'Lato';
     font-style: normal;
+    font-weight: 400;
+    src: local(''), url('/fonts/Lato-Regular.woff2') format('woff2'),
+      url('/fonts/Lato-Regular.woff') format('woff');
   }
 
   @font-face {
-    font-family: 'Proxima-Black';
-    src: url('/fonts/ProximaNova-Black.eot');
-    src: url('/fonts/ProximaNova-Black.eot?#iefix') format('embedded-opentype'),
-      url('/fonts/ProximaNova-Black.woff2') format('woff2'),
-      url('/fonts/ProximaNova-Black.woff') format('woff'),
-      url('/fonts/ProximaNova-Black.ttf') format('truetype'),
-      url('/fonts/ProximaNova-Black.svg#ProximaNova-Black') format('svg');
-    font-weight: bold;
+    font-family: 'Lato-Bold';
     font-style: normal;
+    font-weight: 400;
+    src: local(''), url('/fonts/Lato-Bold.woff2') format('woff2'),
+      url('/fonts/Lato-Bold.woff') format('woff');
+  }
+
+  @font-face {
+    font-family: 'Lato-Italic';
+    font-style: normal;
+    font-weight: 400;
+    src: local(''), url('/fonts/Lato-Italic.woff2') format('woff2'),
+      url('/fonts/Lato-Italic.woff') format('woff');
+  }
+
+  @font-face {
+    font-family: 'Lato-Light';
+    font-style: normal;
+    font-weight: 400;
+    src: local(''), url('/fonts/Lato-Light.woff2') format('woff2'),
+      url('/fonts/Lato-Light.woff') format('woff');
   }
 
   body {
-    font-family: Proxima, 'Proxima Nova', sans-serif;
+    font-family: 'Lato', sans-serif;
   }
 `
 

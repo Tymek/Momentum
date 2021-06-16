@@ -14,7 +14,7 @@ const Wrapper = styled.View`
 `
 
 const ContentText = styled(Text)`
-  font-family: ${({ theme }) => theme.font.accent};
+  font-family: ${({ theme }) => theme.font.light};
   text-align: right;
 `
 

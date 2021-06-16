@@ -1,41 +1,22 @@
-const http = require('http')
 const fs = require('fs')
 const path = require('path')
 
-const download = (url, dest) =>
-  new Promise((resolve, reject) => {
-    const file = fs.createWriteStream(dest)
-    http
-      .get(url, (response) => {
-        response.pipe(file)
-        file.on('finish', () => {
-          file.close(resolve)
-        })
-      })
-      .on('error', (err) => {
-        fs.unlink(dest)
-        reject(err.message)
-      })
-  })
-
-const fontSource = 'http://konferencjamomentum.pl/webfonts'
-const fontDestination = './src/assets/fonts'
+const fontAssets = './src/assets/fonts'
 const fontStatic = './web/fonts'
 
-const fonts = ['ProximaNova-Regular', 'ProximaNova-Light', 'ProximaNova-Black']
-const extensions = ['eot', 'woff2', 'woff', 'ttf', 'svg']
+const fonts = ['MavenPro-Black', 'Lato-Regular', 'Lato-Light', 'Lato-Bold', 'Lato-Italic']
+const extensions = ['woff2', 'woff', 'ttf']
 
 const getFonts = async () => {
-  console.log('Downloading fonts')
+  console.log('Copying fonts')
   for (let font of fonts) {
     for (let extension of extensions) {
-      const url = `${fontSource}/${font}.${extension}`
-      const target = path.resolve(`${fontDestination}/${font}.${extension}`)
-      if (!fs.existsSync(target)) {
-        await download(url, target)
-        await download(url, path.resolve(`${fontStatic}/${font}.${extension}`))
-        console.log(' ', font, extension)
-      }
+      // eslint-disable-next-line node/no-unsupported-features/node-builtins
+      fs.copyFileSync(
+        path.resolve(`${fontAssets}/${font}.${extension}`),
+        path.resolve(`${fontStatic}/${font}.${extension}`),
+      )
+      console.log(' ', font, extension)
     }
   }
 }

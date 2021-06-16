@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useEffect, useState } from 'react'
+import { Dispatch, SetStateAction, useEffect, useMemo, useState } from 'react'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 
 const set = async (key: string, value: string | undefined) => {
@@ -21,11 +21,12 @@ const get = async (key: string) => {
  * @returns {Array} [value, dispatch, isLoaded]
  */
 const useAsyncStorage = (
-  key: string,
+  userKey: string,
   initialValue?: string,
 ): [string | undefined, Dispatch<SetStateAction<string | undefined>>, boolean] => {
   const [storedValue, setStoredValue] = useState<string | undefined>(initialValue)
   const [isLoaded, setIsLoaded] = useState<boolean>(false)
+  const key = useMemo(() => `app_${userKey}`, [userKey])
 
   useEffect(() => {
     get(key)
