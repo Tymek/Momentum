@@ -3,9 +3,6 @@
   "main": "lib/index.js",
   "version": "0.0.0",
   "private": true,
-  "scripts": {
-    "test": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha -r ts-node/register 'tests/**/*.ts'"
-  },
   "dependencies": {
     "requireindex": "~1.1.0",
     "ts-node": "9.1.1",
