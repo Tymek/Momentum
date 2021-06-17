@@ -27,7 +27,7 @@ const SpeakerCard: FC<Pick<Speaker, 'name' | 'description' | 'image'>> = ({ name
                   ? speakerImages[image as keyof typeof speakerImages]
                   : speakerImages.placeholder
               }
-              style={{ height: 160, width: 600 }}
+              style={{ height: 200, width: 600 }}
             />
             <TitleBlock>
               <Title>{name}</Title>
@@ -55,7 +55,7 @@ const TitleBlock = styled.View`
 `
 
 const Wrapper = styled.View`
-  width: 33.33%;
+  width: 50%;
   max-width: 320px;
   padding: ${({ theme }) => `${theme.spacing.m / 2}px`};
 `
@@ -83,7 +83,7 @@ const Speakers: FC = () => {
       data={data.speaker}
       renderItem={({ item }) => <SpeakerCard {...item} />}
       keyExtractor={(item) => item.id}
-      numColumns={3}
+      numColumns={2}
       // extraData={selectedId}
     />
   )

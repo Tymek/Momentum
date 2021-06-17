@@ -46,6 +46,7 @@ const SpeakerAndLocation = styled.View`
   display: flex;
   flex-direction: row-reverse;
   align-items: center;
+  padding-top: 1px;
   /* justify-content: space-between; */
 `
 
