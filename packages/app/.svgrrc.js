@@ -4,4 +4,5 @@ module.exports = {
     currentColor: '{props.fill}',
     currentcolor: '{props.fill}',
   },
+  dimensions: false,
 }

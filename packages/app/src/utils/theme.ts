@@ -106,6 +106,13 @@ const theme = {
     textColor: color.gray,
     highlightedTextColor: color.dark,
   },
+  map: {
+    markerColor: color.dark,
+    borderColor: 'rgb(216, 216, 216)',
+    buttonHighlight: color.accent,
+    buttonBackground: color.light,
+    buttonBorder: color.gray,
+  },
 }
 
 export const darkTheme: typeof theme = {
@@ -138,6 +145,13 @@ export const darkTheme: typeof theme = {
   timeline: {
     textColor: color.light,
     highlightedTextColor: color.accent,
+  },
+  map: {
+    ...theme.map,
+    markerColor: color.light,
+    borderColor: 'rgb(39, 39, 41)',
+    buttonBackground: color.dark,
+    buttonBorder: color.dark,
   },
 }
 
