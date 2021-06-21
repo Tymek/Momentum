@@ -1,0 +1,16 @@
+query getSpeakerSessions($speaker_id: uuid!) {
+  session(where: { speaker_id: { _eq: $speaker_id } }) {
+    id
+    name
+    begins_at
+    location
+  }
+  topic(where: { speaker_id: { _eq: $speaker_id } }) {
+    id
+    subject
+    location
+    session {
+      begins_at
+    }
+  }
+}

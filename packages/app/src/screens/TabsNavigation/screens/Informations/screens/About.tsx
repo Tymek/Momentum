@@ -31,9 +31,9 @@ Scroll-Lock &ndash; Tymoteusz Czech
 **v${Constants?.manifest?.version}** ${os} (SDK ${Constants?.manifest?.sdkVersion})
 
 # Użyte biblioteki:
-_${Object.keys(packageJson.dependencies)
+${Object.keys(packageJson.dependencies)
   .filter((dependency) => !/@-local\//.test(dependency))
-  .join(', ')}_
+  .join(', ')}
 
 ${
   __DEV__

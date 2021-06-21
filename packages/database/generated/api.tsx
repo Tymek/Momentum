@@ -2003,6 +2003,16 @@ export type GetSettingsQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type GetSettingsQuery = Pick<Query_Root, 'isDarkTheme'>;
 
+export type GetSpeakerSessionsQueryVariables = Exact<{
+  speaker_id: Scalars['uuid'];
+}>;
+
+
+export type GetSpeakerSessionsQuery = { session: Array<Pick<Session, 'id' | 'name' | 'begins_at' | 'location'>>, topic: Array<(
+    Pick<Topic, 'id' | 'subject' | 'location'>
+    & { session: Pick<Session, 'begins_at'> }
+  )> };
+
 export type GetSpeakersQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -2197,6 +2207,52 @@ export function useGetSettingsLazyQuery(baseOptions?: ApolloReactHooks.LazyQuery
 export type GetSettingsQueryHookResult = ReturnType<typeof useGetSettingsQuery>;
 export type GetSettingsLazyQueryHookResult = ReturnType<typeof useGetSettingsLazyQuery>;
 export type GetSettingsQueryResult = Apollo.QueryResult<GetSettingsQuery, GetSettingsQueryVariables>;
+export const GetSpeakerSessionsDocument = gql`
+    query getSpeakerSessions($speaker_id: uuid!) {
+  session(where: {speaker_id: {_eq: $speaker_id}}) {
+    id
+    name
+    begins_at
+    location
+  }
+  topic(where: {speaker_id: {_eq: $speaker_id}}) {
+    id
+    subject
+    location
+    session {
+      begins_at
+    }
+  }
+}
+    `;
+
+/**
+ * __useGetSpeakerSessionsQuery__
+ *
+ * To run a query within a React component, call `useGetSpeakerSessionsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetSpeakerSessionsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetSpeakerSessionsQuery({
+ *   variables: {
+ *      speaker_id: // value for 'speaker_id'
+ *   },
+ * });
+ */
+export function useGetSpeakerSessionsQuery(baseOptions: ApolloReactHooks.QueryHookOptions<GetSpeakerSessionsQuery, GetSpeakerSessionsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return ApolloReactHooks.useQuery<GetSpeakerSessionsQuery, GetSpeakerSessionsQueryVariables>(GetSpeakerSessionsDocument, options);
+      }
+export function useGetSpeakerSessionsLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<GetSpeakerSessionsQuery, GetSpeakerSessionsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return ApolloReactHooks.useLazyQuery<GetSpeakerSessionsQuery, GetSpeakerSessionsQueryVariables>(GetSpeakerSessionsDocument, options);
+        }
+export type GetSpeakerSessionsQueryHookResult = ReturnType<typeof useGetSpeakerSessionsQuery>;
+export type GetSpeakerSessionsLazyQueryHookResult = ReturnType<typeof useGetSpeakerSessionsLazyQuery>;
+export type GetSpeakerSessionsQueryResult = Apollo.QueryResult<GetSpeakerSessionsQuery, GetSpeakerSessionsQueryVariables>;
 export const GetSpeakersDocument = gql`
     query getSpeakers {
   speaker {

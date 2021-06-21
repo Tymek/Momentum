@@ -107,6 +107,14 @@ const BottomTabNavigator: FC = () => {
         listeners={({ navigation }) => ({
           // Issue with `unmountOnBlur`: https://git.io/JGOxL
           blur: () => navigation.setParams({ screen: undefined }),
+          tabPress: () => {
+            navigation.navigate('Root', {
+              screen: 'Info',
+              params: {
+                screen: 'InfoScreen',
+              },
+            })
+          },
         })}
       />
       <BottomTab.Screen
