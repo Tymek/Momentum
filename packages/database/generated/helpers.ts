@@ -205,13 +205,14 @@ export type session_mutation_responseFieldPolicy = {
 	affected_rows?: FieldPolicy<any> | FieldReadFunction<any>,
 	returning?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type speakerKeySpecifier = ('created_at' | 'description' | 'id' | 'image' | 'name' | 'sessions' | 'sessions_aggregate' | 'topics' | 'topics_aggregate' | 'updated_at' | speakerKeySpecifier)[];
+export type speakerKeySpecifier = ('created_at' | 'description' | 'id' | 'image' | 'name' | 'priority' | 'sessions' | 'sessions_aggregate' | 'topics' | 'topics_aggregate' | 'updated_at' | speakerKeySpecifier)[];
 export type speakerFieldPolicy = {
 	created_at?: FieldPolicy<any> | FieldReadFunction<any>,
 	description?: FieldPolicy<any> | FieldReadFunction<any>,
 	id?: FieldPolicy<any> | FieldReadFunction<any>,
 	image?: FieldPolicy<any> | FieldReadFunction<any>,
 	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	priority?: FieldPolicy<any> | FieldReadFunction<any>,
 	sessions?: FieldPolicy<any> | FieldReadFunction<any>,
 	sessions_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
 	topics?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -223,34 +224,76 @@ export type speaker_aggregateFieldPolicy = {
 	aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
 	nodes?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type speaker_aggregate_fieldsKeySpecifier = ('count' | 'max' | 'min' | speaker_aggregate_fieldsKeySpecifier)[];
+export type speaker_aggregate_fieldsKeySpecifier = ('avg' | 'count' | 'max' | 'min' | 'stddev' | 'stddev_pop' | 'stddev_samp' | 'sum' | 'var_pop' | 'var_samp' | 'variance' | speaker_aggregate_fieldsKeySpecifier)[];
 export type speaker_aggregate_fieldsFieldPolicy = {
+	avg?: FieldPolicy<any> | FieldReadFunction<any>,
 	count?: FieldPolicy<any> | FieldReadFunction<any>,
 	max?: FieldPolicy<any> | FieldReadFunction<any>,
-	min?: FieldPolicy<any> | FieldReadFunction<any>
+	min?: FieldPolicy<any> | FieldReadFunction<any>,
+	stddev?: FieldPolicy<any> | FieldReadFunction<any>,
+	stddev_pop?: FieldPolicy<any> | FieldReadFunction<any>,
+	stddev_samp?: FieldPolicy<any> | FieldReadFunction<any>,
+	sum?: FieldPolicy<any> | FieldReadFunction<any>,
+	var_pop?: FieldPolicy<any> | FieldReadFunction<any>,
+	var_samp?: FieldPolicy<any> | FieldReadFunction<any>,
+	variance?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type speaker_max_fieldsKeySpecifier = ('created_at' | 'description' | 'id' | 'image' | 'name' | 'updated_at' | speaker_max_fieldsKeySpecifier)[];
+export type speaker_avg_fieldsKeySpecifier = ('priority' | speaker_avg_fieldsKeySpecifier)[];
+export type speaker_avg_fieldsFieldPolicy = {
+	priority?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type speaker_max_fieldsKeySpecifier = ('created_at' | 'description' | 'id' | 'image' | 'name' | 'priority' | 'updated_at' | speaker_max_fieldsKeySpecifier)[];
 export type speaker_max_fieldsFieldPolicy = {
 	created_at?: FieldPolicy<any> | FieldReadFunction<any>,
 	description?: FieldPolicy<any> | FieldReadFunction<any>,
 	id?: FieldPolicy<any> | FieldReadFunction<any>,
 	image?: FieldPolicy<any> | FieldReadFunction<any>,
 	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	priority?: FieldPolicy<any> | FieldReadFunction<any>,
 	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type speaker_min_fieldsKeySpecifier = ('created_at' | 'description' | 'id' | 'image' | 'name' | 'updated_at' | speaker_min_fieldsKeySpecifier)[];
+export type speaker_min_fieldsKeySpecifier = ('created_at' | 'description' | 'id' | 'image' | 'name' | 'priority' | 'updated_at' | speaker_min_fieldsKeySpecifier)[];
 export type speaker_min_fieldsFieldPolicy = {
 	created_at?: FieldPolicy<any> | FieldReadFunction<any>,
 	description?: FieldPolicy<any> | FieldReadFunction<any>,
 	id?: FieldPolicy<any> | FieldReadFunction<any>,
 	image?: FieldPolicy<any> | FieldReadFunction<any>,
 	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	priority?: FieldPolicy<any> | FieldReadFunction<any>,
 	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
 };
 export type speaker_mutation_responseKeySpecifier = ('affected_rows' | 'returning' | speaker_mutation_responseKeySpecifier)[];
 export type speaker_mutation_responseFieldPolicy = {
 	affected_rows?: FieldPolicy<any> | FieldReadFunction<any>,
 	returning?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type speaker_stddev_fieldsKeySpecifier = ('priority' | speaker_stddev_fieldsKeySpecifier)[];
+export type speaker_stddev_fieldsFieldPolicy = {
+	priority?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type speaker_stddev_pop_fieldsKeySpecifier = ('priority' | speaker_stddev_pop_fieldsKeySpecifier)[];
+export type speaker_stddev_pop_fieldsFieldPolicy = {
+	priority?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type speaker_stddev_samp_fieldsKeySpecifier = ('priority' | speaker_stddev_samp_fieldsKeySpecifier)[];
+export type speaker_stddev_samp_fieldsFieldPolicy = {
+	priority?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type speaker_sum_fieldsKeySpecifier = ('priority' | speaker_sum_fieldsKeySpecifier)[];
+export type speaker_sum_fieldsFieldPolicy = {
+	priority?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type speaker_var_pop_fieldsKeySpecifier = ('priority' | speaker_var_pop_fieldsKeySpecifier)[];
+export type speaker_var_pop_fieldsFieldPolicy = {
+	priority?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type speaker_var_samp_fieldsKeySpecifier = ('priority' | speaker_var_samp_fieldsKeySpecifier)[];
+export type speaker_var_samp_fieldsFieldPolicy = {
+	priority?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type speaker_variance_fieldsKeySpecifier = ('priority' | speaker_variance_fieldsKeySpecifier)[];
+export type speaker_variance_fieldsFieldPolicy = {
+	priority?: FieldPolicy<any> | FieldReadFunction<any>
 };
 export type subscription_rootKeySpecifier = ('notification' | 'notification_aggregate' | 'notification_by_pk' | 'page' | 'page_aggregate' | 'page_by_pk' | 'session' | 'session_aggregate' | 'session_by_pk' | 'speaker' | 'speaker_aggregate' | 'speaker_by_pk' | 'topic' | 'topic_aggregate' | 'topic_by_pk' | 'user' | 'user_aggregate' | 'user_by_pk' | subscription_rootKeySpecifier)[];
 export type subscription_rootFieldPolicy = {
@@ -461,6 +504,10 @@ export type TypedTypePolicies = TypePolicies & {
 		keyFields?: false | speaker_aggregate_fieldsKeySpecifier | (() => undefined | speaker_aggregate_fieldsKeySpecifier),
 		fields?: speaker_aggregate_fieldsFieldPolicy,
 	},
+	speaker_avg_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | speaker_avg_fieldsKeySpecifier | (() => undefined | speaker_avg_fieldsKeySpecifier),
+		fields?: speaker_avg_fieldsFieldPolicy,
+	},
 	speaker_max_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
 		keyFields?: false | speaker_max_fieldsKeySpecifier | (() => undefined | speaker_max_fieldsKeySpecifier),
 		fields?: speaker_max_fieldsFieldPolicy,
@@ -472,6 +519,34 @@ export type TypedTypePolicies = TypePolicies & {
 	speaker_mutation_response?: Omit<TypePolicy, "fields" | "keyFields"> & {
 		keyFields?: false | speaker_mutation_responseKeySpecifier | (() => undefined | speaker_mutation_responseKeySpecifier),
 		fields?: speaker_mutation_responseFieldPolicy,
+	},
+	speaker_stddev_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | speaker_stddev_fieldsKeySpecifier | (() => undefined | speaker_stddev_fieldsKeySpecifier),
+		fields?: speaker_stddev_fieldsFieldPolicy,
+	},
+	speaker_stddev_pop_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | speaker_stddev_pop_fieldsKeySpecifier | (() => undefined | speaker_stddev_pop_fieldsKeySpecifier),
+		fields?: speaker_stddev_pop_fieldsFieldPolicy,
+	},
+	speaker_stddev_samp_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | speaker_stddev_samp_fieldsKeySpecifier | (() => undefined | speaker_stddev_samp_fieldsKeySpecifier),
+		fields?: speaker_stddev_samp_fieldsFieldPolicy,
+	},
+	speaker_sum_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | speaker_sum_fieldsKeySpecifier | (() => undefined | speaker_sum_fieldsKeySpecifier),
+		fields?: speaker_sum_fieldsFieldPolicy,
+	},
+	speaker_var_pop_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | speaker_var_pop_fieldsKeySpecifier | (() => undefined | speaker_var_pop_fieldsKeySpecifier),
+		fields?: speaker_var_pop_fieldsFieldPolicy,
+	},
+	speaker_var_samp_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | speaker_var_samp_fieldsKeySpecifier | (() => undefined | speaker_var_samp_fieldsKeySpecifier),
+		fields?: speaker_var_samp_fieldsFieldPolicy,
+	},
+	speaker_variance_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | speaker_variance_fieldsKeySpecifier | (() => undefined | speaker_variance_fieldsKeySpecifier),
+		fields?: speaker_variance_fieldsFieldPolicy,
 	},
 	subscription_root?: Omit<TypePolicy, "fields" | "keyFields"> & {
 		keyFields?: false | subscription_rootKeySpecifier | (() => undefined | subscription_rootKeySpecifier),

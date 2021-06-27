@@ -1,8 +1,9 @@
 query getSpeakers {
-  speaker {
+  speaker(order_by: { priority: asc }) {
     id
     name
     description
     image
+    priority
   }
 }

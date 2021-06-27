@@ -18,7 +18,7 @@ const Speakers: FC = () => {
     <FlatList
       key={Math.random()}
       contentContainerStyle={{ padding: theme.spacing.m / 2 }}
-      data={data.speaker}
+      data={data.speaker.filter(({ priority }) => priority !== 0)}
       renderItem={({ item }) => <SpeakerCard {...item} />}
       keyExtractor={(item) => item.id}
       numColumns={2}

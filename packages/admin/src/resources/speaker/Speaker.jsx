@@ -7,6 +7,7 @@ import {
   Create,
   Edit,
   SelectInput,
+  NumberInput,
   FunctionField,
 } from 'react-admin'
 // import moment from 'utils/moment'
@@ -77,6 +78,11 @@ export const SpeakerCreate = (props) => (
       <TextInput source="name" />
       <TextInput source="description" multiline />
       <SelectInput source="image" style={{ width: '256px' }} choices={images} resettable />
+      <NumberInput
+        label="priorytet"
+        source="priority"
+        helperText="Priorytet na liście, od najmniejszego, 0 - nie wyświetlaj"
+      />
     </SimpleForm>
   </Create>
 )
@@ -87,6 +93,11 @@ export const SpeakerEdit = (props) => (
       <TextInput source="name" />
       <TextInput source="description" multiline />
       <SelectInput source="image" style={{ width: '256px' }} choices={images} resettable />
+      <NumberInput
+        label="priorytet"
+        source="priority"
+        helperText="Priorytet na liście, od najmniejszego, 0 - nie wyświetlaj"
+      />
     </SimpleForm>
   </Edit>
 )

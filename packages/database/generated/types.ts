@@ -15,6 +15,19 @@ export type Scalars = {
 };
 
 
+/** Boolean expression to compare columns of type "Int". All fields are combined with logical 'AND'. */
+export type Int_Comparison_Exp = {
+  _eq?: Maybe<Scalars['Int']>;
+  _gt?: Maybe<Scalars['Int']>;
+  _gte?: Maybe<Scalars['Int']>;
+  _in?: Maybe<Array<Scalars['Int']>>;
+  _is_null?: Maybe<Scalars['Boolean']>;
+  _lt?: Maybe<Scalars['Int']>;
+  _lte?: Maybe<Scalars['Int']>;
+  _neq?: Maybe<Scalars['Int']>;
+  _nin?: Maybe<Array<Scalars['Int']>>;
+};
+
 /** Boolean expression to compare columns of type "String". All fields are combined with logical 'AND'. */
 export type String_Comparison_Exp = {
   _eq?: Maybe<Scalars['String']>;
@@ -375,6 +388,7 @@ export type Mutation_RootUpdate_Session_By_PkArgs = {
 
 /** mutation root */
 export type Mutation_RootUpdate_SpeakerArgs = {
+  _inc?: Maybe<Speaker_Inc_Input>;
   _set?: Maybe<Speaker_Set_Input>;
   where: Speaker_Bool_Exp;
 };
@@ -382,6 +396,7 @@ export type Mutation_RootUpdate_SpeakerArgs = {
 
 /** mutation root */
 export type Mutation_RootUpdate_Speaker_By_PkArgs = {
+  _inc?: Maybe<Speaker_Inc_Input>;
   _set?: Maybe<Speaker_Set_Input>;
   pk_columns: Speaker_Pk_Columns_Input;
 };
@@ -1218,6 +1233,7 @@ export type Speaker = {
   id: Scalars['uuid'];
   image?: Maybe<Scalars['String']>;
   name: Scalars['String'];
+  priority?: Maybe<Scalars['Int']>;
   /** An array relationship */
   sessions: Array<Session>;
   /** An aggregate relationship */
@@ -1279,9 +1295,17 @@ export type Speaker_Aggregate = {
 /** aggregate fields of "speaker" */
 export type Speaker_Aggregate_Fields = {
   __typename?: 'speaker_aggregate_fields';
+  avg?: Maybe<Speaker_Avg_Fields>;
   count: Scalars['Int'];
   max?: Maybe<Speaker_Max_Fields>;
   min?: Maybe<Speaker_Min_Fields>;
+  stddev?: Maybe<Speaker_Stddev_Fields>;
+  stddev_pop?: Maybe<Speaker_Stddev_Pop_Fields>;
+  stddev_samp?: Maybe<Speaker_Stddev_Samp_Fields>;
+  sum?: Maybe<Speaker_Sum_Fields>;
+  var_pop?: Maybe<Speaker_Var_Pop_Fields>;
+  var_samp?: Maybe<Speaker_Var_Samp_Fields>;
+  variance?: Maybe<Speaker_Variance_Fields>;
 };
 
 
@@ -1289,6 +1313,12 @@ export type Speaker_Aggregate_Fields = {
 export type Speaker_Aggregate_FieldsCountArgs = {
   columns?: Maybe<Array<Speaker_Select_Column>>;
   distinct?: Maybe<Scalars['Boolean']>;
+};
+
+/** aggregate avg on columns */
+export type Speaker_Avg_Fields = {
+  __typename?: 'speaker_avg_fields';
+  priority?: Maybe<Scalars['Float']>;
 };
 
 /** Boolean expression to filter rows from the table "speaker". All fields are combined with a logical 'AND'. */
@@ -1301,6 +1331,7 @@ export type Speaker_Bool_Exp = {
   id?: Maybe<Uuid_Comparison_Exp>;
   image?: Maybe<String_Comparison_Exp>;
   name?: Maybe<String_Comparison_Exp>;
+  priority?: Maybe<Int_Comparison_Exp>;
   sessions?: Maybe<Session_Bool_Exp>;
   topics?: Maybe<Topic_Bool_Exp>;
   updated_at?: Maybe<Timestamptz_Comparison_Exp>;
@@ -1312,6 +1343,11 @@ export enum Speaker_Constraint {
   SpeakerPkey = 'speaker_pkey'
 }
 
+/** input type for incrementing numeric columns in table "speaker" */
+export type Speaker_Inc_Input = {
+  priority?: Maybe<Scalars['Int']>;
+};
+
 /** input type for inserting data into table "speaker" */
 export type Speaker_Insert_Input = {
   created_at?: Maybe<Scalars['timestamptz']>;
@@ -1319,6 +1355,7 @@ export type Speaker_Insert_Input = {
   id?: Maybe<Scalars['uuid']>;
   image?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
+  priority?: Maybe<Scalars['Int']>;
   sessions?: Maybe<Session_Arr_Rel_Insert_Input>;
   topics?: Maybe<Topic_Arr_Rel_Insert_Input>;
   updated_at?: Maybe<Scalars['timestamptz']>;
@@ -1332,6 +1369,7 @@ export type Speaker_Max_Fields = {
   id?: Maybe<Scalars['uuid']>;
   image?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
+  priority?: Maybe<Scalars['Int']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
 };
 
@@ -1343,6 +1381,7 @@ export type Speaker_Min_Fields = {
   id?: Maybe<Scalars['uuid']>;
   image?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
+  priority?: Maybe<Scalars['Int']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
 };
 
@@ -1376,6 +1415,7 @@ export type Speaker_Order_By = {
   id?: Maybe<Order_By>;
   image?: Maybe<Order_By>;
   name?: Maybe<Order_By>;
+  priority?: Maybe<Order_By>;
   sessions_aggregate?: Maybe<Session_Aggregate_Order_By>;
   topics_aggregate?: Maybe<Topic_Aggregate_Order_By>;
   updated_at?: Maybe<Order_By>;
@@ -1399,6 +1439,8 @@ export enum Speaker_Select_Column {
   /** column name */
   Name = 'name',
   /** column name */
+  Priority = 'priority',
+  /** column name */
   UpdatedAt = 'updated_at'
 }
 
@@ -1409,7 +1451,32 @@ export type Speaker_Set_Input = {
   id?: Maybe<Scalars['uuid']>;
   image?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
+  priority?: Maybe<Scalars['Int']>;
   updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** aggregate stddev on columns */
+export type Speaker_Stddev_Fields = {
+  __typename?: 'speaker_stddev_fields';
+  priority?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate stddev_pop on columns */
+export type Speaker_Stddev_Pop_Fields = {
+  __typename?: 'speaker_stddev_pop_fields';
+  priority?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate stddev_samp on columns */
+export type Speaker_Stddev_Samp_Fields = {
+  __typename?: 'speaker_stddev_samp_fields';
+  priority?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate sum on columns */
+export type Speaker_Sum_Fields = {
+  __typename?: 'speaker_sum_fields';
+  priority?: Maybe<Scalars['Int']>;
 };
 
 /** update columns of table "speaker" */
@@ -1425,8 +1492,28 @@ export enum Speaker_Update_Column {
   /** column name */
   Name = 'name',
   /** column name */
+  Priority = 'priority',
+  /** column name */
   UpdatedAt = 'updated_at'
 }
+
+/** aggregate var_pop on columns */
+export type Speaker_Var_Pop_Fields = {
+  __typename?: 'speaker_var_pop_fields';
+  priority?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate var_samp on columns */
+export type Speaker_Var_Samp_Fields = {
+  __typename?: 'speaker_var_samp_fields';
+  priority?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate variance on columns */
+export type Speaker_Variance_Fields = {
+  __typename?: 'speaker_variance_fields';
+  priority?: Maybe<Scalars['Float']>;
+};
 
 export type Subscription_Root = {
   __typename?: 'subscription_root';
