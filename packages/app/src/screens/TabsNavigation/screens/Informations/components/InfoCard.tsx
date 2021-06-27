@@ -4,6 +4,7 @@ import { useLinkTo } from '@react-navigation/native'
 import styled, { css } from '@emotion/native'
 import Text from 'components/Text'
 import config from 'utils/config'
+import useShadow from 'hooks/useShadow'
 
 const InfoCard: FC<{ children?: string; image?: ImageSourcePropType; link?: string }> = ({
   children,
@@ -11,6 +12,7 @@ const InfoCard: FC<{ children?: string; image?: ImageSourcePropType; link?: stri
   link = '/info',
 }) => {
   const linkTo = useLinkTo()
+  const shadow = useShadow(3)
 
   const Main = () => (
     <Content>
@@ -21,7 +23,7 @@ const InfoCard: FC<{ children?: string; image?: ImageSourcePropType; link?: stri
   return (
     <StyledPressable onPress={() => linkTo(link)}>
       {({ pressed }) => (
-        <Card style={pressed ? { opacity: 0.67 } : {}}>
+        <Card style={[pressed ? { opacity: 0.67, marginBottom: -1, marginTop: 1 } : {}, shadow]}>
           {image ? (
             <ImageBackground source={image} style={{ flex: 1 }}>
               <Main />
@@ -43,9 +45,8 @@ const StyledPressable = styled(Pressable)`
 const Card = styled.View`
   display: flex;
   flex: 1;
-  border: 1px solid rgb(39, 39, 41);
-  border-radius: ${({ theme }) => `${theme.borderRadius.m}px`};
-  background-color: rgb(39, 39, 41);
+  border-radius: ${({ theme }) => `${theme.borderRadius.l}px`};
+  background-color: ${({ theme }) => theme.color.background};
   overflow: hidden;
 
   ${config.isWeb &&
@@ -57,16 +58,15 @@ const Card = styled.View`
 const Content = styled.View`
   display: flex;
   flex: 1;
-  padding: ${({ theme }) => `${theme.spacing.m}px`};
+  padding: ${({ theme }) => `${theme.spacing.s}px`};
   justify-content: flex-end;
   align-items: flex-end;
-  background-color: rgba(0, 0, 0, 0.5);
 `
 
 const Title = styled(Text)`
-  color: ${({ theme }) => theme.color.light};
+  color: ${({ theme }) => theme.color.text};
   font-family: ${({ theme }) => theme.font.headers};
-  font-size: ${({ theme }) => `${theme.fontSize.l}px`};
+  font-size: ${({ theme }) => `${theme.fontSize.m}px`};
   text-transform: uppercase;
 `
 
