@@ -31,7 +31,7 @@ const markers: Marker[] = [
   {
     title: 'Nocleg (dziewczyny)',
     address: 'Łopuskiego 15',
-    coordinates: [15.5744857, 54.1784437],
+    coordinates: [15.5737857, 54.1781537],
     navigation: 'Łopuskiego 15, Kołobrzeg',
     type: 'sharp',
   },
@@ -41,6 +41,27 @@ const markers: Marker[] = [
     coordinates: [15.5375125, 54.1792386],
     navigation: '54.179019,15.5368783',
     type: 'outline',
+  },
+  // {
+  //   title: 'Promenada',
+  //   address: '???, 78-100 Kołobrzeg',
+  //   coordinates: [, ],
+  //   navigation: '',
+  //   type: 'umbrella',
+  // },
+  {
+    title: 'Dworzec PKP',
+    address: 'aleja Kolejowa 3, 78-100 Kołobrzeg',
+    coordinates: [15.570096216683197, 54.181902042815665],
+    navigation: '54.181954,15.5693778',
+    type: 'train',
+  },
+  {
+    title: 'Dworzec Autobusowy',
+    address: 'aleja Kolejowa 6, 78-100 Kołobrzeg',
+    coordinates: [15.571969272027559, 54.181521375222076],
+    navigation: '54.181534,15.5712486',
+    type: 'bus',
   },
 ]
 

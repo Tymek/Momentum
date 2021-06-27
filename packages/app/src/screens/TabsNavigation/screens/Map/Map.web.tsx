@@ -13,6 +13,7 @@ import Toggle3D from './components/3dToggle'
 import Navigate from './components/Navigate'
 import systemNavigate from './utils/systemNavigate'
 import useAsyncStorage from 'hooks/useAsyncStorage'
+import styled from '@emotion/native'
 
 const mapbox = mapboxgl as typeof mapboxType
 
@@ -27,6 +28,16 @@ const MapView: FC = () => {
   const markers = useRef<mapboxType.Marker[]>([])
   const [is3D, setIs3D] = useAsyncStorage('no')
 
+  const navigate = useCallback(() => {
+    if (activeItem) {
+      const { coordinates, navigation } =
+        mapConfig.markers.find(({ title }) => title === activeItem) || {}
+      if (coordinates) {
+        systemNavigate(coordinates[1], coordinates[0], navigation)
+      }
+    }
+  }, [activeItem])
+
   useEffect(() => {
     if (map.current || !createMarker) return // initialize map only once
     const instance = new mapbox.Map({
@@ -36,13 +47,32 @@ const MapView: FC = () => {
       zoom: mapConfig.zoom,
       minZoom: mapConfig.minZoom,
       pitch: 0,
+      attributionControl: false,
     })
+    instance.addControl(new mapboxgl.AttributionControl(), 'top-left')
+
+    instance.on('click', function (e) {
+      console.log(e)
+      // var coordinates = e.features[0].geometry.coordinates.slice()
+      // var description = e.features[0].properties.description
+
+      // // Ensure that if the map is zoomed out such that multiple
+      // // copies of the feature are visible, the popup appears
+      // // over the copy being pointed to.
+      // while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+      //   coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360
+      // }
+
+      // new mapboxgl.Popup().setLngLat(coordinates).setHTML(description).addTo(map)
+    })
+
     map.current = instance
   }, [createMarker, isDark])
 
   useEffect(() => {
     if (map.current && createMarker) {
       markers.current.map((marker) => marker.remove())
+      // const activeMarker = mapConfig.markers.find(({ title }) => activeItem === title)
 
       markers.current = mapConfig.markers.map((marker) => {
         const mapMarker = (
@@ -60,6 +90,19 @@ const MapView: FC = () => {
 
         return mapMarker
       })
+
+      // const popup: mapboxType.Marker | undefined = activeMarker
+      //   ? new mapboxgl.Popup()
+      //       .setLngLat(activeMarker.coordinates)
+      //       .setHTML(`${activeMarker.title}<br /><a href="#">Nawigacja</a>`)
+      //       .addTo(map.current)
+      //   : undefined
+
+      // return () => {
+      //   if (popup) {
+      //     popup.remove()
+      //   }
+      // }
     }
   }, [createMarker, activeItem])
 
@@ -70,16 +113,6 @@ const MapView: FC = () => {
         center: coordinates,
         essential: true,
       })
-    }
-  }, [activeItem])
-
-  const navigate = useCallback(() => {
-    if (activeItem) {
-      const { coordinates, navigation } =
-        mapConfig.markers.find(({ title }) => title === activeItem) || {}
-      if (coordinates) {
-        systemNavigate(coordinates[1], coordinates[0], navigation)
-      }
     }
   }, [activeItem])
 
@@ -100,13 +133,26 @@ const MapView: FC = () => {
   }, [is3D, setIs3D])
 
   return (
-    <div style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
-      <div ref={mapContainer} className="map-container" style={{ flex: 1 }} />
+    <Wrapper>
+      <MapContent>
+        <div ref={mapContainer} className="map-container" style={{ flex: 1 }} />
+        <Navigate onPress={navigate} visible={!!activeItem} />
+        <Toggle3D onPress={toggle3D} active={is3D === 'yes'} />
+      </MapContent>
       <LocationsList activeItem={activeItem} setActiveItem={setActiveItem} />
-      <Toggle3D onPress={toggle3D} active={is3D === 'yes'} />
-      <Navigate onPress={navigate} visible={!!activeItem} />
-    </div>
+    </Wrapper>
   )
 }
+
+const Wrapper = styled.View`
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+`
+
+const MapContent = styled.View`
+  position: relative;
+  flex-grow: 1;
+`
 
 export default MapView
