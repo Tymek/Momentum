@@ -23,10 +23,10 @@ const markers: Marker[] = [
   },
   {
     title: 'Nocleg (chłopaki)',
-    address: 'Wąska 5',
+    address: 'Wąska 1',
     coordinates: [15.573081926038299, 54.1765437641634],
     type: 'sharp',
-    navigation: 'Wąska 5, Kołobrzeg',
+    navigation: 'Wąska 1, Kołobrzeg',
   },
   {
     title: 'Nocleg (dziewczyny)',
@@ -42,13 +42,13 @@ const markers: Marker[] = [
     navigation: '54.179019,15.5368783',
     type: 'outline',
   },
-  // {
-  //   title: 'Promenada',
-  //   address: '???, 78-100 Kołobrzeg',
-  //   coordinates: [, ],
-  //   navigation: '',
-  //   type: 'umbrella',
-  // },
+  {
+    title: 'Promenada',
+    address: 'Plac przy Molo, bulwar Jana Szymańskiego',
+    coordinates: [54.186373, 15.561874],
+    navigation: 'Plac przy Molo, bulwar Jana Szymańskiego, Kołobrzeg',
+    type: 'umbrella',
+  },
   {
     title: 'Dworzec PKP',
     address: 'aleja Kolejowa 3, 78-100 Kołobrzeg',
