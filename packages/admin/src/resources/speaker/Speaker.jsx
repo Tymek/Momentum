@@ -29,7 +29,7 @@ const images = [
   { id: 'malgorzata-bieniaszewska.jpg', name: 'malgorzata-bieniaszewska.jpg' },
   { id: 'marciniaki.jpg', name: 'marciniaki.jpg' },
   { id: 'marek-kaminski.jpg', name: 'marek-kaminski.jpg' },
-  { id: 'maria-marszalek.jpg', name: 'maria-marszalek.jpg' },
+  { id: 'maria-marszalek-holo.jpeg', name: 'maria-marszalek-holo.jpeg' },
   { id: 'tomaszewscy.jpg', name: 'tomaszewscy.jpg' },
   { id: 'weronika-butowicz.jpg', name: 'weronika-butowicz.jpg' },
   { id: 'zbyszek-zarozny.jpg', name: 'zbyszek-zarozny.jpg' },
