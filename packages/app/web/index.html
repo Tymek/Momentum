@@ -1,59 +1,68 @@
 <!DOCTYPE html>
 <html lang="%LANG_ISO_CODE%">
-  <head>
-    <meta charset="utf-8" />
-    <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1.00001, viewport-fit=cover"
-    />
-    <title>%WEB_TITLE%</title>
-    <style>
-      html,
-      body,
-      #root {
-        width: 100%;
-        -webkit-overflow-scrolling: touch;
-        margin: 0px;
-        padding: 0px;
-        min-height: 100%;
-      }
-      #root {
-        flex-shrink: 0;
-        flex-basis: auto;
-        flex-grow: 1;
-        display: flex;
-        flex: 1;
-      }
 
-      html {
-        scroll-behavior: smooth;
-        -webkit-text-size-adjust: 100%;
-        height: calc(100% + env(safe-area-inset-top));
-      }
+<head>
+  <meta charset="utf-8" />
+  <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1.00001, viewport-fit=cover" />
+  <title>%WEB_TITLE%</title>
+  <link rel="manifest" href="pwa.webmanifest">
 
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="application-name" content="Momentum">
+  <meta name="apple-mobile-web-app-title" content="Momentum">
+  <meta name="theme-color" content="#2ac9ff">
+  <meta name="msapplication-navbutton-color" content="#2ac9ff">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="msapplication-starturl" content="/">
+  <style>
+    html,
+    body,
+    #root {
+      width: 100%;
+      -webkit-overflow-scrolling: touch;
+      margin: 0px;
+      padding: 0px;
+      min-height: 100%;
+    }
+
+    #root {
+      flex-shrink: 0;
+      flex-basis: auto;
+      flex-grow: 1;
+      display: flex;
+      flex: 1;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+      height: calc(100% + env(safe-area-inset-top));
+    }
+
+    body {
+      display: flex;
+      overflow-y: auto;
+      overscroll-behavior-y: none;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      -ms-overflow-style: scrollbar;
+    }
+
+    @media (prefers-color-scheme: dark) {
       body {
-        display: flex;
-        overflow-y: auto;
-        overscroll-behavior-y: none;
-        text-rendering: optimizeLegibility;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        -ms-overflow-style: scrollbar;
+        background-color: black;
       }
-      @media (prefers-color-scheme: dark) {
-        body {
-          background-color: black;
-        }
-      }
-    </style>
-  </head>
+    }
+  </style>
+</head>
 
-  <body>
-    <noscript>
-      <form
-        action=""
-        style="
+<body>
+  <noscript>
+    <form action="" style="
           background-color: #fff;
           position: fixed;
           top: 0;
@@ -61,22 +70,17 @@
           right: 0;
           bottom: 0;
           z-index: 9999;
-        "
-      >
-        <div
-          style="
+        ">
+      <div style="
             font-size: 18px;
             font-family: Helvetica, sans-serif;
             line-height: 24px;
             margin: 10%;
             width: 80%;
-          "
-        >
-          <p>JavaScript jest wyłączony w przeglądarce.</p>
-          <p style="margin: 20px 0">
-            <button
-              type="submit"
-              style="
+          ">
+        <p>JavaScript jest wyłączony w przeglądarce.</p>
+        <p style="margin: 20px 0">
+          <button type="submit" style="
                 background-color: #2ac9ff;
                 border-radius: 100px;
                 border: none;
@@ -86,14 +90,14 @@
                 font-weight: bold;
                 line-height: 20px;
                 padding: 6px 16px;
-              "
-            >
-              Przeładuj
-            </button>
-          </p>
-        </div>
-      </form>
-    </noscript>
-    <div id="root"></div>
-  </body>
+              ">
+            Przeładuj
+          </button>
+        </p>
+      </div>
+    </form>
+  </noscript>
+  <div id="root"></div>
+</body>
+
 </html>
