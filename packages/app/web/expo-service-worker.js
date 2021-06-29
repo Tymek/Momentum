@@ -9,7 +9,9 @@ self.addEventListener('message', (event) => {
   if (typeof event.data === 'string') {
     try {
       data = JSON.parse(event.data)
-    } catch (e) {}
+    } catch (error) {
+      console.warn('event parsing error', error)
+    }
   }
 
   if (data && data.fromExpoWebClient) {
@@ -24,7 +26,7 @@ self.addEventListener('push', (event) => {
   let payload = {}
   try {
     payload = event.data.json()
-  } catch (e) {
+  } catch {
     // If `event.data.text()` is not a JSON object, we just treat it
     // as a plain string and display it as the body.
     payload = { title: '', body: event.data.text() }
@@ -63,6 +65,7 @@ self.addEventListener('notificationclick', (event) => {
 
       // If we already have a window open, use it.
       for (const client of allClients) {
+        // eslint-disable-next-line node/no-unsupported-features/node-builtins
         const url = new URL(client.url)
 
         if (url.pathname === path) {
