@@ -2,9 +2,6 @@ import React, { FC, useEffect, useState } from 'react'
 import { View } from 'react-native'
 import Animated, {
   useAnimatedStyle,
-  useDerivedValue,
-  useSharedValue,
-  withSpring,
 } from 'react-native-reanimated'
 import { useTheme } from '@react-navigation/native'
 import { MaterialIcons } from '@expo/vector-icons'
@@ -13,6 +10,7 @@ import { Maybe, Scalars, SpeakerFragment } from '@-local/db/lib/api'
 import Text from 'components/Text'
 import useShadow from 'hooks/useShadow'
 import { TouchableInfo, Wrapper } from './Block'
+import { useSpringTransition } from 'hooks/useSpringTransition'
 import ExtendedInfo from './ExtendedInfo'
 
 type SessionProps = {
@@ -23,20 +21,6 @@ type SessionProps = {
   ends_at?: Maybe<Scalars['timestamptz']>
   speaker?: Maybe<SpeakerFragment>
   muted?: boolean
-}
-
-const useSpringTransition = (isOpen?: boolean, height?: number) => {
-  const value = useSharedValue(isOpen && height ? height : 0)
-
-  useEffect(() => {
-    if (height) {
-      value.value = isOpen ? height : 0
-    }
-  }, [isOpen, value, height])
-
-  return useDerivedValue(() => {
-    return withSpring(value.value, { damping: 15 })
-  })
 }
 
 const TopicBlock: FC<SessionProps> = ({
