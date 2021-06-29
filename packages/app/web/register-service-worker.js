@@ -8,7 +8,7 @@ if ('serviceWorker' in navigator) {
         // console.info('Registered service-worker', info);
       })
       .catch(function (error) {
-        console.info('Failed to register service-worker', error);
-      });
-  });
+        console.info('Failed to register service-worker', error)
+      })
+  })
 }
