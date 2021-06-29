@@ -1,7 +1,7 @@
 import { createPool, DatabasePoolType } from 'slonik'
 
 const defaultDatabaseUrl =
-  process.platform === 'win32'
+  process.platform === 'win32' || process.platform === 'darwin'
     ? 'postgres://postgres:postgres@localhost:5432/postgres'
     : 'postgres://postgres:postgres@postgres:5432/postgres'
 
