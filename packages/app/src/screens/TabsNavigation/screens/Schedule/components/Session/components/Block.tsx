@@ -5,7 +5,6 @@ import { Maybe, Scalars, SpeakerFragment } from '@-local/db/lib/api'
 import Text from 'components/Text'
 import styled from '@emotion/native'
 import useShadow from 'hooks/useShadow'
-import { TouchableOpacity } from 'react-native-gesture-handler'
 import ExtendedInfo from './ExtendedInfo'
 
 type SessionProps = {
@@ -22,7 +21,6 @@ const Block: FC<SessionProps> = ({
   title,
   description,
   begins_at,
-  /*ends_at,*/
   children,
   speaker,
   location,
@@ -36,7 +34,6 @@ const Block: FC<SessionProps> = ({
         <Info>
           <SessionName>{title}</SessionName>
           {begins_at && <SessionTime>{format(parseISO(begins_at), 'HH:mm')}</SessionTime>}
-          {/* {ends_at && <Text>{format(parseISO(ends_at), 'HH:mm')}</Text>} */}
         </Info>
       }
 
@@ -53,15 +50,7 @@ export const Wrapper = styled.View<{ withTopics?: boolean; muted?: boolean }>`
   padding-bottom: 2px; /* NOTE: font bug compensation */
 `
 
-const Info = styled.View`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  padding: ${({ theme }) => `${theme.spacing.m}px`};
-`
-
-export const TouchableInfo = styled(TouchableOpacity)`
+export const Info = styled.View`
   display: flex;
   flex-direction: row;
   align-items: center;
