@@ -14,7 +14,7 @@ const speakerImages = {
   'malgorzata-bieniaszewska.jpg': require('assets/images/speakers/malgorzata-bieniaszewska.jpg'),
   'marciniaki.jpg': require('assets/images/speakers/marciniaki.jpg'),
   'marek-kaminski.jpg': require('assets/images/speakers/marek-kaminski.jpg'),
-  'maria-marszalek.jpg': require('assets/images/speakers/maria-marszalek.jpg'),
+  'maria-marszalek-holo.jpeg': require('assets/images/speakers/maria-marszalek-holo.jpeg'),
   'tomaszewscy.jpg': require('assets/images/speakers/tomaszewscy.jpg'),
   'weronika-butowicz.jpg': require('assets/images/speakers/weronika-butowicz.jpg'),
   'zbyszek-zarozny.jpg': require('assets/images/speakers/zbyszek-zarozny.jpg'),
