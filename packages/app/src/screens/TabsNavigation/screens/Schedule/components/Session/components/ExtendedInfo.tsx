@@ -52,8 +52,8 @@ export const ExtendedInfo: FC<ExtendedInfoProps> = ({
             </SpeakerAndLocation>
           ) : null}
         </View>
-        {children}
       </Animated.View>
+      {children}
       {isExpandable.current && (
         <TouchableExpandButton onPress={() => setIsOpen(!isOpen)}>
           <MaterialIcons
