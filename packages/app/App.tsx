@@ -7,14 +7,14 @@ import Navigation from 'screens'
 import StatusBar from 'components/StatusBar'
 
 const App: FC = () => (
-  <ApolloProvider>
-    <ThemeProvider>
+  <ThemeProvider>
+    <ApolloProvider>
       <SafeAreaProvider>
         <Navigation />
         <StatusBar />
       </SafeAreaProvider>
-    </ThemeProvider>
-  </ApolloProvider>
+    </ApolloProvider>
+  </ThemeProvider>
 )
 
 export default App
