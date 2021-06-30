@@ -44,7 +44,7 @@ const markers: Marker[] = [
   },
   {
     title: 'Promenada',
-    address: 'Plac przy Molo, bulwar Jana Szymańskiego',
+    address: 'Plac przy Molo',
     coordinates: [15.561874, 54.186373],
     navigation: 'Plac przy Molo, bulwar Jana Szymańskiego, Kołobrzeg',
     type: 'umbrella',
