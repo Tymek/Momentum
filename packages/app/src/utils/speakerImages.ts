@@ -1,10 +1,12 @@
 const speakerImages = {
   placeholder: require('assets/images/speakers/holo/placeholder.jpg'),
   'ania-greenwood.jpg': require('assets/images/speakers/ania-greenwood.jpg'),
+  'arek-krzywodajc.jpeg': require('assets/images/speakers/arek-krzywodajc.jpeg'),
   'augustyniaki.jpg': require('assets/images/speakers/augustyniaki.jpg'),
   'biskup.jpg': require('assets/images/speakers/biskup.jpg'),
   'dominik-tomaszewski.jpg': require('assets/images/speakers/dominik-tomaszewski.jpg'),
   'ewa-wasilewska-kaminska.jpg': require('assets/images/speakers/ewa-wasilewska-kaminska.jpg'),
+  'gosia-tomaszewska.jpeg': require('assets/images/speakers/gosia-tomaszewska.jpeg'),
   'jacek-gromadzki.jpg': require('assets/images/speakers/jacek-gromadzki.jpg'),
   'kaminscy.jpg': require('assets/images/speakers/kaminscy.jpg'),
   'kuba-kuzynin.jpg': require('assets/images/speakers/kuba-kuzynin.jpg'),
