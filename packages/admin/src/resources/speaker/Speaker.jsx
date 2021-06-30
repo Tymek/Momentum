@@ -16,10 +16,12 @@ import {
 
 const images = [
   { id: 'ania-greenwood.jpg', name: 'ania-greenwood.jpg' },
+  { id: 'arek-krzywodajc.jpeg', name: 'arek-krzywodajc.jpeg' },
   { id: 'augustyniaki.jpg', name: 'augustyniaki.jpg' },
   { id: 'biskup.jpg', name: 'biskup.jpg' },
   { id: 'dominik-tomaszewski.jpg', name: 'dominik-tomaszewski.jpg' },
   { id: 'ewa-wasilewska-kaminska.jpg', name: 'ewa-wasilewska-kaminska.jpg' },
+  { id: 'gosia-tomaszewska.jpeg', name: 'gosia-tomaszewska.jpeg' },
   { id: 'jacek-gromadzki.jpg', name: 'jacek-gromadzki.jpg' },
   { id: 'kaminscy.jpg', name: 'kaminscy.jpg' },
   { id: 'kuba-kuzynin.jpg', name: 'kuba-kuzynin.jpg' },
