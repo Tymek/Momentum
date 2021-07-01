@@ -71,8 +71,8 @@ const InformationsScreen: FC = () => {
               <InfoCard
                 image={
                   isDark
-                    ? require('assets/images/info/mowcy.png')
-                    : require('assets/images/info/mowcy-light.png')
+                    ? require('assets/images/info/mowcy.jpg')
+                    : require('assets/images/info/mowcy-light.jpg')
                 }
                 link="/info/mowcy"
               >
@@ -85,8 +85,8 @@ const InformationsScreen: FC = () => {
               <InfoCard
                 image={
                   isDark
-                    ? require('assets/images/info/teksty.png')
-                    : require('assets/images/info/teksty-light.png')
+                    ? require('assets/images/info/teksty.jpg')
+                    : require('assets/images/info/teksty-light.jpg')
                 }
                 link="/info/teksty"
               >
@@ -99,8 +99,8 @@ const InformationsScreen: FC = () => {
               <InfoCard
                 image={
                   isDark
-                    ? require('assets/images/info/regulamin.png')
-                    : require('assets/images/info/regulamin-light.png')
+                    ? require('assets/images/info/regulamin.jpg')
+                    : require('assets/images/info/regulamin-light.jpg')
                 }
                 link="/info/regulamin"
               >
@@ -111,8 +111,8 @@ const InformationsScreen: FC = () => {
               <InfoCard
                 image={
                   isDark
-                    ? require('assets/images/info/o-aplikacji.png')
-                    : require('assets/images/info/o-aplikacji-light.png')
+                    ? require('assets/images/info/o-aplikacji.jpg')
+                    : require('assets/images/info/o-aplikacji-light.jpg')
                 }
                 link="/info/o-aplikacji"
               >

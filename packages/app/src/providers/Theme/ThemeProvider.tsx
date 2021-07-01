@@ -2,6 +2,7 @@ import React, { FC } from 'react'
 import { css, Global, ThemeProvider } from '@emotion/react'
 import useColorSchemeTheme from './hooks/useColorSchemeTheme'
 
+// FIXME: @expo-google-fonts ?
 const fonts = css`
   @font-face {
     font-family: 'Maven Pro';
