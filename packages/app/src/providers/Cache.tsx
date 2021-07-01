@@ -23,7 +23,9 @@ const cacheResourcesAsync = async () => {
   const cacheAssets = assests.map((image) => {
     return Asset.fromModule(image)
       .downloadAsync()
-      .then(() => {})
+      .then(() => {
+        console.info('loaded', image)
+      })
   })
 
   await Promise.all([...cacheAssets, ...fontAssets])
