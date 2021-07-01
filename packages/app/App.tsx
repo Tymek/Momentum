@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { SafeAreaProvider } from 'react-native-safe-area-context'
+import { SafeAreaView, SafeAreaProvider } from 'react-native-safe-area-context'
 
 import ThemeProvider from 'providers/Theme'
 import ApolloProvider from 'providers/Apollo'
@@ -10,7 +10,9 @@ const App: FC = () => (
   <ThemeProvider>
     <ApolloProvider>
       <SafeAreaProvider>
-        <Navigation />
+        <SafeAreaView>
+          <Navigation />
+        </SafeAreaView>
         <StatusBar />
       </SafeAreaProvider>
     </ApolloProvider>

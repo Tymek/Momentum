@@ -4,7 +4,7 @@ import { RouteProp } from '@react-navigation/native'
 import { StackNavigationProp } from '@react-navigation/stack'
 import { FullLoader as Loader } from 'components/Loader'
 import Text from 'components/Text'
-import { Dimensions, SafeAreaView, ScrollView, View } from 'react-native'
+import { Dimensions, ScrollView, View } from 'react-native'
 import { useGetSpeakersQuery } from '@-local/db/lib/api'
 import speakerImages from 'utils/speakerImages'
 import SpeakerSessions from './components/SpeakerSessions'
@@ -65,7 +65,7 @@ const SpeakerScreen: FC<SpeakerProps> = ({ route, navigation }) => {
         />
       )}
 
-      <SafeAreaView style={{ flex: 1 }}>
+      <View style={{ flex: 1 }}>
         <ScrollView style={{ flex: 1 }}>
           <View style={{ height: imageHeight }} />
           <Main>
@@ -73,7 +73,7 @@ const SpeakerScreen: FC<SpeakerProps> = ({ route, navigation }) => {
             {id && <SpeakerSessions id={id} />}
           </Main>
         </ScrollView>
-      </SafeAreaView>
+      </View>
     </Layout>
   )
 }
