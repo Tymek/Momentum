@@ -21,6 +21,7 @@ const port = 3000
 const clientAppStaticDir = '../../app/web-build'
 const adminAppStaticDir = '../../admin/out'
 const isLinux = !(process.platform === 'win32' || process.platform === 'darwin')
+const indexFile = resolve(__dirname, clientAppStaticDir, 'index.html')
 
 app.disable('x-powered-by')
 
@@ -55,7 +56,10 @@ app.use(
 )
 
 // Static client app
-app.use(express.static(resolve(__dirname, clientAppStaticDir)))
+app.get('/', (_, res) => {
+  res.sendFile(indexFile)
+})
+app.use(express.static(resolve(__dirname, clientAppStaticDir), { maxAge: '14d' }))
 
 // Proxy admin panel
 if (process.env.NODE_ENV === 'development') {
@@ -82,7 +86,6 @@ app.get('/api/*', () => {
 
 // Client app index fallback (and 404)
 app.get('/*', async (req, res) => {
-  const indexFile = resolve(__dirname, clientAppStaticDir, 'index.html')
   await access(indexFile)
 
   res.sendFile(indexFile, (error) => {
