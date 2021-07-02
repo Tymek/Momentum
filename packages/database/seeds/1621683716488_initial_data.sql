@@ -10,11 +10,11 @@ INSERT INTO public.notification (id, created_at, updated_at, title, content, pub
 -- Session
 --
 
-INSERT INTO public.session (id, created_at, updated_at, name, begins_at, ends_at) VALUES ('98642245-c153-470b-ac27-99c2572ce305', '2021-05-15 17:39:15.857429+00', '2021-05-15 17:39:15.857429+00', 'Rejestracja', '2021-07-12 10:00:00+00', NULL) ON CONFLICT DO NOTHING;
-INSERT INTO public.session (id, created_at, updated_at, name, begins_at, ends_at) VALUES ('1074b5de-7dd1-4426-ac7a-631a7c87e842', '2021-05-15 17:40:09.600233+00', '2021-05-15 17:40:09.600233+00', 'Sesja wieczorna', '2021-07-12 18:00:00+00', NULL) ON CONFLICT DO NOTHING;
-INSERT INTO public.session (id, created_at, updated_at, name, begins_at, ends_at) VALUES ('e7123c4b-89ba-46c9-aad7-00e19f1ae22a', '2021-05-15 17:40:33.483413+00', '2021-05-15 17:40:33.483413+00', 'Equip', '2021-07-13 10:00:00+00', NULL) ON CONFLICT DO NOTHING;
-INSERT INTO public.session (id, created_at, updated_at, name, begins_at, ends_at) VALUES ('4b3e3d79-4d25-4aef-bf27-22d77bba7051', '2021-05-15 17:42:50.61881+00', '2021-05-15 17:43:02.055457+00', 'Modlitwa', '2021-07-13 06:00:00+00', NULL) ON CONFLICT DO NOTHING;
-INSERT INTO public.session (id, created_at, updated_at, name, begins_at, ends_at) VALUES ('93aad1a4-c99a-4ba4-9c81-9288720dacd6', '2021-05-15 17:43:21.341904+00', '2021-05-15 17:43:21.341904+00', 'Strefa Chill & Be Active', '2021-07-13 11:30:00+00', NULL) ON CONFLICT DO NOTHING;
+INSERT INTO public.session (id, created_at, updated_at, name, begins_at, ends_at, is_main_event) VALUES ('98642245-c153-470b-ac27-99c2572ce305', '2021-05-15 17:39:15.857429+00', '2021-05-15 17:39:15.857429+00', 'Rejestracja', '2021-07-12 10:00:00+00', NULL, TRUE) ON CONFLICT DO NOTHING;
+INSERT INTO public.session (id, created_at, updated_at, name, begins_at, ends_at, is_main_event) VALUES ('1074b5de-7dd1-4426-ac7a-631a7c87e842', '2021-05-15 17:40:09.600233+00', '2021-05-15 17:40:09.600233+00', 'Sesja wieczorna', '2021-07-12 18:00:00+00', NULL, TRUE) ON CONFLICT DO NOTHING;
+INSERT INTO public.session (id, created_at, updated_at, name, begins_at, ends_at, is_main_event) VALUES ('e7123c4b-89ba-46c9-aad7-00e19f1ae22a', '2021-05-15 17:40:33.483413+00', '2021-05-15 17:40:33.483413+00', 'Equip', '2021-07-13 10:00:00+00', NULL, TRUE) ON CONFLICT DO NOTHING;
+INSERT INTO public.session (id, created_at, updated_at, name, begins_at, ends_at, is_main_event) VALUES ('4b3e3d79-4d25-4aef-bf27-22d77bba7051', '2021-05-15 17:42:50.61881+00', '2021-05-15 17:43:02.055457+00', 'Modlitwa', '2021-07-13 06:00:00+00', NULL, TRUE) ON CONFLICT DO NOTHING;
+INSERT INTO public.session (id, created_at, updated_at, name, begins_at, ends_at, is_main_event) VALUES ('93aad1a4-c99a-4ba4-9c81-9288720dacd6', '2021-05-15 17:43:21.341904+00', '2021-05-15 17:43:21.341904+00', 'Strefa Chill & Be Active', '2021-07-13 11:30:00+00', NULL, TRUE) ON CONFLICT DO NOTHING;
 
 
 --
