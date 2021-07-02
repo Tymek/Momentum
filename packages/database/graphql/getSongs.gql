@@ -1,0 +1,14 @@
+query getSongs {
+  song(order_by: {order: asc}) {
+    author
+    id
+    created_at
+    order
+    original_title
+    title
+    updated_at
+    lyrics(order_by: {order: asc}) {
+      ...lyrics
+    }
+  }
+}
