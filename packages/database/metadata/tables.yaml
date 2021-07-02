@@ -1,5 +1,73 @@
 - table:
     schema: public
+    name: lyric
+  object_relationships:
+  - name: song
+    using:
+      foreign_key_constraint_on: song_id
+  insert_permissions:
+  - role: manager
+    permission:
+      check: {}
+      columns:
+      - content
+      - header
+      - id
+      - order
+      - song_id
+      backend_only: false
+  select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+      - content
+      - created_at
+      - header
+      - id
+      - order
+      - song_id
+      - updated_at
+      filter: {}
+  - role: manager
+    permission:
+      columns:
+      - content
+      - created_at
+      - header
+      - id
+      - order
+      - song_id
+      - updated_at
+      filter: {}
+      allow_aggregations: true
+  - role: user
+    permission:
+      columns:
+      - content
+      - created_at
+      - header
+      - id
+      - order
+      - song_id
+      - updated_at
+      filter: {}
+  update_permissions:
+  - role: manager
+    permission:
+      columns:
+      - content
+      - header
+      - id
+      - order
+      - song_id
+      filter: {}
+      check: {}
+  delete_permissions:
+  - role: manager
+    permission:
+      filter: {}
+- table:
+    schema: public
     name: notification
   insert_permissions:
   - role: manager
@@ -184,6 +252,78 @@
       - speaker_id
       filter: {}
       check: null
+  delete_permissions:
+  - role: manager
+    permission:
+      filter: {}
+- table:
+    schema: public
+    name: song
+  array_relationships:
+  - name: lyrics
+    using:
+      foreign_key_constraint_on:
+        column: song_id
+        table:
+          schema: public
+          name: lyric
+  insert_permissions:
+  - role: manager
+    permission:
+      check: {}
+      columns:
+      - author
+      - id
+      - order
+      - original_title
+      - title
+      backend_only: false
+  select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+      - author
+      - original_title
+      - title
+      - order
+      - created_at
+      - updated_at
+      - id
+      filter: {}
+  - role: manager
+    permission:
+      columns:
+      - author
+      - original_title
+      - title
+      - order
+      - created_at
+      - updated_at
+      - id
+      filter: {}
+      allow_aggregations: true
+  - role: user
+    permission:
+      columns:
+      - author
+      - original_title
+      - title
+      - order
+      - created_at
+      - updated_at
+      - id
+      filter: {}
+  update_permissions:
+  - role: manager
+    permission:
+      columns:
+      - author
+      - id
+      - order
+      - original_title
+      - title
+      filter: {}
+      check: {}
   delete_permissions:
   - role: manager
     permission:
