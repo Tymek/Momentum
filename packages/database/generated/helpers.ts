@@ -150,13 +150,14 @@ export type query_rootFieldPolicy = {
 	user_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
 	user_by_pk?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type sessionKeySpecifier = ('begins_at' | 'created_at' | 'description' | 'ends_at' | 'id' | 'location' | 'name' | 'speaker' | 'speaker_id' | 'topics' | 'topics_aggregate' | 'updated_at' | sessionKeySpecifier)[];
+export type sessionKeySpecifier = ('begins_at' | 'created_at' | 'description' | 'ends_at' | 'id' | 'is_main_event' | 'location' | 'name' | 'speaker' | 'speaker_id' | 'topics' | 'topics_aggregate' | 'updated_at' | sessionKeySpecifier)[];
 export type sessionFieldPolicy = {
 	begins_at?: FieldPolicy<any> | FieldReadFunction<any>,
 	created_at?: FieldPolicy<any> | FieldReadFunction<any>,
 	description?: FieldPolicy<any> | FieldReadFunction<any>,
 	ends_at?: FieldPolicy<any> | FieldReadFunction<any>,
 	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	is_main_event?: FieldPolicy<any> | FieldReadFunction<any>,
 	location?: FieldPolicy<any> | FieldReadFunction<any>,
 	name?: FieldPolicy<any> | FieldReadFunction<any>,
 	speaker?: FieldPolicy<any> | FieldReadFunction<any>,

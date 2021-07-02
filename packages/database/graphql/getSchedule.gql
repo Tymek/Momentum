@@ -6,6 +6,7 @@ query getSchedule {
     ends_at
     location
     description
+    is_main_event
     speaker {
       ...speaker
     }

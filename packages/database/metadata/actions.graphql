@@ -5,18 +5,13 @@ type Mutation {
   ): UserInfo
 }
 
-
 type Mutation {
   logout : UserInfo
 }
 
-
 type Query {
   me : UserInfo
 }
-
-
-
 
 type UserInfo {
   id : uuid

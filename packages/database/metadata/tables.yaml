@@ -139,6 +139,7 @@
       - description
       - ends_at
       - id
+      - is_main_event
       - location
       - name
       - speaker_id
@@ -151,6 +152,7 @@
       - description
       - ends_at
       - id
+      - is_main_event
       - location
       - name
       - speaker_id
@@ -164,6 +166,7 @@
       - description
       - ends_at
       - id
+      - is_main_event
       - location
       - name
       - speaker_id
