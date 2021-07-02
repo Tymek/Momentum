@@ -1,4 +1,4 @@
-import { Edit, SimpleForm, TextInput, required, ReferenceInput, SelectInput } from 'react-admin'
+import { Edit, SimpleForm, TextInput, required, ReferenceInput, SelectInput, BooleanInput } from 'react-admin'
 import DateTimeInput from 'components/DateTimeInput'
 import LocationInput from 'components/LocationInput'
 
@@ -13,6 +13,7 @@ const SessionEdit = (props) => (
       </ReferenceInput>
       <LocationInput />
       <TextInput source="description" multiline />
+      <BooleanInput source="is_main_event" label="Główny event" />
     </SimpleForm>
   </Edit>
 )
