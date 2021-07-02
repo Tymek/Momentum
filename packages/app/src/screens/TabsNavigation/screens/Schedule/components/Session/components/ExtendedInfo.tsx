@@ -15,17 +15,19 @@ type ExtendedInfoProps = {
   description?: Maybe<Scalars['String']>
   location?: Maybe<Scalars['String']>
   speaker?: Maybe<SpeakerFragment>
+  isMainEvent?: Maybe<Scalars['Boolean']>
 }
 
 export const ExtendedInfo: FC<ExtendedInfoProps> = ({
   description,
   speaker,
   location,
+  isMainEvent,
   children,
 }) => {
   const isExpandable = useRef(!!(description || location || speaker))
   const theme = useTheme()
-  const [isOpen, setIsOpen] = useState<boolean>(!isExpandable.current)
+  const [isOpen, setIsOpen] = useState<boolean>(isMainEvent || !isExpandable.current)
   const [height, setHeight] = useState<number>()
   const transition = useSpringTransition(isOpen, height)
   const style = useAnimatedStyle(() => ({
@@ -34,12 +36,8 @@ export const ExtendedInfo: FC<ExtendedInfoProps> = ({
 
   return (
     <>
-      <Animated.View style={[{ overflow: 'hidden' }, style]}>
-        <View
-          onLayout={(event) => {
-            setHeight(event?.nativeEvent?.layout?.height)
-          }}
-        >
+      {!isMainEvent && isExpandable.current && (
+        <ExpandableDetails style={style} setHeight={setHeight}>
           {description && (
             <DescriptionSection>
               <DescriptionText>{description}</DescriptionText>
@@ -51,10 +49,25 @@ export const ExtendedInfo: FC<ExtendedInfoProps> = ({
               {speaker && <Speaker {...speaker} />}
             </SpeakerAndLocation>
           ) : null}
-        </View>
-      </Animated.View>
+        </ExpandableDetails>
+      )}
+      {isMainEvent && (
+        <>
+          {description && (
+            <DescriptionSection>
+              <DescriptionText>{description}</DescriptionText>
+            </DescriptionSection>
+          )}
+          {location || speaker ? (
+            <SpeakerAndLocation>
+              {location && <Location>{location}</Location>}
+              {speaker && <Speaker {...speaker} />}
+            </SpeakerAndLocation>
+          ) : null}
+        </>
+      )}
       {children}
-      {isExpandable.current && (
+      {!isMainEvent && isExpandable.current && (
         <TouchableExpandButton onPress={() => setIsOpen(!isOpen)}>
           <MaterialIcons
             name={isOpen ? 'keyboard-arrow-up' : 'keyboard-arrow-down'}
@@ -66,6 +79,32 @@ export const ExtendedInfo: FC<ExtendedInfoProps> = ({
     </>
   )
 }
+
+type ExpandableDetailsProps = {
+  style: {
+    height: number
+  }
+  setHeight: React.Dispatch<React.SetStateAction<number | undefined>>
+}
+
+const ExpandableDetails: FC<ExpandableDetailsProps> = ({ style, setHeight, children }) => (
+  <Animated.View
+    style={[
+      {
+        overflow: 'hidden',
+      },
+      style,
+    ]}
+  >
+    <View
+      onLayout={(event) => {
+        setHeight(event?.nativeEvent?.layout?.height)
+      }}
+    >
+      {children}
+    </View>
+  </Animated.View>
+)
 
 const DescriptionSection = styled.View`
   padding: ${({ theme }) => `0 ${theme.spacing.m}px ${theme.spacing.l}px`};

@@ -15,6 +15,7 @@ type SessionProps = {
   ends_at?: Maybe<Scalars['timestamptz']>
   speaker?: Maybe<SpeakerFragment>
   muted?: boolean
+  is_main_event?: Maybe<Scalars['Boolean']>
 }
 
 const Block: FC<SessionProps> = ({
@@ -25,6 +26,7 @@ const Block: FC<SessionProps> = ({
   speaker,
   location,
   muted,
+  is_main_event: isMainEvent,
 }) => {
   const shadow = useShadow(2)
 
@@ -37,7 +39,7 @@ const Block: FC<SessionProps> = ({
         </Info>
       }
 
-      <ExtendedInfo {...{ description, location, speaker, children }} />
+      <ExtendedInfo {...{ description, location, speaker, children, isMainEvent }} />
     </Wrapper>
   )
 }

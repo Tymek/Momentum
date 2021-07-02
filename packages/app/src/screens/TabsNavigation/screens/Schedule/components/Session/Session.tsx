@@ -16,6 +16,7 @@ const Session: FC<SessionProps> = ({
   speaker,
   location,
   description,
+  is_main_event,
 }) => {
   const hasTopics = topics && topics.length > 0
   const muted = Number.parseInt(format(parseISO(begins_at), 'H'), 10) < 4
@@ -29,6 +30,7 @@ const Session: FC<SessionProps> = ({
       description={description}
       begins_at={begins_at}
       ends_at={ends_at}
+      is_main_event={is_main_event}
     >
       {hasTopics && (
         <View>
