@@ -10,6 +10,7 @@ import {
   TopToolbar,
   Button,
   ReferenceField,
+  BooleanField,
 } from 'react-admin'
 import { Link } from 'react-router-dom'
 import SpeakerNotesIcon from '@material-ui/icons/SpeakerNotes'
@@ -84,6 +85,7 @@ const SessionShow = (props) => (
           }
         />
         <TextField source="location" emptyText="&mdash;" />
+        <BooleanField label="Główny event" source="is_main_event" />
         <ReferenceManyField reference="topic" target="session_id" label="tematy">
           <Total />
         </ReferenceManyField>

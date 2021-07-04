@@ -19,6 +19,19 @@ export type Scalars = {
 };
 
 
+/** Boolean expression to compare columns of type "Boolean". All fields are combined with logical 'AND'. */
+export type Boolean_Comparison_Exp = {
+  _eq?: Maybe<Scalars['Boolean']>;
+  _gt?: Maybe<Scalars['Boolean']>;
+  _gte?: Maybe<Scalars['Boolean']>;
+  _in?: Maybe<Array<Scalars['Boolean']>>;
+  _is_null?: Maybe<Scalars['Boolean']>;
+  _lt?: Maybe<Scalars['Boolean']>;
+  _lte?: Maybe<Scalars['Boolean']>;
+  _neq?: Maybe<Scalars['Boolean']>;
+  _nin?: Maybe<Array<Scalars['Boolean']>>;
+};
+
 /** Boolean expression to compare columns of type "Int". All fields are combined with logical 'AND'. */
 export type Int_Comparison_Exp = {
   _eq?: Maybe<Scalars['Int']>;
@@ -954,6 +967,7 @@ export type Session = {
   description?: Maybe<Scalars['String']>;
   ends_at?: Maybe<Scalars['timestamptz']>;
   id: Scalars['uuid'];
+  is_main_event: Scalars['Boolean'];
   location?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
   /** An object relationship */
@@ -1030,6 +1044,7 @@ export type Session_Bool_Exp = {
   description?: Maybe<String_Comparison_Exp>;
   ends_at?: Maybe<Timestamptz_Comparison_Exp>;
   id?: Maybe<Uuid_Comparison_Exp>;
+  is_main_event?: Maybe<Boolean_Comparison_Exp>;
   location?: Maybe<String_Comparison_Exp>;
   name?: Maybe<String_Comparison_Exp>;
   speaker?: Maybe<Speaker_Bool_Exp>;
@@ -1051,6 +1066,7 @@ export type Session_Insert_Input = {
   description?: Maybe<Scalars['String']>;
   ends_at?: Maybe<Scalars['timestamptz']>;
   id?: Maybe<Scalars['uuid']>;
+  is_main_event?: Maybe<Scalars['Boolean']>;
   location?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
   speaker?: Maybe<Speaker_Obj_Rel_Insert_Input>;
@@ -1140,6 +1156,7 @@ export type Session_Order_By = {
   description?: Maybe<Order_By>;
   ends_at?: Maybe<Order_By>;
   id?: Maybe<Order_By>;
+  is_main_event?: Maybe<Order_By>;
   location?: Maybe<Order_By>;
   name?: Maybe<Order_By>;
   speaker?: Maybe<Speaker_Order_By>;
@@ -1166,6 +1183,8 @@ export enum Session_Select_Column {
   /** column name */
   Id = 'id',
   /** column name */
+  IsMainEvent = 'is_main_event',
+  /** column name */
   Location = 'location',
   /** column name */
   Name = 'name',
@@ -1182,6 +1201,7 @@ export type Session_Set_Input = {
   description?: Maybe<Scalars['String']>;
   ends_at?: Maybe<Scalars['timestamptz']>;
   id?: Maybe<Scalars['uuid']>;
+  is_main_event?: Maybe<Scalars['Boolean']>;
   location?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
   speaker_id?: Maybe<Scalars['uuid']>;
@@ -1200,6 +1220,8 @@ export enum Session_Update_Column {
   EndsAt = 'ends_at',
   /** column name */
   Id = 'id',
+  /** column name */
+  IsMainEvent = 'is_main_event',
   /** column name */
   Location = 'location',
   /** column name */
@@ -2073,7 +2095,7 @@ export type GetScheduleQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type GetScheduleQuery = { session: Array<(
-    Pick<Session, 'id' | 'name' | 'begins_at' | 'ends_at' | 'location' | 'description'>
+    Pick<Session, 'id' | 'name' | 'begins_at' | 'ends_at' | 'location' | 'description' | 'is_main_event'>
     & { speaker?: Maybe<SpeakerFragment>, topics: Array<TopicFragment> }
   )> };
 
@@ -2217,6 +2239,7 @@ export const GetScheduleDocument = gql`
     ends_at
     location
     description
+    is_main_event
     speaker {
       ...speaker
     }
