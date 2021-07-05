@@ -104,9 +104,333 @@ export type Jsonb_Comparison_Exp = {
   _nin?: Maybe<Array<Scalars['jsonb']>>;
 };
 
+/** columns and relationships of "lyric" */
+export type Lyric = {
+  __typename?: 'lyric';
+  content: Scalars['String'];
+  created_at: Scalars['timestamptz'];
+  header?: Maybe<Scalars['String']>;
+  id: Scalars['uuid'];
+  order?: Maybe<Scalars['Int']>;
+  /** An object relationship */
+  song: Song;
+  song_id: Scalars['uuid'];
+  updated_at: Scalars['timestamptz'];
+};
+
+/** aggregated selection of "lyric" */
+export type Lyric_Aggregate = {
+  __typename?: 'lyric_aggregate';
+  aggregate?: Maybe<Lyric_Aggregate_Fields>;
+  nodes: Array<Lyric>;
+};
+
+/** aggregate fields of "lyric" */
+export type Lyric_Aggregate_Fields = {
+  __typename?: 'lyric_aggregate_fields';
+  avg?: Maybe<Lyric_Avg_Fields>;
+  count: Scalars['Int'];
+  max?: Maybe<Lyric_Max_Fields>;
+  min?: Maybe<Lyric_Min_Fields>;
+  stddev?: Maybe<Lyric_Stddev_Fields>;
+  stddev_pop?: Maybe<Lyric_Stddev_Pop_Fields>;
+  stddev_samp?: Maybe<Lyric_Stddev_Samp_Fields>;
+  sum?: Maybe<Lyric_Sum_Fields>;
+  var_pop?: Maybe<Lyric_Var_Pop_Fields>;
+  var_samp?: Maybe<Lyric_Var_Samp_Fields>;
+  variance?: Maybe<Lyric_Variance_Fields>;
+};
+
+
+/** aggregate fields of "lyric" */
+export type Lyric_Aggregate_FieldsCountArgs = {
+  columns?: Maybe<Array<Lyric_Select_Column>>;
+  distinct?: Maybe<Scalars['Boolean']>;
+};
+
+/** order by aggregate values of table "lyric" */
+export type Lyric_Aggregate_Order_By = {
+  avg?: Maybe<Lyric_Avg_Order_By>;
+  count?: Maybe<Order_By>;
+  max?: Maybe<Lyric_Max_Order_By>;
+  min?: Maybe<Lyric_Min_Order_By>;
+  stddev?: Maybe<Lyric_Stddev_Order_By>;
+  stddev_pop?: Maybe<Lyric_Stddev_Pop_Order_By>;
+  stddev_samp?: Maybe<Lyric_Stddev_Samp_Order_By>;
+  sum?: Maybe<Lyric_Sum_Order_By>;
+  var_pop?: Maybe<Lyric_Var_Pop_Order_By>;
+  var_samp?: Maybe<Lyric_Var_Samp_Order_By>;
+  variance?: Maybe<Lyric_Variance_Order_By>;
+};
+
+/** input type for inserting array relation for remote table "lyric" */
+export type Lyric_Arr_Rel_Insert_Input = {
+  data: Array<Lyric_Insert_Input>;
+  /** on conflict condition */
+  on_conflict?: Maybe<Lyric_On_Conflict>;
+};
+
+/** aggregate avg on columns */
+export type Lyric_Avg_Fields = {
+  __typename?: 'lyric_avg_fields';
+  order?: Maybe<Scalars['Float']>;
+};
+
+/** order by avg() on columns of table "lyric" */
+export type Lyric_Avg_Order_By = {
+  order?: Maybe<Order_By>;
+};
+
+/** Boolean expression to filter rows from the table "lyric". All fields are combined with a logical 'AND'. */
+export type Lyric_Bool_Exp = {
+  _and?: Maybe<Array<Lyric_Bool_Exp>>;
+  _not?: Maybe<Lyric_Bool_Exp>;
+  _or?: Maybe<Array<Lyric_Bool_Exp>>;
+  content?: Maybe<String_Comparison_Exp>;
+  created_at?: Maybe<Timestamptz_Comparison_Exp>;
+  header?: Maybe<String_Comparison_Exp>;
+  id?: Maybe<Uuid_Comparison_Exp>;
+  order?: Maybe<Int_Comparison_Exp>;
+  song?: Maybe<Song_Bool_Exp>;
+  song_id?: Maybe<Uuid_Comparison_Exp>;
+  updated_at?: Maybe<Timestamptz_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "lyric" */
+export enum Lyric_Constraint {
+  /** unique or primary key constraint */
+  LyricPkey = 'lyric_pkey',
+  /** unique or primary key constraint */
+  LyricSongIdOrderKey = 'lyric_song_id_order_key'
+}
+
+/** input type for incrementing numeric columns in table "lyric" */
+export type Lyric_Inc_Input = {
+  order?: Maybe<Scalars['Int']>;
+};
+
+/** input type for inserting data into table "lyric" */
+export type Lyric_Insert_Input = {
+  content?: Maybe<Scalars['String']>;
+  created_at?: Maybe<Scalars['timestamptz']>;
+  header?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['uuid']>;
+  order?: Maybe<Scalars['Int']>;
+  song?: Maybe<Song_Obj_Rel_Insert_Input>;
+  song_id?: Maybe<Scalars['uuid']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** aggregate max on columns */
+export type Lyric_Max_Fields = {
+  __typename?: 'lyric_max_fields';
+  content?: Maybe<Scalars['String']>;
+  created_at?: Maybe<Scalars['timestamptz']>;
+  header?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['uuid']>;
+  order?: Maybe<Scalars['Int']>;
+  song_id?: Maybe<Scalars['uuid']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** order by max() on columns of table "lyric" */
+export type Lyric_Max_Order_By = {
+  content?: Maybe<Order_By>;
+  created_at?: Maybe<Order_By>;
+  header?: Maybe<Order_By>;
+  id?: Maybe<Order_By>;
+  order?: Maybe<Order_By>;
+  song_id?: Maybe<Order_By>;
+  updated_at?: Maybe<Order_By>;
+};
+
+/** aggregate min on columns */
+export type Lyric_Min_Fields = {
+  __typename?: 'lyric_min_fields';
+  content?: Maybe<Scalars['String']>;
+  created_at?: Maybe<Scalars['timestamptz']>;
+  header?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['uuid']>;
+  order?: Maybe<Scalars['Int']>;
+  song_id?: Maybe<Scalars['uuid']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** order by min() on columns of table "lyric" */
+export type Lyric_Min_Order_By = {
+  content?: Maybe<Order_By>;
+  created_at?: Maybe<Order_By>;
+  header?: Maybe<Order_By>;
+  id?: Maybe<Order_By>;
+  order?: Maybe<Order_By>;
+  song_id?: Maybe<Order_By>;
+  updated_at?: Maybe<Order_By>;
+};
+
+/** response of any mutation on the table "lyric" */
+export type Lyric_Mutation_Response = {
+  __typename?: 'lyric_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Lyric>;
+};
+
+/** on conflict condition type for table "lyric" */
+export type Lyric_On_Conflict = {
+  constraint: Lyric_Constraint;
+  update_columns?: Array<Lyric_Update_Column>;
+  where?: Maybe<Lyric_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "lyric". */
+export type Lyric_Order_By = {
+  content?: Maybe<Order_By>;
+  created_at?: Maybe<Order_By>;
+  header?: Maybe<Order_By>;
+  id?: Maybe<Order_By>;
+  order?: Maybe<Order_By>;
+  song?: Maybe<Song_Order_By>;
+  song_id?: Maybe<Order_By>;
+  updated_at?: Maybe<Order_By>;
+};
+
+/** primary key columns input for table: lyric */
+export type Lyric_Pk_Columns_Input = {
+  id: Scalars['uuid'];
+};
+
+/** select columns of table "lyric" */
+export enum Lyric_Select_Column {
+  /** column name */
+  Content = 'content',
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  Header = 'header',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Order = 'order',
+  /** column name */
+  SongId = 'song_id',
+  /** column name */
+  UpdatedAt = 'updated_at'
+}
+
+/** input type for updating data in table "lyric" */
+export type Lyric_Set_Input = {
+  content?: Maybe<Scalars['String']>;
+  created_at?: Maybe<Scalars['timestamptz']>;
+  header?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['uuid']>;
+  order?: Maybe<Scalars['Int']>;
+  song_id?: Maybe<Scalars['uuid']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** aggregate stddev on columns */
+export type Lyric_Stddev_Fields = {
+  __typename?: 'lyric_stddev_fields';
+  order?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev() on columns of table "lyric" */
+export type Lyric_Stddev_Order_By = {
+  order?: Maybe<Order_By>;
+};
+
+/** aggregate stddev_pop on columns */
+export type Lyric_Stddev_Pop_Fields = {
+  __typename?: 'lyric_stddev_pop_fields';
+  order?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev_pop() on columns of table "lyric" */
+export type Lyric_Stddev_Pop_Order_By = {
+  order?: Maybe<Order_By>;
+};
+
+/** aggregate stddev_samp on columns */
+export type Lyric_Stddev_Samp_Fields = {
+  __typename?: 'lyric_stddev_samp_fields';
+  order?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev_samp() on columns of table "lyric" */
+export type Lyric_Stddev_Samp_Order_By = {
+  order?: Maybe<Order_By>;
+};
+
+/** aggregate sum on columns */
+export type Lyric_Sum_Fields = {
+  __typename?: 'lyric_sum_fields';
+  order?: Maybe<Scalars['Int']>;
+};
+
+/** order by sum() on columns of table "lyric" */
+export type Lyric_Sum_Order_By = {
+  order?: Maybe<Order_By>;
+};
+
+/** update columns of table "lyric" */
+export enum Lyric_Update_Column {
+  /** column name */
+  Content = 'content',
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  Header = 'header',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Order = 'order',
+  /** column name */
+  SongId = 'song_id',
+  /** column name */
+  UpdatedAt = 'updated_at'
+}
+
+/** aggregate var_pop on columns */
+export type Lyric_Var_Pop_Fields = {
+  __typename?: 'lyric_var_pop_fields';
+  order?: Maybe<Scalars['Float']>;
+};
+
+/** order by var_pop() on columns of table "lyric" */
+export type Lyric_Var_Pop_Order_By = {
+  order?: Maybe<Order_By>;
+};
+
+/** aggregate var_samp on columns */
+export type Lyric_Var_Samp_Fields = {
+  __typename?: 'lyric_var_samp_fields';
+  order?: Maybe<Scalars['Float']>;
+};
+
+/** order by var_samp() on columns of table "lyric" */
+export type Lyric_Var_Samp_Order_By = {
+  order?: Maybe<Order_By>;
+};
+
+/** aggregate variance on columns */
+export type Lyric_Variance_Fields = {
+  __typename?: 'lyric_variance_fields';
+  order?: Maybe<Scalars['Float']>;
+};
+
+/** order by variance() on columns of table "lyric" */
+export type Lyric_Variance_Order_By = {
+  order?: Maybe<Order_By>;
+};
+
 /** mutation root */
 export type Mutation_Root = {
   __typename?: 'mutation_root';
+  /** delete data from the table: "lyric" */
+  delete_lyric?: Maybe<Lyric_Mutation_Response>;
+  /** delete single row from the table: "lyric" */
+  delete_lyric_by_pk?: Maybe<Lyric>;
   /** delete data from the table: "notification" */
   delete_notification?: Maybe<Notification_Mutation_Response>;
   /** delete single row from the table: "notification" */
@@ -119,6 +443,10 @@ export type Mutation_Root = {
   delete_session?: Maybe<Session_Mutation_Response>;
   /** delete single row from the table: "session" */
   delete_session_by_pk?: Maybe<Session>;
+  /** delete data from the table: "song" */
+  delete_song?: Maybe<Song_Mutation_Response>;
+  /** delete single row from the table: "song" */
+  delete_song_by_pk?: Maybe<Song>;
   /** delete data from the table: "speaker" */
   delete_speaker?: Maybe<Speaker_Mutation_Response>;
   /** delete single row from the table: "speaker" */
@@ -131,6 +459,10 @@ export type Mutation_Root = {
   delete_user?: Maybe<User_Mutation_Response>;
   /** delete single row from the table: "user" */
   delete_user_by_pk?: Maybe<User>;
+  /** insert data into the table: "lyric" */
+  insert_lyric?: Maybe<Lyric_Mutation_Response>;
+  /** insert a single row into the table: "lyric" */
+  insert_lyric_one?: Maybe<Lyric>;
   /** insert data into the table: "notification" */
   insert_notification?: Maybe<Notification_Mutation_Response>;
   /** insert a single row into the table: "notification" */
@@ -143,6 +475,10 @@ export type Mutation_Root = {
   insert_session?: Maybe<Session_Mutation_Response>;
   /** insert a single row into the table: "session" */
   insert_session_one?: Maybe<Session>;
+  /** insert data into the table: "song" */
+  insert_song?: Maybe<Song_Mutation_Response>;
+  /** insert a single row into the table: "song" */
+  insert_song_one?: Maybe<Song>;
   /** insert data into the table: "speaker" */
   insert_speaker?: Maybe<Speaker_Mutation_Response>;
   /** insert a single row into the table: "speaker" */
@@ -157,6 +493,10 @@ export type Mutation_Root = {
   insert_user_one?: Maybe<User>;
   login?: Maybe<UserInfo>;
   logout?: Maybe<UserInfo>;
+  /** update data of the table: "lyric" */
+  update_lyric?: Maybe<Lyric_Mutation_Response>;
+  /** update single row of the table: "lyric" */
+  update_lyric_by_pk?: Maybe<Lyric>;
   /** update data of the table: "notification" */
   update_notification?: Maybe<Notification_Mutation_Response>;
   /** update single row of the table: "notification" */
@@ -169,6 +509,10 @@ export type Mutation_Root = {
   update_session?: Maybe<Session_Mutation_Response>;
   /** update single row of the table: "session" */
   update_session_by_pk?: Maybe<Session>;
+  /** update data of the table: "song" */
+  update_song?: Maybe<Song_Mutation_Response>;
+  /** update single row of the table: "song" */
+  update_song_by_pk?: Maybe<Song>;
   /** update data of the table: "speaker" */
   update_speaker?: Maybe<Speaker_Mutation_Response>;
   /** update single row of the table: "speaker" */
@@ -181,6 +525,18 @@ export type Mutation_Root = {
   update_user?: Maybe<User_Mutation_Response>;
   /** update single row of the table: "user" */
   update_user_by_pk?: Maybe<User>;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_LyricArgs = {
+  where: Lyric_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Lyric_By_PkArgs = {
+  id: Scalars['uuid'];
 };
 
 
@@ -221,6 +577,18 @@ export type Mutation_RootDelete_Session_By_PkArgs = {
 
 
 /** mutation root */
+export type Mutation_RootDelete_SongArgs = {
+  where: Song_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Song_By_PkArgs = {
+  id: Scalars['uuid'];
+};
+
+
+/** mutation root */
 export type Mutation_RootDelete_SpeakerArgs = {
   where: Speaker_Bool_Exp;
 };
@@ -253,6 +621,20 @@ export type Mutation_RootDelete_UserArgs = {
 /** mutation root */
 export type Mutation_RootDelete_User_By_PkArgs = {
   id: Scalars['uuid'];
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_LyricArgs = {
+  objects: Array<Lyric_Insert_Input>;
+  on_conflict?: Maybe<Lyric_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Lyric_OneArgs = {
+  object: Lyric_Insert_Input;
+  on_conflict?: Maybe<Lyric_On_Conflict>;
 };
 
 
@@ -295,6 +677,20 @@ export type Mutation_RootInsert_SessionArgs = {
 export type Mutation_RootInsert_Session_OneArgs = {
   object: Session_Insert_Input;
   on_conflict?: Maybe<Session_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_SongArgs = {
+  objects: Array<Song_Insert_Input>;
+  on_conflict?: Maybe<Song_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Song_OneArgs = {
+  object: Song_Insert_Input;
+  on_conflict?: Maybe<Song_On_Conflict>;
 };
 
 
@@ -348,6 +744,22 @@ export type Mutation_RootLoginArgs = {
 
 
 /** mutation root */
+export type Mutation_RootUpdate_LyricArgs = {
+  _inc?: Maybe<Lyric_Inc_Input>;
+  _set?: Maybe<Lyric_Set_Input>;
+  where: Lyric_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Lyric_By_PkArgs = {
+  _inc?: Maybe<Lyric_Inc_Input>;
+  _set?: Maybe<Lyric_Set_Input>;
+  pk_columns: Lyric_Pk_Columns_Input;
+};
+
+
+/** mutation root */
 export type Mutation_RootUpdate_NotificationArgs = {
   _set?: Maybe<Notification_Set_Input>;
   where: Notification_Bool_Exp;
@@ -396,6 +808,22 @@ export type Mutation_RootUpdate_SessionArgs = {
 export type Mutation_RootUpdate_Session_By_PkArgs = {
   _set?: Maybe<Session_Set_Input>;
   pk_columns: Session_Pk_Columns_Input;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_SongArgs = {
+  _inc?: Maybe<Song_Inc_Input>;
+  _set?: Maybe<Song_Set_Input>;
+  where: Song_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Song_By_PkArgs = {
+  _inc?: Maybe<Song_Inc_Input>;
+  _set?: Maybe<Song_Set_Input>;
+  pk_columns: Song_Pk_Columns_Input;
 };
 
 
@@ -792,6 +1220,12 @@ export enum Page_Update_Column {
 
 export type Query_Root = {
   __typename?: 'query_root';
+  /** fetch data from the table: "lyric" */
+  lyric: Array<Lyric>;
+  /** fetch aggregated fields from the table: "lyric" */
+  lyric_aggregate: Lyric_Aggregate;
+  /** fetch data from the table: "lyric" using primary key columns */
+  lyric_by_pk?: Maybe<Lyric>;
   me?: Maybe<UserInfo>;
   /** fetch data from the table: "notification" */
   notification: Array<Notification>;
@@ -811,6 +1245,12 @@ export type Query_Root = {
   session_aggregate: Session_Aggregate;
   /** fetch data from the table: "session" using primary key columns */
   session_by_pk?: Maybe<Session>;
+  /** fetch data from the table: "song" */
+  song: Array<Song>;
+  /** fetch aggregated fields from the table: "song" */
+  song_aggregate: Song_Aggregate;
+  /** fetch data from the table: "song" using primary key columns */
+  song_by_pk?: Maybe<Song>;
   /** fetch data from the table: "speaker" */
   speaker: Array<Speaker>;
   /** fetch aggregated fields from the table: "speaker" */
@@ -829,6 +1269,29 @@ export type Query_Root = {
   user_aggregate: User_Aggregate;
   /** fetch data from the table: "user" using primary key columns */
   user_by_pk?: Maybe<User>;
+};
+
+
+export type Query_RootLyricArgs = {
+  distinct_on?: Maybe<Array<Lyric_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Lyric_Order_By>>;
+  where?: Maybe<Lyric_Bool_Exp>;
+};
+
+
+export type Query_RootLyric_AggregateArgs = {
+  distinct_on?: Maybe<Array<Lyric_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Lyric_Order_By>>;
+  where?: Maybe<Lyric_Bool_Exp>;
+};
+
+
+export type Query_RootLyric_By_PkArgs = {
+  id: Scalars['uuid'];
 };
 
 
@@ -897,6 +1360,29 @@ export type Query_RootSession_AggregateArgs = {
 
 
 export type Query_RootSession_By_PkArgs = {
+  id: Scalars['uuid'];
+};
+
+
+export type Query_RootSongArgs = {
+  distinct_on?: Maybe<Array<Song_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Song_Order_By>>;
+  where?: Maybe<Song_Bool_Exp>;
+};
+
+
+export type Query_RootSong_AggregateArgs = {
+  distinct_on?: Maybe<Array<Song_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Song_Order_By>>;
+  where?: Maybe<Song_Bool_Exp>;
+};
+
+
+export type Query_RootSong_By_PkArgs = {
   id: Scalars['uuid'];
 };
 
@@ -1247,6 +1733,271 @@ export enum Session_Update_Column {
   UpdatedAt = 'updated_at'
 }
 
+/** columns and relationships of "song" */
+export type Song = {
+  __typename?: 'song';
+  author: Scalars['String'];
+  created_at: Scalars['timestamptz'];
+  id: Scalars['uuid'];
+  /** An array relationship */
+  lyrics: Array<Lyric>;
+  /** An aggregate relationship */
+  lyrics_aggregate: Lyric_Aggregate;
+  order: Scalars['Int'];
+  original_title: Scalars['String'];
+  title?: Maybe<Scalars['String']>;
+  updated_at: Scalars['timestamptz'];
+};
+
+
+/** columns and relationships of "song" */
+export type SongLyricsArgs = {
+  distinct_on?: Maybe<Array<Lyric_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Lyric_Order_By>>;
+  where?: Maybe<Lyric_Bool_Exp>;
+};
+
+
+/** columns and relationships of "song" */
+export type SongLyrics_AggregateArgs = {
+  distinct_on?: Maybe<Array<Lyric_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Lyric_Order_By>>;
+  where?: Maybe<Lyric_Bool_Exp>;
+};
+
+/** aggregated selection of "song" */
+export type Song_Aggregate = {
+  __typename?: 'song_aggregate';
+  aggregate?: Maybe<Song_Aggregate_Fields>;
+  nodes: Array<Song>;
+};
+
+/** aggregate fields of "song" */
+export type Song_Aggregate_Fields = {
+  __typename?: 'song_aggregate_fields';
+  avg?: Maybe<Song_Avg_Fields>;
+  count: Scalars['Int'];
+  max?: Maybe<Song_Max_Fields>;
+  min?: Maybe<Song_Min_Fields>;
+  stddev?: Maybe<Song_Stddev_Fields>;
+  stddev_pop?: Maybe<Song_Stddev_Pop_Fields>;
+  stddev_samp?: Maybe<Song_Stddev_Samp_Fields>;
+  sum?: Maybe<Song_Sum_Fields>;
+  var_pop?: Maybe<Song_Var_Pop_Fields>;
+  var_samp?: Maybe<Song_Var_Samp_Fields>;
+  variance?: Maybe<Song_Variance_Fields>;
+};
+
+
+/** aggregate fields of "song" */
+export type Song_Aggregate_FieldsCountArgs = {
+  columns?: Maybe<Array<Song_Select_Column>>;
+  distinct?: Maybe<Scalars['Boolean']>;
+};
+
+/** aggregate avg on columns */
+export type Song_Avg_Fields = {
+  __typename?: 'song_avg_fields';
+  order?: Maybe<Scalars['Float']>;
+};
+
+/** Boolean expression to filter rows from the table "song". All fields are combined with a logical 'AND'. */
+export type Song_Bool_Exp = {
+  _and?: Maybe<Array<Song_Bool_Exp>>;
+  _not?: Maybe<Song_Bool_Exp>;
+  _or?: Maybe<Array<Song_Bool_Exp>>;
+  author?: Maybe<String_Comparison_Exp>;
+  created_at?: Maybe<Timestamptz_Comparison_Exp>;
+  id?: Maybe<Uuid_Comparison_Exp>;
+  lyrics?: Maybe<Lyric_Bool_Exp>;
+  order?: Maybe<Int_Comparison_Exp>;
+  original_title?: Maybe<String_Comparison_Exp>;
+  title?: Maybe<String_Comparison_Exp>;
+  updated_at?: Maybe<Timestamptz_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "song" */
+export enum Song_Constraint {
+  /** unique or primary key constraint */
+  SongOrderKey = 'song_order_key',
+  /** unique or primary key constraint */
+  SongPkey = 'song_pkey'
+}
+
+/** input type for incrementing numeric columns in table "song" */
+export type Song_Inc_Input = {
+  order?: Maybe<Scalars['Int']>;
+};
+
+/** input type for inserting data into table "song" */
+export type Song_Insert_Input = {
+  author?: Maybe<Scalars['String']>;
+  created_at?: Maybe<Scalars['timestamptz']>;
+  id?: Maybe<Scalars['uuid']>;
+  lyrics?: Maybe<Lyric_Arr_Rel_Insert_Input>;
+  order?: Maybe<Scalars['Int']>;
+  original_title?: Maybe<Scalars['String']>;
+  title?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** aggregate max on columns */
+export type Song_Max_Fields = {
+  __typename?: 'song_max_fields';
+  author?: Maybe<Scalars['String']>;
+  created_at?: Maybe<Scalars['timestamptz']>;
+  id?: Maybe<Scalars['uuid']>;
+  order?: Maybe<Scalars['Int']>;
+  original_title?: Maybe<Scalars['String']>;
+  title?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** aggregate min on columns */
+export type Song_Min_Fields = {
+  __typename?: 'song_min_fields';
+  author?: Maybe<Scalars['String']>;
+  created_at?: Maybe<Scalars['timestamptz']>;
+  id?: Maybe<Scalars['uuid']>;
+  order?: Maybe<Scalars['Int']>;
+  original_title?: Maybe<Scalars['String']>;
+  title?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** response of any mutation on the table "song" */
+export type Song_Mutation_Response = {
+  __typename?: 'song_mutation_response';
+  /** number of rows affected by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Song>;
+};
+
+/** input type for inserting object relation for remote table "song" */
+export type Song_Obj_Rel_Insert_Input = {
+  data: Song_Insert_Input;
+  /** on conflict condition */
+  on_conflict?: Maybe<Song_On_Conflict>;
+};
+
+/** on conflict condition type for table "song" */
+export type Song_On_Conflict = {
+  constraint: Song_Constraint;
+  update_columns?: Array<Song_Update_Column>;
+  where?: Maybe<Song_Bool_Exp>;
+};
+
+/** Ordering options when selecting data from "song". */
+export type Song_Order_By = {
+  author?: Maybe<Order_By>;
+  created_at?: Maybe<Order_By>;
+  id?: Maybe<Order_By>;
+  lyrics_aggregate?: Maybe<Lyric_Aggregate_Order_By>;
+  order?: Maybe<Order_By>;
+  original_title?: Maybe<Order_By>;
+  title?: Maybe<Order_By>;
+  updated_at?: Maybe<Order_By>;
+};
+
+/** primary key columns input for table: song */
+export type Song_Pk_Columns_Input = {
+  id: Scalars['uuid'];
+};
+
+/** select columns of table "song" */
+export enum Song_Select_Column {
+  /** column name */
+  Author = 'author',
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Order = 'order',
+  /** column name */
+  OriginalTitle = 'original_title',
+  /** column name */
+  Title = 'title',
+  /** column name */
+  UpdatedAt = 'updated_at'
+}
+
+/** input type for updating data in table "song" */
+export type Song_Set_Input = {
+  author?: Maybe<Scalars['String']>;
+  created_at?: Maybe<Scalars['timestamptz']>;
+  id?: Maybe<Scalars['uuid']>;
+  order?: Maybe<Scalars['Int']>;
+  original_title?: Maybe<Scalars['String']>;
+  title?: Maybe<Scalars['String']>;
+  updated_at?: Maybe<Scalars['timestamptz']>;
+};
+
+/** aggregate stddev on columns */
+export type Song_Stddev_Fields = {
+  __typename?: 'song_stddev_fields';
+  order?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate stddev_pop on columns */
+export type Song_Stddev_Pop_Fields = {
+  __typename?: 'song_stddev_pop_fields';
+  order?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate stddev_samp on columns */
+export type Song_Stddev_Samp_Fields = {
+  __typename?: 'song_stddev_samp_fields';
+  order?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate sum on columns */
+export type Song_Sum_Fields = {
+  __typename?: 'song_sum_fields';
+  order?: Maybe<Scalars['Int']>;
+};
+
+/** update columns of table "song" */
+export enum Song_Update_Column {
+  /** column name */
+  Author = 'author',
+  /** column name */
+  CreatedAt = 'created_at',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Order = 'order',
+  /** column name */
+  OriginalTitle = 'original_title',
+  /** column name */
+  Title = 'title',
+  /** column name */
+  UpdatedAt = 'updated_at'
+}
+
+/** aggregate var_pop on columns */
+export type Song_Var_Pop_Fields = {
+  __typename?: 'song_var_pop_fields';
+  order?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate var_samp on columns */
+export type Song_Var_Samp_Fields = {
+  __typename?: 'song_var_samp_fields';
+  order?: Maybe<Scalars['Float']>;
+};
+
+/** aggregate variance on columns */
+export type Song_Variance_Fields = {
+  __typename?: 'song_variance_fields';
+  order?: Maybe<Scalars['Float']>;
+};
+
 /** columns and relationships of "speaker" */
 export type Speaker = {
   __typename?: 'speaker';
@@ -1539,6 +2290,12 @@ export type Speaker_Variance_Fields = {
 
 export type Subscription_Root = {
   __typename?: 'subscription_root';
+  /** fetch data from the table: "lyric" */
+  lyric: Array<Lyric>;
+  /** fetch aggregated fields from the table: "lyric" */
+  lyric_aggregate: Lyric_Aggregate;
+  /** fetch data from the table: "lyric" using primary key columns */
+  lyric_by_pk?: Maybe<Lyric>;
   /** fetch data from the table: "notification" */
   notification: Array<Notification>;
   /** fetch aggregated fields from the table: "notification" */
@@ -1557,6 +2314,12 @@ export type Subscription_Root = {
   session_aggregate: Session_Aggregate;
   /** fetch data from the table: "session" using primary key columns */
   session_by_pk?: Maybe<Session>;
+  /** fetch data from the table: "song" */
+  song: Array<Song>;
+  /** fetch aggregated fields from the table: "song" */
+  song_aggregate: Song_Aggregate;
+  /** fetch data from the table: "song" using primary key columns */
+  song_by_pk?: Maybe<Song>;
   /** fetch data from the table: "speaker" */
   speaker: Array<Speaker>;
   /** fetch aggregated fields from the table: "speaker" */
@@ -1575,6 +2338,29 @@ export type Subscription_Root = {
   user_aggregate: User_Aggregate;
   /** fetch data from the table: "user" using primary key columns */
   user_by_pk?: Maybe<User>;
+};
+
+
+export type Subscription_RootLyricArgs = {
+  distinct_on?: Maybe<Array<Lyric_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Lyric_Order_By>>;
+  where?: Maybe<Lyric_Bool_Exp>;
+};
+
+
+export type Subscription_RootLyric_AggregateArgs = {
+  distinct_on?: Maybe<Array<Lyric_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Lyric_Order_By>>;
+  where?: Maybe<Lyric_Bool_Exp>;
+};
+
+
+export type Subscription_RootLyric_By_PkArgs = {
+  id: Scalars['uuid'];
 };
 
 
@@ -1643,6 +2429,29 @@ export type Subscription_RootSession_AggregateArgs = {
 
 
 export type Subscription_RootSession_By_PkArgs = {
+  id: Scalars['uuid'];
+};
+
+
+export type Subscription_RootSongArgs = {
+  distinct_on?: Maybe<Array<Song_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Song_Order_By>>;
+  where?: Maybe<Song_Bool_Exp>;
+};
+
+
+export type Subscription_RootSong_AggregateArgs = {
+  distinct_on?: Maybe<Array<Song_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Song_Order_By>>;
+  where?: Maybe<Song_Bool_Exp>;
+};
+
+
+export type Subscription_RootSong_By_PkArgs = {
   id: Scalars['uuid'];
 };
 
