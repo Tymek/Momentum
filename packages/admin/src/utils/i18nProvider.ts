@@ -70,6 +70,18 @@ const messages = {
           header: 'nagłówek',
         },
       },
+      lyric: {
+        name: 'Zwrotka |||| Zwrotki',
+        empty: 'Jeszcze nie ma zwrotek',
+        invite: 'Czy chcesz dodać nową?',
+        fields: {
+          ...fields,
+          song: 'piosenka',
+          order: 'pozycja',
+          content: 'tekst',
+          header: 'nagłówek',
+        },
+      },
     },
   },
 }
