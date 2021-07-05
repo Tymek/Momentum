@@ -1,4 +1,12 @@
-import { SimpleForm, TextInput, Create, required, ReferenceInput, SelectInput, BooleanInput } from 'react-admin'
+import {
+  SimpleForm,
+  TextInput,
+  Create,
+  required,
+  ReferenceInput,
+  SelectInput,
+  BooleanInput,
+} from 'react-admin'
 import DateTimeInput from 'components/DateTimeInput'
 import LocationInput from 'components/LocationInput'
 
