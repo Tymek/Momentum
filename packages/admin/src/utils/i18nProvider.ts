@@ -58,6 +58,18 @@ const messages = {
         empty: 'Brak osób na liście',
         invite: 'Dodać?',
       },
+      song: {
+        name: 'Piosenka |||| Piosenki',
+        fields: {
+          ...fields,
+          original_title: 'oryginalny tytuł',
+          author: 'autor',
+          image: 'zdjęcie',
+          order: 'pozycja',
+          content: 'tekst',
+          header: 'nagłówek',
+        },
+      },
     },
   },
 }

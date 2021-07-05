@@ -17,6 +17,7 @@ import session from 'resources/session'
 import topic from 'resources/topic'
 import notification from 'resources/notification'
 import speaker from 'resources/speaker'
+import song from 'resources/song'
 
 const Panel: FC = () => {
   const client = useApolloClient()
@@ -45,6 +46,7 @@ const Panel: FC = () => {
         <Resource {...session} />
         <Resource {...topic} />
         <Resource {...speaker} />
+        <Resource {...song} />
       </Admin>
       <StyleVariables />
       <StyleReset />
