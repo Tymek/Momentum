@@ -58,6 +58,30 @@ const messages = {
         empty: 'Brak osób na liście',
         invite: 'Dodać?',
       },
+      song: {
+        name: 'Piosenka |||| Piosenki',
+        fields: {
+          ...fields,
+          original_title: 'oryginalny tytuł',
+          author: 'autor',
+          image: 'zdjęcie',
+          order: 'pozycja',
+          content: 'tekst',
+          header: 'nagłówek',
+        },
+      },
+      lyric: {
+        name: 'Zwrotka |||| Zwrotki',
+        empty: 'Jeszcze nie ma zwrotek',
+        invite: 'Czy chcesz dodać nową?',
+        fields: {
+          ...fields,
+          song: 'piosenka',
+          order: 'pozycja',
+          content: 'tekst',
+          header: 'nagłówek',
+        },
+      },
     },
   },
 }

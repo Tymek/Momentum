@@ -4,26 +4,121 @@ export type UserInfoFieldPolicy = {
 	id?: FieldPolicy<any> | FieldReadFunction<any>,
 	username?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type mutation_rootKeySpecifier = ('delete_notification' | 'delete_notification_by_pk' | 'delete_page' | 'delete_page_by_pk' | 'delete_session' | 'delete_session_by_pk' | 'delete_speaker' | 'delete_speaker_by_pk' | 'delete_topic' | 'delete_topic_by_pk' | 'delete_user' | 'delete_user_by_pk' | 'insert_notification' | 'insert_notification_one' | 'insert_page' | 'insert_page_one' | 'insert_session' | 'insert_session_one' | 'insert_speaker' | 'insert_speaker_one' | 'insert_topic' | 'insert_topic_one' | 'insert_user' | 'insert_user_one' | 'login' | 'logout' | 'update_notification' | 'update_notification_by_pk' | 'update_page' | 'update_page_by_pk' | 'update_session' | 'update_session_by_pk' | 'update_speaker' | 'update_speaker_by_pk' | 'update_topic' | 'update_topic_by_pk' | 'update_user' | 'update_user_by_pk' | mutation_rootKeySpecifier)[];
+export type lyricKeySpecifier = ('content' | 'created_at' | 'header' | 'id' | 'order' | 'song' | 'song_id' | 'updated_at' | lyricKeySpecifier)[];
+export type lyricFieldPolicy = {
+	content?: FieldPolicy<any> | FieldReadFunction<any>,
+	created_at?: FieldPolicy<any> | FieldReadFunction<any>,
+	header?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	order?: FieldPolicy<any> | FieldReadFunction<any>,
+	song?: FieldPolicy<any> | FieldReadFunction<any>,
+	song_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type lyric_aggregateKeySpecifier = ('aggregate' | 'nodes' | lyric_aggregateKeySpecifier)[];
+export type lyric_aggregateFieldPolicy = {
+	aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	nodes?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type lyric_aggregate_fieldsKeySpecifier = ('avg' | 'count' | 'max' | 'min' | 'stddev' | 'stddev_pop' | 'stddev_samp' | 'sum' | 'var_pop' | 'var_samp' | 'variance' | lyric_aggregate_fieldsKeySpecifier)[];
+export type lyric_aggregate_fieldsFieldPolicy = {
+	avg?: FieldPolicy<any> | FieldReadFunction<any>,
+	count?: FieldPolicy<any> | FieldReadFunction<any>,
+	max?: FieldPolicy<any> | FieldReadFunction<any>,
+	min?: FieldPolicy<any> | FieldReadFunction<any>,
+	stddev?: FieldPolicy<any> | FieldReadFunction<any>,
+	stddev_pop?: FieldPolicy<any> | FieldReadFunction<any>,
+	stddev_samp?: FieldPolicy<any> | FieldReadFunction<any>,
+	sum?: FieldPolicy<any> | FieldReadFunction<any>,
+	var_pop?: FieldPolicy<any> | FieldReadFunction<any>,
+	var_samp?: FieldPolicy<any> | FieldReadFunction<any>,
+	variance?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type lyric_avg_fieldsKeySpecifier = ('order' | lyric_avg_fieldsKeySpecifier)[];
+export type lyric_avg_fieldsFieldPolicy = {
+	order?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type lyric_max_fieldsKeySpecifier = ('content' | 'created_at' | 'header' | 'id' | 'order' | 'song_id' | 'updated_at' | lyric_max_fieldsKeySpecifier)[];
+export type lyric_max_fieldsFieldPolicy = {
+	content?: FieldPolicy<any> | FieldReadFunction<any>,
+	created_at?: FieldPolicy<any> | FieldReadFunction<any>,
+	header?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	order?: FieldPolicy<any> | FieldReadFunction<any>,
+	song_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type lyric_min_fieldsKeySpecifier = ('content' | 'created_at' | 'header' | 'id' | 'order' | 'song_id' | 'updated_at' | lyric_min_fieldsKeySpecifier)[];
+export type lyric_min_fieldsFieldPolicy = {
+	content?: FieldPolicy<any> | FieldReadFunction<any>,
+	created_at?: FieldPolicy<any> | FieldReadFunction<any>,
+	header?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	order?: FieldPolicy<any> | FieldReadFunction<any>,
+	song_id?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type lyric_mutation_responseKeySpecifier = ('affected_rows' | 'returning' | lyric_mutation_responseKeySpecifier)[];
+export type lyric_mutation_responseFieldPolicy = {
+	affected_rows?: FieldPolicy<any> | FieldReadFunction<any>,
+	returning?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type lyric_stddev_fieldsKeySpecifier = ('order' | lyric_stddev_fieldsKeySpecifier)[];
+export type lyric_stddev_fieldsFieldPolicy = {
+	order?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type lyric_stddev_pop_fieldsKeySpecifier = ('order' | lyric_stddev_pop_fieldsKeySpecifier)[];
+export type lyric_stddev_pop_fieldsFieldPolicy = {
+	order?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type lyric_stddev_samp_fieldsKeySpecifier = ('order' | lyric_stddev_samp_fieldsKeySpecifier)[];
+export type lyric_stddev_samp_fieldsFieldPolicy = {
+	order?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type lyric_sum_fieldsKeySpecifier = ('order' | lyric_sum_fieldsKeySpecifier)[];
+export type lyric_sum_fieldsFieldPolicy = {
+	order?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type lyric_var_pop_fieldsKeySpecifier = ('order' | lyric_var_pop_fieldsKeySpecifier)[];
+export type lyric_var_pop_fieldsFieldPolicy = {
+	order?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type lyric_var_samp_fieldsKeySpecifier = ('order' | lyric_var_samp_fieldsKeySpecifier)[];
+export type lyric_var_samp_fieldsFieldPolicy = {
+	order?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type lyric_variance_fieldsKeySpecifier = ('order' | lyric_variance_fieldsKeySpecifier)[];
+export type lyric_variance_fieldsFieldPolicy = {
+	order?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type mutation_rootKeySpecifier = ('delete_lyric' | 'delete_lyric_by_pk' | 'delete_notification' | 'delete_notification_by_pk' | 'delete_page' | 'delete_page_by_pk' | 'delete_session' | 'delete_session_by_pk' | 'delete_song' | 'delete_song_by_pk' | 'delete_speaker' | 'delete_speaker_by_pk' | 'delete_topic' | 'delete_topic_by_pk' | 'delete_user' | 'delete_user_by_pk' | 'insert_lyric' | 'insert_lyric_one' | 'insert_notification' | 'insert_notification_one' | 'insert_page' | 'insert_page_one' | 'insert_session' | 'insert_session_one' | 'insert_song' | 'insert_song_one' | 'insert_speaker' | 'insert_speaker_one' | 'insert_topic' | 'insert_topic_one' | 'insert_user' | 'insert_user_one' | 'login' | 'logout' | 'update_lyric' | 'update_lyric_by_pk' | 'update_notification' | 'update_notification_by_pk' | 'update_page' | 'update_page_by_pk' | 'update_session' | 'update_session_by_pk' | 'update_song' | 'update_song_by_pk' | 'update_speaker' | 'update_speaker_by_pk' | 'update_topic' | 'update_topic_by_pk' | 'update_user' | 'update_user_by_pk' | mutation_rootKeySpecifier)[];
 export type mutation_rootFieldPolicy = {
+	delete_lyric?: FieldPolicy<any> | FieldReadFunction<any>,
+	delete_lyric_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
 	delete_notification?: FieldPolicy<any> | FieldReadFunction<any>,
 	delete_notification_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
 	delete_page?: FieldPolicy<any> | FieldReadFunction<any>,
 	delete_page_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
 	delete_session?: FieldPolicy<any> | FieldReadFunction<any>,
 	delete_session_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	delete_song?: FieldPolicy<any> | FieldReadFunction<any>,
+	delete_song_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
 	delete_speaker?: FieldPolicy<any> | FieldReadFunction<any>,
 	delete_speaker_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
 	delete_topic?: FieldPolicy<any> | FieldReadFunction<any>,
 	delete_topic_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
 	delete_user?: FieldPolicy<any> | FieldReadFunction<any>,
 	delete_user_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	insert_lyric?: FieldPolicy<any> | FieldReadFunction<any>,
+	insert_lyric_one?: FieldPolicy<any> | FieldReadFunction<any>,
 	insert_notification?: FieldPolicy<any> | FieldReadFunction<any>,
 	insert_notification_one?: FieldPolicy<any> | FieldReadFunction<any>,
 	insert_page?: FieldPolicy<any> | FieldReadFunction<any>,
 	insert_page_one?: FieldPolicy<any> | FieldReadFunction<any>,
 	insert_session?: FieldPolicy<any> | FieldReadFunction<any>,
 	insert_session_one?: FieldPolicy<any> | FieldReadFunction<any>,
+	insert_song?: FieldPolicy<any> | FieldReadFunction<any>,
+	insert_song_one?: FieldPolicy<any> | FieldReadFunction<any>,
 	insert_speaker?: FieldPolicy<any> | FieldReadFunction<any>,
 	insert_speaker_one?: FieldPolicy<any> | FieldReadFunction<any>,
 	insert_topic?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -32,12 +127,16 @@ export type mutation_rootFieldPolicy = {
 	insert_user_one?: FieldPolicy<any> | FieldReadFunction<any>,
 	login?: FieldPolicy<any> | FieldReadFunction<any>,
 	logout?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_lyric?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_lyric_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
 	update_notification?: FieldPolicy<any> | FieldReadFunction<any>,
 	update_notification_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
 	update_page?: FieldPolicy<any> | FieldReadFunction<any>,
 	update_page_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
 	update_session?: FieldPolicy<any> | FieldReadFunction<any>,
 	update_session_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_song?: FieldPolicy<any> | FieldReadFunction<any>,
+	update_song_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
 	update_speaker?: FieldPolicy<any> | FieldReadFunction<any>,
 	update_speaker_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
 	update_topic?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -127,9 +226,12 @@ export type page_mutation_responseFieldPolicy = {
 	affected_rows?: FieldPolicy<any> | FieldReadFunction<any>,
 	returning?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type query_rootKeySpecifier = ('isDarkTheme' | 'me' | 'notification' | 'notification_aggregate' | 'notification_by_pk' | 'page' | 'page_aggregate' | 'page_by_pk' | 'session' | 'session_aggregate' | 'session_by_pk' | 'speaker' | 'speaker_aggregate' | 'speaker_by_pk' | 'topic' | 'topic_aggregate' | 'topic_by_pk' | 'user' | 'user_aggregate' | 'user_by_pk' | query_rootKeySpecifier)[];
+export type query_rootKeySpecifier = ('isDarkTheme' | 'lyric' | 'lyric_aggregate' | 'lyric_by_pk' | 'me' | 'notification' | 'notification_aggregate' | 'notification_by_pk' | 'page' | 'page_aggregate' | 'page_by_pk' | 'session' | 'session_aggregate' | 'session_by_pk' | 'song' | 'song_aggregate' | 'song_by_pk' | 'speaker' | 'speaker_aggregate' | 'speaker_by_pk' | 'topic' | 'topic_aggregate' | 'topic_by_pk' | 'user' | 'user_aggregate' | 'user_by_pk' | query_rootKeySpecifier)[];
 export type query_rootFieldPolicy = {
 	isDarkTheme?: FieldPolicy<any> | FieldReadFunction<any>,
+	lyric?: FieldPolicy<any> | FieldReadFunction<any>,
+	lyric_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	lyric_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
 	me?: FieldPolicy<any> | FieldReadFunction<any>,
 	notification?: FieldPolicy<any> | FieldReadFunction<any>,
 	notification_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -140,6 +242,9 @@ export type query_rootFieldPolicy = {
 	session?: FieldPolicy<any> | FieldReadFunction<any>,
 	session_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
 	session_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	song?: FieldPolicy<any> | FieldReadFunction<any>,
+	song_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	song_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
 	speaker?: FieldPolicy<any> | FieldReadFunction<any>,
 	speaker_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
 	speaker_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -205,6 +310,94 @@ export type session_mutation_responseKeySpecifier = ('affected_rows' | 'returnin
 export type session_mutation_responseFieldPolicy = {
 	affected_rows?: FieldPolicy<any> | FieldReadFunction<any>,
 	returning?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type songKeySpecifier = ('author' | 'created_at' | 'id' | 'lyrics' | 'lyrics_aggregate' | 'order' | 'original_title' | 'title' | 'updated_at' | songKeySpecifier)[];
+export type songFieldPolicy = {
+	author?: FieldPolicy<any> | FieldReadFunction<any>,
+	created_at?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	lyrics?: FieldPolicy<any> | FieldReadFunction<any>,
+	lyrics_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	order?: FieldPolicy<any> | FieldReadFunction<any>,
+	original_title?: FieldPolicy<any> | FieldReadFunction<any>,
+	title?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type song_aggregateKeySpecifier = ('aggregate' | 'nodes' | song_aggregateKeySpecifier)[];
+export type song_aggregateFieldPolicy = {
+	aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	nodes?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type song_aggregate_fieldsKeySpecifier = ('avg' | 'count' | 'max' | 'min' | 'stddev' | 'stddev_pop' | 'stddev_samp' | 'sum' | 'var_pop' | 'var_samp' | 'variance' | song_aggregate_fieldsKeySpecifier)[];
+export type song_aggregate_fieldsFieldPolicy = {
+	avg?: FieldPolicy<any> | FieldReadFunction<any>,
+	count?: FieldPolicy<any> | FieldReadFunction<any>,
+	max?: FieldPolicy<any> | FieldReadFunction<any>,
+	min?: FieldPolicy<any> | FieldReadFunction<any>,
+	stddev?: FieldPolicy<any> | FieldReadFunction<any>,
+	stddev_pop?: FieldPolicy<any> | FieldReadFunction<any>,
+	stddev_samp?: FieldPolicy<any> | FieldReadFunction<any>,
+	sum?: FieldPolicy<any> | FieldReadFunction<any>,
+	var_pop?: FieldPolicy<any> | FieldReadFunction<any>,
+	var_samp?: FieldPolicy<any> | FieldReadFunction<any>,
+	variance?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type song_avg_fieldsKeySpecifier = ('order' | song_avg_fieldsKeySpecifier)[];
+export type song_avg_fieldsFieldPolicy = {
+	order?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type song_max_fieldsKeySpecifier = ('author' | 'created_at' | 'id' | 'order' | 'original_title' | 'title' | 'updated_at' | song_max_fieldsKeySpecifier)[];
+export type song_max_fieldsFieldPolicy = {
+	author?: FieldPolicy<any> | FieldReadFunction<any>,
+	created_at?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	order?: FieldPolicy<any> | FieldReadFunction<any>,
+	original_title?: FieldPolicy<any> | FieldReadFunction<any>,
+	title?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type song_min_fieldsKeySpecifier = ('author' | 'created_at' | 'id' | 'order' | 'original_title' | 'title' | 'updated_at' | song_min_fieldsKeySpecifier)[];
+export type song_min_fieldsFieldPolicy = {
+	author?: FieldPolicy<any> | FieldReadFunction<any>,
+	created_at?: FieldPolicy<any> | FieldReadFunction<any>,
+	id?: FieldPolicy<any> | FieldReadFunction<any>,
+	order?: FieldPolicy<any> | FieldReadFunction<any>,
+	original_title?: FieldPolicy<any> | FieldReadFunction<any>,
+	title?: FieldPolicy<any> | FieldReadFunction<any>,
+	updated_at?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type song_mutation_responseKeySpecifier = ('affected_rows' | 'returning' | song_mutation_responseKeySpecifier)[];
+export type song_mutation_responseFieldPolicy = {
+	affected_rows?: FieldPolicy<any> | FieldReadFunction<any>,
+	returning?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type song_stddev_fieldsKeySpecifier = ('order' | song_stddev_fieldsKeySpecifier)[];
+export type song_stddev_fieldsFieldPolicy = {
+	order?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type song_stddev_pop_fieldsKeySpecifier = ('order' | song_stddev_pop_fieldsKeySpecifier)[];
+export type song_stddev_pop_fieldsFieldPolicy = {
+	order?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type song_stddev_samp_fieldsKeySpecifier = ('order' | song_stddev_samp_fieldsKeySpecifier)[];
+export type song_stddev_samp_fieldsFieldPolicy = {
+	order?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type song_sum_fieldsKeySpecifier = ('order' | song_sum_fieldsKeySpecifier)[];
+export type song_sum_fieldsFieldPolicy = {
+	order?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type song_var_pop_fieldsKeySpecifier = ('order' | song_var_pop_fieldsKeySpecifier)[];
+export type song_var_pop_fieldsFieldPolicy = {
+	order?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type song_var_samp_fieldsKeySpecifier = ('order' | song_var_samp_fieldsKeySpecifier)[];
+export type song_var_samp_fieldsFieldPolicy = {
+	order?: FieldPolicy<any> | FieldReadFunction<any>
+};
+export type song_variance_fieldsKeySpecifier = ('order' | song_variance_fieldsKeySpecifier)[];
+export type song_variance_fieldsFieldPolicy = {
+	order?: FieldPolicy<any> | FieldReadFunction<any>
 };
 export type speakerKeySpecifier = ('created_at' | 'description' | 'id' | 'image' | 'name' | 'priority' | 'sessions' | 'sessions_aggregate' | 'topics' | 'topics_aggregate' | 'updated_at' | speakerKeySpecifier)[];
 export type speakerFieldPolicy = {
@@ -296,8 +489,11 @@ export type speaker_variance_fieldsKeySpecifier = ('priority' | speaker_variance
 export type speaker_variance_fieldsFieldPolicy = {
 	priority?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type subscription_rootKeySpecifier = ('notification' | 'notification_aggregate' | 'notification_by_pk' | 'page' | 'page_aggregate' | 'page_by_pk' | 'session' | 'session_aggregate' | 'session_by_pk' | 'speaker' | 'speaker_aggregate' | 'speaker_by_pk' | 'topic' | 'topic_aggregate' | 'topic_by_pk' | 'user' | 'user_aggregate' | 'user_by_pk' | subscription_rootKeySpecifier)[];
+export type subscription_rootKeySpecifier = ('lyric' | 'lyric_aggregate' | 'lyric_by_pk' | 'notification' | 'notification_aggregate' | 'notification_by_pk' | 'page' | 'page_aggregate' | 'page_by_pk' | 'session' | 'session_aggregate' | 'session_by_pk' | 'song' | 'song_aggregate' | 'song_by_pk' | 'speaker' | 'speaker_aggregate' | 'speaker_by_pk' | 'topic' | 'topic_aggregate' | 'topic_by_pk' | 'user' | 'user_aggregate' | 'user_by_pk' | subscription_rootKeySpecifier)[];
 export type subscription_rootFieldPolicy = {
+	lyric?: FieldPolicy<any> | FieldReadFunction<any>,
+	lyric_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	lyric_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
 	notification?: FieldPolicy<any> | FieldReadFunction<any>,
 	notification_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
 	notification_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -307,6 +503,9 @@ export type subscription_rootFieldPolicy = {
 	session?: FieldPolicy<any> | FieldReadFunction<any>,
 	session_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
 	session_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
+	song?: FieldPolicy<any> | FieldReadFunction<any>,
+	song_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
+	song_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
 	speaker?: FieldPolicy<any> | FieldReadFunction<any>,
 	speaker_aggregate?: FieldPolicy<any> | FieldReadFunction<any>,
 	speaker_by_pk?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -413,6 +612,62 @@ export type TypedTypePolicies = TypePolicies & {
 		keyFields?: false | UserInfoKeySpecifier | (() => undefined | UserInfoKeySpecifier),
 		fields?: UserInfoFieldPolicy,
 	},
+	lyric?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | lyricKeySpecifier | (() => undefined | lyricKeySpecifier),
+		fields?: lyricFieldPolicy,
+	},
+	lyric_aggregate?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | lyric_aggregateKeySpecifier | (() => undefined | lyric_aggregateKeySpecifier),
+		fields?: lyric_aggregateFieldPolicy,
+	},
+	lyric_aggregate_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | lyric_aggregate_fieldsKeySpecifier | (() => undefined | lyric_aggregate_fieldsKeySpecifier),
+		fields?: lyric_aggregate_fieldsFieldPolicy,
+	},
+	lyric_avg_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | lyric_avg_fieldsKeySpecifier | (() => undefined | lyric_avg_fieldsKeySpecifier),
+		fields?: lyric_avg_fieldsFieldPolicy,
+	},
+	lyric_max_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | lyric_max_fieldsKeySpecifier | (() => undefined | lyric_max_fieldsKeySpecifier),
+		fields?: lyric_max_fieldsFieldPolicy,
+	},
+	lyric_min_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | lyric_min_fieldsKeySpecifier | (() => undefined | lyric_min_fieldsKeySpecifier),
+		fields?: lyric_min_fieldsFieldPolicy,
+	},
+	lyric_mutation_response?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | lyric_mutation_responseKeySpecifier | (() => undefined | lyric_mutation_responseKeySpecifier),
+		fields?: lyric_mutation_responseFieldPolicy,
+	},
+	lyric_stddev_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | lyric_stddev_fieldsKeySpecifier | (() => undefined | lyric_stddev_fieldsKeySpecifier),
+		fields?: lyric_stddev_fieldsFieldPolicy,
+	},
+	lyric_stddev_pop_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | lyric_stddev_pop_fieldsKeySpecifier | (() => undefined | lyric_stddev_pop_fieldsKeySpecifier),
+		fields?: lyric_stddev_pop_fieldsFieldPolicy,
+	},
+	lyric_stddev_samp_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | lyric_stddev_samp_fieldsKeySpecifier | (() => undefined | lyric_stddev_samp_fieldsKeySpecifier),
+		fields?: lyric_stddev_samp_fieldsFieldPolicy,
+	},
+	lyric_sum_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | lyric_sum_fieldsKeySpecifier | (() => undefined | lyric_sum_fieldsKeySpecifier),
+		fields?: lyric_sum_fieldsFieldPolicy,
+	},
+	lyric_var_pop_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | lyric_var_pop_fieldsKeySpecifier | (() => undefined | lyric_var_pop_fieldsKeySpecifier),
+		fields?: lyric_var_pop_fieldsFieldPolicy,
+	},
+	lyric_var_samp_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | lyric_var_samp_fieldsKeySpecifier | (() => undefined | lyric_var_samp_fieldsKeySpecifier),
+		fields?: lyric_var_samp_fieldsFieldPolicy,
+	},
+	lyric_variance_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | lyric_variance_fieldsKeySpecifier | (() => undefined | lyric_variance_fieldsKeySpecifier),
+		fields?: lyric_variance_fieldsFieldPolicy,
+	},
 	mutation_root?: Omit<TypePolicy, "fields" | "keyFields"> & {
 		keyFields?: false | mutation_rootKeySpecifier | (() => undefined | mutation_rootKeySpecifier),
 		fields?: mutation_rootFieldPolicy,
@@ -492,6 +747,62 @@ export type TypedTypePolicies = TypePolicies & {
 	session_mutation_response?: Omit<TypePolicy, "fields" | "keyFields"> & {
 		keyFields?: false | session_mutation_responseKeySpecifier | (() => undefined | session_mutation_responseKeySpecifier),
 		fields?: session_mutation_responseFieldPolicy,
+	},
+	song?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | songKeySpecifier | (() => undefined | songKeySpecifier),
+		fields?: songFieldPolicy,
+	},
+	song_aggregate?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | song_aggregateKeySpecifier | (() => undefined | song_aggregateKeySpecifier),
+		fields?: song_aggregateFieldPolicy,
+	},
+	song_aggregate_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | song_aggregate_fieldsKeySpecifier | (() => undefined | song_aggregate_fieldsKeySpecifier),
+		fields?: song_aggregate_fieldsFieldPolicy,
+	},
+	song_avg_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | song_avg_fieldsKeySpecifier | (() => undefined | song_avg_fieldsKeySpecifier),
+		fields?: song_avg_fieldsFieldPolicy,
+	},
+	song_max_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | song_max_fieldsKeySpecifier | (() => undefined | song_max_fieldsKeySpecifier),
+		fields?: song_max_fieldsFieldPolicy,
+	},
+	song_min_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | song_min_fieldsKeySpecifier | (() => undefined | song_min_fieldsKeySpecifier),
+		fields?: song_min_fieldsFieldPolicy,
+	},
+	song_mutation_response?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | song_mutation_responseKeySpecifier | (() => undefined | song_mutation_responseKeySpecifier),
+		fields?: song_mutation_responseFieldPolicy,
+	},
+	song_stddev_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | song_stddev_fieldsKeySpecifier | (() => undefined | song_stddev_fieldsKeySpecifier),
+		fields?: song_stddev_fieldsFieldPolicy,
+	},
+	song_stddev_pop_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | song_stddev_pop_fieldsKeySpecifier | (() => undefined | song_stddev_pop_fieldsKeySpecifier),
+		fields?: song_stddev_pop_fieldsFieldPolicy,
+	},
+	song_stddev_samp_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | song_stddev_samp_fieldsKeySpecifier | (() => undefined | song_stddev_samp_fieldsKeySpecifier),
+		fields?: song_stddev_samp_fieldsFieldPolicy,
+	},
+	song_sum_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | song_sum_fieldsKeySpecifier | (() => undefined | song_sum_fieldsKeySpecifier),
+		fields?: song_sum_fieldsFieldPolicy,
+	},
+	song_var_pop_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | song_var_pop_fieldsKeySpecifier | (() => undefined | song_var_pop_fieldsKeySpecifier),
+		fields?: song_var_pop_fieldsFieldPolicy,
+	},
+	song_var_samp_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | song_var_samp_fieldsKeySpecifier | (() => undefined | song_var_samp_fieldsKeySpecifier),
+		fields?: song_var_samp_fieldsFieldPolicy,
+	},
+	song_variance_fields?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | song_variance_fieldsKeySpecifier | (() => undefined | song_variance_fieldsKeySpecifier),
+		fields?: song_variance_fieldsFieldPolicy,
 	},
 	speaker?: Omit<TypePolicy, "fields" | "keyFields"> & {
 		keyFields?: false | speakerKeySpecifier | (() => undefined | speakerKeySpecifier),

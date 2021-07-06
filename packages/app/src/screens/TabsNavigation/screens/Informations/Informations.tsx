@@ -6,7 +6,8 @@ import { useLinkTo, useNavigation } from '@react-navigation/native'
 import Rules from './screens/Rules'
 import About from './screens/About'
 import Speakers from './screens/Speakers'
-import Lyrics from './screens/Lyrics'
+import Songs from './screens/Songs'
+import Song, { ParamList as SongParamList } from './screens/Song'
 import Speaker, { ParamList as SpeakerParamList } from './screens/Speaker'
 import InfoCard from './components/InfoCard'
 import {
@@ -24,7 +25,7 @@ export const screens = {
   InfoScreen: '',
   About: 'o-aplikacji',
   Speakers: 'mowcy',
-  Lyrics: 'teksty',
+  Songs: 'koncert',
   Speaker: {
     path: 'mowcy/:name',
     parse: {
@@ -35,6 +36,15 @@ export const screens = {
     },
   },
   Rules: 'regulamin',
+  Song: {
+    path: 'koncert/:original_title',
+    parse: {
+      original_title: (original_title: string): string => decodeURI(original_title),
+    },
+    stringify: {
+      original_title: (original_title: string): string => encodeURI(original_title),
+    },
+  },
 }
 
 type InfoStackParamList = {
@@ -42,8 +52,9 @@ type InfoStackParamList = {
   About: undefined
   Speakers: undefined
   Rules: undefined
-  Lyrics: undefined
-} & SpeakerParamList
+  Songs: undefined
+} & SpeakerParamList &
+  SongParamList
 
 const Stack = createStackNavigator<InfoStackParamList>()
 
@@ -57,6 +68,17 @@ const SpeakerBackButton = () => {
   return navigation.canGoBack() ? (
     <HeaderBackButton canGoBack accessibilityLabel="Powrót" onPress={() => navigation.goBack()} />
   ) : null
+}
+
+const SongBackButton = () => {
+  const navigation = useNavigation()
+  return (
+    <HeaderBackButton
+      canGoBack
+      accessibilityLabel="Powrót"
+      onPress={() => navigation.navigate('Songs')}
+    />
+  )
 }
 
 const InformationsScreen: FC = () => {
@@ -88,9 +110,9 @@ const InformationsScreen: FC = () => {
                     ? require('assets/images/info/teksty.jpg')
                     : require('assets/images/info/teksty-light.jpg')
                 }
-                link="/info/teksty"
+                link="/info/koncert"
               >
-                Teksty utworów
+                Koncert na plaży
               </InfoCard>
             </TileColumn>
           </TileRow>
@@ -146,9 +168,17 @@ const Informations: FC = () => (
       options={{ title: 'Mówcy', headerLeft: BackButton }}
     />
     <Stack.Screen
-      name="Lyrics"
-      component={Lyrics}
-      options={{ title: 'Teksty', headerLeft: BackButton }}
+      name="Songs"
+      component={Songs}
+      options={{ title: 'Koncert na plaży', headerLeft: BackButton }}
+    />
+    <Stack.Screen
+      name="Song"
+      component={Song}
+      options={({ route }) => ({
+        original_title: route?.params?.original_title,
+        headerLeft: SongBackButton,
+      })}
     />
     <Stack.Screen
       name="Speaker"
