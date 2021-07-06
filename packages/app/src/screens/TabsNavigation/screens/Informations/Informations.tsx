@@ -24,7 +24,7 @@ export const screens = {
   InfoScreen: '',
   About: 'o-aplikacji',
   Speakers: 'mowcy',
-  Lyrics: 'teksty',
+  Lyrics: 'koncert',
   Speaker: {
     path: 'mowcy/:name',
     parse: {
@@ -88,9 +88,9 @@ const InformationsScreen: FC = () => {
                     ? require('assets/images/info/teksty.jpg')
                     : require('assets/images/info/teksty-light.jpg')
                 }
-                link="/info/teksty"
+                link="/info/koncert"
               >
-                Teksty utworów
+                Koncert na plaży
               </InfoCard>
             </TileColumn>
           </TileRow>
@@ -148,7 +148,7 @@ const Informations: FC = () => (
     <Stack.Screen
       name="Lyrics"
       component={Lyrics}
-      options={{ title: 'Teksty', headerLeft: BackButton }}
+      options={{ title: 'Koncert na plaży', headerLeft: BackButton }}
     />
     <Stack.Screen
       name="Speaker"
