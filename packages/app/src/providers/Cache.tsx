@@ -4,7 +4,7 @@ import { Asset } from 'expo-asset'
 import AppLoading from 'expo-app-loading'
 import * as Font from 'expo-font'
 import { FontAwesome, Ionicons, MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons'
-import { useGetScheduleQuery, useGetSpeakersQuery } from '@-local/db/lib/api'
+import { useGetScheduleQuery, useGetSpeakersQuery, useGetSongsQuery } from '@-local/db/lib/api'
 import { FullLoader } from 'components/Loader'
 
 const cacheResourcesAsync = async () => {
@@ -35,6 +35,7 @@ const CacheLoading: FC = ({ children }) => {
   const [isReady, setIsReady] = useState<boolean>(false)
   const { loading: loadingSchedule } = useGetScheduleQuery()
   const { loading: loadingSpeakers } = useGetSpeakersQuery()
+  useGetSongsQuery()
 
   useEffect(() => {
     cacheResourcesAsync().finally(() => setIsReady(true))
