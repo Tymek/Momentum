@@ -1,4 +1,4 @@
-CREATE TABLE "public"."song" ("id" uuid NOT NULL DEFAULT gen_random_uuid(), "created_at" timestamptz NOT NULL DEFAULT now(), "updated_at" timestamptz NOT NULL DEFAULT now(), "title" varchar, "original_title" varchar NOT NULL, "author" varchar NOT NULL, "order" integer NOT NULL, PRIMARY KEY ("id"));
+CREATE TABLE IF NOT EXISTS "public"."song" ("id" uuid NOT NULL DEFAULT gen_random_uuid(), "created_at" timestamptz NOT NULL DEFAULT now(), "updated_at" timestamptz NOT NULL DEFAULT now(), "title" varchar, "original_title" varchar NOT NULL, "author" varchar NOT NULL, "order" integer NOT NULL, PRIMARY KEY ("id"));
 CREATE OR REPLACE FUNCTION "public"."set_current_timestamp_updated_at"()
 RETURNS TRIGGER AS $$
 DECLARE
@@ -9,7 +9,7 @@ BEGIN
   RETURN _new;
 END;
 $$ LANGUAGE plpgsql;
-CREATE OR REPLACE TRIGGER "set_public_song_updated_at"
+CREATE TRIGGER "set_public_song_updated_at"
 BEFORE UPDATE ON "public"."song"
 FOR EACH ROW
 EXECUTE PROCEDURE "public"."set_current_timestamp_updated_at"();
