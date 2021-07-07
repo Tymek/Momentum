@@ -34,6 +34,7 @@ const Song: FC<SongProps> = ({ route, navigation }) => {
       navigation.setOptions({
         // eslint-disable-next-line react/display-name
         headerTitle: () => <HeaderTitle song={song} />,
+        title: song.title || song.original_title,
       })
     }
   }, [song, navigation])

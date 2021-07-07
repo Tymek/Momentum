@@ -176,7 +176,7 @@ const Informations: FC = () => (
       name="Song"
       component={Song}
       options={({ route }) => ({
-        original_title: route?.params?.original_title,
+        title: route?.params?.original_title,
         headerLeft: SongBackButton,
       })}
     />
