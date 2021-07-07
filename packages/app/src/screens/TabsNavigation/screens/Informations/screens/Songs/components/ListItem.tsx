@@ -4,12 +4,14 @@ import React, { FC } from 'react'
 import { TouchableOpacityProps } from 'react-native'
 import { MaterialIcons } from '@expo/vector-icons'
 import { useTheme } from '@emotion/react'
-const TouchableRow = styled.TouchableOpacity`
+import useDarkTheme from 'hooks/useDarkTheme'
+
+const TouchableRow = styled.TouchableOpacity<{ isDark: boolean }>`
   flex-direction: row;
   align-items: space-between;
   padding: ${({ theme }) => `${theme.spacing.s}px`};
   margin: ${({ theme }) => `${theme.spacing.xs}px`};
-  background: ${({ theme }) => theme.color.dark};
+  background: ${({ theme, isDark }) => (isDark ? theme.color.dark : theme.color.background)};
   border-radius: ${({ theme }) => `${theme.borderRadius.m}px`};
 `
 
@@ -21,11 +23,12 @@ const Title = styled(Text)`
 
 const ListItem: FC<TouchableOpacityProps> = ({ children, onPress }) => {
   const theme = useTheme()
+  const isDark = useDarkTheme()
 
   return (
-    <TouchableRow onPress={onPress}>
+    <TouchableRow isDark={isDark} onPress={onPress}>
       <Title>{children}</Title>
-      <MaterialIcons name="chevron-right" color={theme.color.light} size={24} />
+      <MaterialIcons name="chevron-right" color={theme.color.text} size={24} />
     </TouchableRow>
   )
 }
