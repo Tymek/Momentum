@@ -59,7 +59,7 @@ app.use(
 app.get('/', (_, res) => {
   res.sendFile(indexFile)
 })
-app.use(express.static(resolve(__dirname, clientAppStaticDir), { maxAge: '14d' }))
+app.use(express.static(resolve(__dirname, clientAppStaticDir), { maxAge: '3h' }))
 
 // Proxy admin panel
 if (process.env.NODE_ENV === 'development') {

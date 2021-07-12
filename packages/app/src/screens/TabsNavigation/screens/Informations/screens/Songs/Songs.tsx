@@ -8,7 +8,7 @@ import { FlatList } from 'react-native'
 import ListItem from './components/ListItem'
 
 const Songs: FC = () => {
-  const { data, loading, error } = useGetSongsQuery()
+  const { data, loading, error } = useGetSongsQuery({ pollInterval: 10000 })
   const navigation = useNavigation()
 
   const onPress = (original_title: Maybe<string>) =>

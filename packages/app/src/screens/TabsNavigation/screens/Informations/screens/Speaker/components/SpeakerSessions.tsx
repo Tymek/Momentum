@@ -14,9 +14,11 @@ const formatDate = (date?: string) =>
   date ? format(parseISO(date), 'EEEE, HH:mm', { locale: pl }) : ''
 
 const SpeakerSessions: FC<SpeakerSessionsProps> = ({ id }) => {
-  const { data } = useGetSpeakerSessionsQuery({ variables: { speaker_id: id } })
+  const { data } = useGetSpeakerSessionsQuery({
+    variables: { speaker_id: id },
+    pollInterval: 10000,
+  })
   const hasItems = data && (data?.session.length > 0 || data?.topic.length > 0)
-  console.log(data)
 
   return hasItems ? (
     <>
